@@ -22,9 +22,15 @@ const Button = ({
     secondary:
       "bg-teal-100 hover:bg-teal-200 text-teal-800 focus:ring-teal-500",
     outline:
-      "border border-teal-600 text-teal-600 hover:bg-teal-50 focus:ring-teal-500",
+      "border border-white text-white hover:bg-white hover:text-teal-700 focus:ring-teal-500",
     text: "text-teal-600 hover:text-teal-800 hover:underline",
   };
+
+  // Special variant for outline on light backgrounds
+  if (variant === "outline" && !className.includes("border-white")) {
+    variantClasses.outline =
+      "border border-teal-600 text-teal-600 hover:bg-teal-50 focus:ring-teal-500";
+  }
 
   const sizeClasses = {
     sm: "px-3 py-1.5 text-sm",

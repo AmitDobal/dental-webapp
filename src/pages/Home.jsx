@@ -38,7 +38,7 @@ const Home = () => {
               to="/services"
               variant="outline"
               size="lg"
-              className="bg-transparent border-white hover:bg-white hover:text-teal-800 font-semibold"
+              className="border-white text-white hover:bg-white hover:text-teal-800 font-semibold"
               aria-label="View our services">
               Our Services
             </Button>
@@ -314,7 +314,7 @@ const Home = () => {
                 as="a"
                 href={`tel:${clinicInfo.contact.phone}`}
                 variant="outline"
-                className="border-white hover:bg-white hover:text-teal-700 font-semibold"
+                className="border-white text-white hover:bg-white hover:text-teal-700 font-semibold"
                 size="lg"
                 aria-label="Call us now">
                 Call Us Now

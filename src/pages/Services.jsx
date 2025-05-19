@@ -209,7 +209,7 @@ const Services = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="outline"
-                className="border-white hover:bg-white hover:text-teal-700 font-semibold"
+                className="border-white text-white hover:bg-white hover:text-teal-700 font-semibold"
                 size="lg"
                 aria-label="Chat on WhatsApp">
                 Chat on WhatsApp
