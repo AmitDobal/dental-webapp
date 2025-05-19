@@ -14,7 +14,12 @@ const VisitSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           <div>
-            <GoogleMap />
+            <GoogleMap
+              embedUrl={clinicInfo.mapEmbedUrl}
+              title={`${clinicInfo.name} Location`}
+              height="400px"
+              className="w-full"
+            />
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md">

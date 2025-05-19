@@ -3,6 +3,8 @@ export const clinicInfo = {
   address: "123 Dental Street, City, State 12345",
   phone: "+1 (234) 567-8900",
   email: "contact@manifestdental.com",
+  mapEmbedUrl:
+    "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d39897.36563577033!2d77.27774518415362!3d28.62669950690019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1747637967076!5m2!1sen!2sin",
   hours: [
     { days: "Monday - Friday", hours: "8:00 AM - 6:00 PM" },
     { days: "Saturday", hours: "9:00 AM - 4:00 PM" },
