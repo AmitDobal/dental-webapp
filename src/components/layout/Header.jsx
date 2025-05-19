@@ -1,124 +1,132 @@
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Button from "../common/Button";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const handleMenuToggle = () => setIsMenuOpen(!isMenuOpen);
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" || e.key === " ") {
-      handleMenuToggle();
+      handleMobileMenuToggle();
     }
   };
 
   const navLinks = [
-    { path: "/", label: "Home" },
-    { path: "/services", label: "Services" },
-    { path: "/gallery", label: "Gallery" },
-    { path: "/contact", label: "Contact" },
+    { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#services", label: "Services" },
+    { href: "#gallery", label: "Gallery" },
+    { href: "#testimonials", label: "Testimonials" },
+    { href: "#contact", label: "Contact" },
   ];
 
   return (
-    <header className="bg-teal-800 text-white fixed w-full z-10">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link
-          to="/"
-          className="text-xl font-bold"
-          aria-label="Manifest Dental Clinic">
-          Manifest Dental Clinic
-        </Link>
+    <header
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white shadow-md py-2" : "bg-transparent py-4"
+      }`}>
+      <div className="container mx-auto px-4">
+        <div className="flex items-center justify-between">
+          <a
+            href="#home"
+            className={`text-2xl font-bold transition-colors ${
+              isScrolled ? "text-teal-600" : "text-white"
+            }`}
+            aria-label="Manifest Dental Clinic">
+            Manifest Dental
+          </a>
 
-        {/* Mobile menu button */}
-        <div className="md:hidden">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-6">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-medium transition-colors ${
+                  isScrolled
+                    ? "text-gray-700 hover:text-teal-600"
+                    : "text-white hover:text-teal-200"
+                }`}>
+                {link.label}
+              </a>
+            ))}
+            <Button
+              as="a"
+              href="#contact"
+              size="sm"
+              className={`${
+                isScrolled ? "bg-teal-600 text-white" : "bg-white text-teal-600"
+              }`}>
+              Schedule Appointment
+            </Button>
+          </nav>
+
+          {/* Mobile Menu Button */}
           <button
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            className="p-2"
-            onClick={handleMenuToggle}
+            className={`md:hidden p-2 rounded-md focus:outline-none ${
+              isScrolled ? "text-gray-700" : "text-white"
+            }`}
+            onClick={handleMobileMenuToggle}
             onKeyDown={handleKeyDown}
-            tabIndex={0}>
+            aria-label="Toggle mobile menu"
+            aria-expanded={isMobileMenuOpen}>
             <svg
-              className="w-6 h-6"
+              className="h-6 w-6"
               fill="none"
-              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+              stroke="currentColor">
+              {isMobileMenuOpen ? (
+                <path d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
         </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex space-x-6">
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.path}
-              to={link.path}
-              className={({ isActive }) =>
-                `hover:text-teal-200 transition-colors ${
-                  isActive ? "font-bold" : ""
-                }`
-              }
-              aria-label={link.label}
-              tabIndex={0}>
-              {link.label}
-            </NavLink>
-          ))}
-          <a
-            href="tel:+1234567890"
-            className="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded"
-            aria-label="Call now"
-            tabIndex={0}>
-            Call Now
-          </a>
-        </nav>
-      </div>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-teal-700">
-          <div className="container mx-auto px-4 py-2">
-            <nav className="flex flex-col space-y-2">
+        {/* Mobile Navigation */}
+        {isMobileMenuOpen && (
+          <nav className="md:hidden py-4 mt-2 bg-white rounded-lg shadow-lg">
+            <div className="flex flex-col space-y-3">
               {navLinks.map((link) => (
-                <NavLink
-                  key={link.path}
-                  to={link.path}
-                  className={({ isActive }) =>
-                    `block py-2 hover:text-teal-200 transition-colors ${
-                      isActive ? "font-bold" : ""
-                    }`
-                  }
-                  onClick={() => setIsMenuOpen(false)}
-                  aria-label={link.label}
-                  tabIndex={0}>
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-gray-700 hover:text-teal-600 px-4 py-2 text-sm font-medium"
+                  onClick={() => setIsMobileMenuOpen(false)}>
                   {link.label}
-                </NavLink>
+                </a>
               ))}
-              <a
-                href="tel:+1234567890"
-                className="bg-teal-600 hover:bg-teal-700 px-4 py-2 rounded inline-block w-max"
-                aria-label="Call now"
-                tabIndex={0}>
-                Call Now
-              </a>
-            </nav>
-          </div>
-        </div>
-      )}
+              <div className="px-4 pt-2">
+                <Button
+                  as="a"
+                  href="#contact"
+                  size="sm"
+                  className="w-full bg-teal-600 text-white"
+                  onClick={() => setIsMobileMenuOpen(false)}>
+                  Schedule Appointment
+                </Button>
+              </div>
+            </div>
+          </nav>
+        )}
+      </div>
     </header>
   );
 };

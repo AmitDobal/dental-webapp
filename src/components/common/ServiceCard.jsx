@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import Button from "./Button";
 
 const ServiceCard = ({
@@ -13,33 +12,23 @@ const ServiceCard = ({
   ...props
 }) => {
   return (
-    <div
-      className={`bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col ${className}`}
-      {...props}>
-      {image && (
-        <div className="aspect-w-16 aspect-h-9 relative">
-          <img
-            src={image}
-            alt={altText || title}
-            className="w-full h-full object-cover"
-          />
-        </div>
-      )}
-      <div className="p-6 flex-grow">
-        <h3 className="text-xl font-semibold text-gray-900 mb-3">{title}</h3>
+    <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
+      <div className="relative h-48">
+        <img src={image} alt={altText} className="w-full h-full object-cover" />
+      </div>
+      <div className="p-6">
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
         <p className="text-gray-600 mb-4">{description}</p>
         {showButton && link && (
-          <div className="mt-auto pt-4">
-            <Button
-              as="link"
-              to={link}
-              variant="outline"
-              size="sm"
-              className="mt-auto border-teal-600 !text-teal-600 hover:bg-teal-600 hover:!text-white"
-              aria-label={`Learn more about ${title}`}>
-              {buttonText}
-            </Button>
-          </div>
+          <Button
+            as="a"
+            href={link}
+            variant="outline"
+            size="sm"
+            className="w-full"
+            aria-label={`Learn more about ${title}`}>
+            {buttonText}
+          </Button>
         )}
       </div>
     </div>

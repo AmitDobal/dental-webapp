@@ -1,0 +1,66 @@
+export const galleryImages = [
+  {
+    id: 1,
+    title: "Modern Dental Office",
+    description: "Our state-of-the-art dental office designed for your comfort",
+    image: "/images/gallery/office.jpg",
+    category: "facility",
+  },
+  {
+    id: 2,
+    title: "Comfortable Treatment Room",
+    description: "Spacious and well-equipped treatment rooms for optimal care",
+    image: "/images/gallery/treatment-room.jpg",
+    category: "facility",
+  },
+  {
+    id: 3,
+    title: "Before and After - Smile Makeover",
+    description: "Transform your smile with our cosmetic dentistry services",
+    image: "/images/gallery/smile-makeover.jpg",
+    category: "results",
+  },
+  {
+    id: 4,
+    title: "Dental Implant Success",
+    description: "Natural-looking results with our dental implant procedures",
+    image: "/images/gallery/implant.jpg",
+    category: "results",
+  },
+  {
+    id: 5,
+    title: "Family Dentistry",
+    description: "Welcoming environment for patients of all ages",
+    image: "/images/gallery/family.jpg",
+    category: "facility",
+  },
+  {
+    id: 6,
+    title: "Advanced Technology",
+    description: "Using the latest dental technology for precise treatments",
+    image: "/images/gallery/technology.jpg",
+    category: "facility",
+  },
+  {
+    id: 7,
+    title: "Orthodontic Transformation",
+    description:
+      "Achieve a perfectly aligned smile with our orthodontic treatments",
+    image: "/images/gallery/orthodontics.jpg",
+    category: "results",
+  },
+  {
+    id: 8,
+    title: "Emergency Care",
+    description: "Prompt and professional emergency dental services",
+    image: "/images/gallery/emergency.jpg",
+    category: "facility",
+  },
+  {
+    id: 9,
+    title: "Preventive Care",
+    description: "Regular check-ups and cleanings for optimal oral health",
+    image: "/images/gallery/preventive.jpg",
+    category: "facility",
+  },
+];
