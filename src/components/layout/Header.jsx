@@ -69,7 +69,7 @@ const Header = () => {
               size="sm"
               className={`${
                 isScrolled ? "bg-teal-600 text-white" : "bg-white text-teal-600"
-              }`}>
+              } hover:shadow-md`}>
               Schedule Appointment
             </Button>
           </nav>
@@ -102,7 +102,7 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <nav className="md:hidden py-4 mt-2 bg-white rounded-lg shadow-lg">
+          <nav className="md:hidden py-4 mt-2 bg-white rounded-lg shadow-xl">
             <div className="flex flex-col space-y-3">
               {navLinks.map((link) => (
                 <a
@@ -113,12 +113,12 @@ const Header = () => {
                   {link.label}
                 </a>
               ))}
-              <div className="px-4 pt-2">
+              <div className="px-4 pt-2 pb-4">
                 <Button
                   as="a"
                   href="#contact"
                   size="sm"
-                  className="w-full bg-teal-600 text-white"
+                  className="w-full bg-teal-600 text-white hover:bg-teal-700"
                   onClick={() => setIsMobileMenuOpen(false)}>
                   Schedule Appointment
                 </Button>

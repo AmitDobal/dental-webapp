@@ -1,4 +1,20 @@
 const ContactInfo = ({ clinicInfo }) => {
+  // Early return with a placeholder if clinicInfo is not available
+  if (!clinicInfo) {
+    return (
+      <div className="bg-white rounded-lg shadow-md p-6">
+        <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+          Contact Information Loading...
+        </h3>
+        <div className="animate-pulse space-y-6">
+          <div className="h-6 bg-gray-200 rounded w-3/4"></div>
+          <div className="h-6 bg-gray-200 rounded w-1/2"></div>
+          <div className="h-6 bg-gray-200 rounded w-2/3"></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
       <h3 className="text-2xl font-semibold text-gray-900 mb-6">
@@ -30,7 +46,9 @@ const ContactInfo = ({ clinicInfo }) => {
           </div>
           <div className="ml-4">
             <h4 className="text-lg font-medium text-gray-900">Address</h4>
-            <p className="mt-1 text-gray-600">{clinicInfo.address}</p>
+            <p className="mt-1 text-gray-600">
+              {clinicInfo.address || "Address information unavailable"}
+            </p>
           </div>
         </div>
 
@@ -52,12 +70,18 @@ const ContactInfo = ({ clinicInfo }) => {
           </div>
           <div className="ml-4">
             <h4 className="text-lg font-medium text-gray-900">Phone</h4>
-            <a
-              href={`tel:${clinicInfo.phone}`}
-              className="mt-1 text-teal-600 hover:text-teal-800 transition-colors"
-              aria-label="Call us">
-              {clinicInfo.phone}
-            </a>
+            {clinicInfo.phone ? (
+              <a
+                href={`tel:${clinicInfo.phone}`}
+                className="mt-1 text-teal-600 hover:text-teal-800 transition-colors"
+                aria-label="Call us">
+                {clinicInfo.phone}
+              </a>
+            ) : (
+              <p className="mt-1 text-gray-600">
+                Phone information unavailable
+              </p>
+            )}
           </div>
         </div>
 
@@ -79,12 +103,18 @@ const ContactInfo = ({ clinicInfo }) => {
           </div>
           <div className="ml-4">
             <h4 className="text-lg font-medium text-gray-900">Email</h4>
-            <a
-              href={`mailto:${clinicInfo.email}`}
-              className="mt-1 text-teal-600 hover:text-teal-800 transition-colors"
-              aria-label="Email us">
-              {clinicInfo.email}
-            </a>
+            {clinicInfo.email ? (
+              <a
+                href={`mailto:${clinicInfo.email}`}
+                className="mt-1 text-teal-600 hover:text-teal-800 transition-colors"
+                aria-label="Email us">
+                {clinicInfo.email}
+              </a>
+            ) : (
+              <p className="mt-1 text-gray-600">
+                Email information unavailable
+              </p>
+            )}
           </div>
         </div>
 
@@ -107,12 +137,16 @@ const ContactInfo = ({ clinicInfo }) => {
           <div className="ml-4">
             <h4 className="text-lg font-medium text-gray-900">Hours</h4>
             <div className="mt-1 text-gray-600">
-              {clinicInfo.hours.map((day, index) => (
-                <p key={index} className="mb-1">
-                  <span>{day.days}: </span>
-                  <span>{day.hours}</span>
-                </p>
-              ))}
+              {clinicInfo.hours && clinicInfo.hours.length > 0 ? (
+                clinicInfo.hours.map((day, index) => (
+                  <p key={index} className="mb-1">
+                    <span>{day.days}: </span>
+                    <span>{day.hours}</span>
+                  </p>
+                ))
+              ) : (
+                <p>Hours information unavailable</p>
+              )}
             </div>
           </div>
         </div>
@@ -121,24 +155,30 @@ const ContactInfo = ({ clinicInfo }) => {
       <div className="mt-8">
         <h4 className="text-lg font-medium text-gray-900 mb-4">Follow Us</h4>
         <div className="flex space-x-4">
-          {clinicInfo.socialMedia?.map((social, index) => (
-            <a
-              key={index}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-600 hover:text-teal-600 transition-colors"
-              aria-label={`Follow us on ${social.platform}`}>
-              <span className="sr-only">{social.platform}</span>
-              <svg
-                className="w-6 h-6"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true">
-                <path fillRule="evenodd" d={social.icon} clipRule="evenodd" />
-              </svg>
-            </a>
-          ))}
+          {clinicInfo.socialMedia && clinicInfo.socialMedia.length > 0 ? (
+            clinicInfo.socialMedia.map((social, index) => (
+              <a
+                key={index}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-teal-600 transition-colors"
+                aria-label={`Follow us on ${social.platform}`}>
+                <span className="sr-only">{social.platform}</span>
+                <svg
+                  className="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true">
+                  <path fillRule="evenodd" d={social.icon} clipRule="evenodd" />
+                </svg>
+              </a>
+            ))
+          ) : (
+            <p className="text-gray-600">
+              Social media information unavailable
+            </p>
+          )}
         </div>
       </div>
     </div>

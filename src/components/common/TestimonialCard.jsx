@@ -4,8 +4,16 @@ const TestimonialCard = ({ testimonial }) => {
   return (
     <div className="bg-white rounded-lg shadow-md p-6">
       <div className="flex items-center mb-4">
-        <div className="w-12 h-12 rounded-full overflow-hidden mr-4">
-          <img src={image} alt={name} className="w-full h-full object-cover" />
+        <div className="w-12 h-12 rounded-full overflow-hidden mr-4 bg-gray-200 flex items-center justify-center text-gray-600">
+          <span className="text-sm font-medium">{name?.charAt(0) || "U"}</span>
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover absolute"
+            onError={(e) => {
+              e.target.style.display = "none";
+            }}
+          />
         </div>
         <div>
           <h3 className="font-semibold text-gray-900">{name}</h3>
