@@ -311,7 +311,7 @@ const Contact = () => {
               <Button
                 as="a"
                 href={`tel:${clinicInfo.contact.phone}`}
-                className="bg-white text-teal-700 hover:bg-gray-100 font-semibold"
+                className="bg-white !text-teal-700 hover:bg-teal-700 hover:!text-white font-semibold"
                 size="lg"
                 aria-label="Call us now">
                 Call Us Now

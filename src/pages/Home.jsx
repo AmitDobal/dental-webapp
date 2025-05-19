@@ -305,7 +305,7 @@ const Home = () => {
               <Button
                 as="link"
                 to="/contact"
-                className="bg-white text-teal-700 hover:bg-gray-100 font-semibold"
+                className="bg-white !text-teal-700 hover:bg-teal-700 hover:!text-white font-semibold"
                 size="lg"
                 aria-label="Book an appointment">
                 Book an Appointment

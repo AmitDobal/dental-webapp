@@ -163,15 +163,16 @@ const Services = () => {
                     <Button
                       as="link"
                       to="/contact"
-                      variant="primary"
-                      className="font-semibold"
-                      aria-label={`Schedule ${activeService.title} appointment`}>
-                      Schedule Appointment
+                      className="bg-white !text-teal-700 hover:bg-teal-700 hover:!text-white font-semibold"
+                      size="lg"
+                      aria-label="Book an appointment">
+                      Book an Appointment
                     </Button>
                     <Button
                       as="a"
                       href={`tel:${clinicInfo.contact.phone}`}
                       variant="outline"
+                      className="border-teal-600 !text-teal-600 hover:bg-teal-600 hover:!text-white font-semibold"
                       aria-label="Call for more information">
                       Call for Information
                     </Button>
@@ -198,7 +199,7 @@ const Services = () => {
               <Button
                 as="link"
                 to="/contact"
-                className="bg-white text-teal-700 hover:bg-gray-100 font-semibold"
+                className="bg-white !text-teal-700 hover:bg-teal-700 hover:!text-white font-semibold"
                 size="lg"
                 aria-label="Book an appointment">
                 Book an Appointment

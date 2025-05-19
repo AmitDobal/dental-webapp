@@ -35,7 +35,7 @@ const ServiceCard = ({
               to={link}
               variant="outline"
               size="sm"
-              className="mt-auto"
+              className="mt-auto border-teal-600 !text-teal-600 hover:bg-teal-600 hover:!text-white"
               aria-label={`Learn more about ${title}`}>
               {buttonText}
             </Button>

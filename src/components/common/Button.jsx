@@ -17,19 +17,20 @@ const Button = ({
   const baseClasses =
     "inline-flex items-center justify-center rounded font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2";
 
+  // Default variant classes
   const variantClasses = {
     primary: "bg-teal-600 hover:bg-teal-700 text-white focus:ring-teal-500",
     secondary:
       "bg-teal-100 hover:bg-teal-200 text-teal-800 focus:ring-teal-500",
     outline:
-      "border border-white text-white hover:bg-white hover:text-teal-700 focus:ring-teal-500",
+      "border border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white focus:ring-teal-500",
     text: "text-teal-600 hover:text-teal-800 hover:underline",
   };
 
-  // Special variant for outline on light backgrounds
-  if (variant === "outline" && !className.includes("border-white")) {
+  // Special case for outline variant on dark backgrounds (using border-white)
+  if (variant === "outline" && className.includes("border-white")) {
     variantClasses.outline =
-      "border border-teal-600 text-teal-600 hover:bg-teal-50 focus:ring-teal-500";
+      "border text-white hover:bg-white hover:text-teal-700 focus:ring-teal-500";
   }
 
   const sizeClasses = {
