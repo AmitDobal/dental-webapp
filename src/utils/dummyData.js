@@ -1,7 +1,7 @@
 // Instead of importing actual images (which don't exist yet),
 // we'll use placeholder images from a service
 const createPlaceholderImage = (width, height, text) => {
-  return `https://via.placeholder.com/${width}x${height}?text=${encodeURIComponent(
+  return `http://placehold.co/${width}x${height}?text=${encodeURIComponent(
     text
   )}`;
 };
@@ -261,9 +261,9 @@ export const clinicInfo = {
     country: "USA",
   },
   contact: {
-    phone: "+1 (234) 567-8900",
+    phone: "+918077610878",
     email: "contact@manifestdental.com",
-    whatsapp: "12345678900",
+    whatsapp: "918077610878",
   },
   hours: {
     monday: "8:00 AM - 6:00 PM",
