@@ -16,9 +16,9 @@ const Services = ({ services }) => {
   };
 
   return (
-    <div>
+    <div className="py-16">
       <h2 className="text-3xl font-bold text-center text-gray-900 mb-3">
-        Our <span className="text-teal-600">Dental Services</span>
+        Our <span className="text-teal-600">Premium Services</span>
       </h2>
       <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
         Comprehensive dental care tailored to your specific needs with a focus
@@ -44,7 +44,7 @@ const Services = ({ services }) => {
       <div className="mt-12 text-center">
         <a
           href="#contact"
-          className="inline-block px-6 py-3 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition-colors font-medium">
+          className="inline-block px-8 py-3 bg-teal-600 text-white rounded-md hover:bg-teal-700 transition-colors font-medium">
           Schedule a Consultation
         </a>
       </div>

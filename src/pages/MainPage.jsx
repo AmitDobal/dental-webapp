@@ -4,14 +4,17 @@ import Services from "../components/home/Services";
 import About from "../components/home/About";
 import Testimonials from "../components/home/Testimonials";
 import GalleryGrid from "../components/gallery/GalleryGrid";
+import TransformationsSection from "../components/gallery/TransformationsSection";
 import ContactForm from "../components/contact/ContactForm";
 import ContactInfo from "../components/contact/ContactInfo";
+import VisitSection from "../components/contact/VisitSection";
 import WhatsAppButton from "../components/common/WhatsAppButton";
 import ServiceModal from "../components/common/ServiceModal";
 import FeaturedServiceCard from "../components/common/FeaturedServiceCard";
 import { services } from "../data/services";
 import { testimonials } from "../data/testimonials";
 import { galleryImages } from "../data/gallery";
+import { transformations } from "../data/transformations";
 import { clinicInfo } from "../data/clinicInfo";
 
 const MainPage = () => {
@@ -142,21 +145,21 @@ const MainPage = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20">
+      <section id="about">
         <div className="container mx-auto px-4">
           <About />
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-50">
+      <section id="services" className="bg-gray-50">
         <div className="container mx-auto px-4">
           <Services services={services} />
         </div>
       </section>
 
-      {/* Featured Services */}
-      <section id="featured-services" className="py-20">
+      {/* Complete Dental Services */}
+      <section id="complete-services" className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-3">
             Complete <span className="text-teal-600">Dental Services</span>
@@ -180,28 +183,34 @@ const MainPage = () => {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section id="gallery" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <GalleryGrid images={galleryImages} />
-        </div>
+      {/* Smile Transformations Section */}
+      <section id="transformations" className="bg-gray-50">
+        <TransformationsSection transformations={transformations} />
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20">
+      <section id="testimonials">
         <div className="container mx-auto px-4">
           <Testimonials testimonials={testimonials} />
         </div>
       </section>
 
+      {/* Visit Our Dental Studio Section */}
+      <section id="visit">
+        <VisitSection />
+      </section>
+
       {/* FAQ Section */}
-      <section id="faq" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-8">
+      <section id="faq">
+        <div className="container mx-auto px-4 py-16">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-3">
             Frequently <span className="text-teal-600">Asked Questions</span>
           </h2>
+          <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+            Find answers to common questions about our dental services
+          </p>
           <div className="max-w-3xl mx-auto space-y-6">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="font-semibold text-lg mb-2">
                 Do you accept insurance?
               </h3>
@@ -210,7 +219,7 @@ const MainPage = () => {
                 our office to verify your specific coverage.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="font-semibold text-lg mb-2">
                 How often should I visit the dentist?
               </h3>
@@ -220,7 +229,7 @@ const MainPage = () => {
                 visits.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="font-semibold text-lg mb-2">
                 What payment options do you offer?
               </h3>
@@ -234,8 +243,8 @@ const MainPage = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
+      <section id="contact" className="bg-gray-50">
+        <div className="container mx-auto px-4 py-16">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-3">
             Ready to{" "}
             <span className="text-teal-600">Schedule an Appointment?</span>

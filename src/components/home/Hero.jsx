@@ -16,35 +16,36 @@ const Hero = () => {
   return (
     <section
       className={`relative ${
-        imageLoaded ? "bg-cover bg-center" : "bg-gray-500"
-      } text-white py-20 md:py-32`}
+        imageLoaded ? "bg-cover bg-center" : "bg-gray-600"
+      } text-white py-32 md:py-48`}
       style={imageLoaded ? { backgroundImage: `url(${heroImageUrl})` } : {}}>
-      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="absolute inset-0 bg-black opacity-60"></div>
       <div className="container mx-auto px-4 relative z-10 text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-          Transform Your Smile with Premium Dental Care
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+          Transform Your Smile with <br />
+          Premium Dental Care
         </h1>
-        <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto">
-          Experience the highest standard of dental care in a comfortable
+        <p className="text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+          Experience our highest standard of dental care in a comfortable
           environment
         </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
+        <div className="flex flex-col sm:flex-row justify-center gap-6">
           <Button
             as="a"
             href="#contact"
             size="lg"
-            className="bg-teal-600 text-white hover:bg-teal-700 font-semibold"
+            className="bg-teal-600 text-white hover:bg-teal-700 font-medium px-8 py-3"
             aria-label="Schedule an appointment">
-            Schedule an Appointment
+            Call us now
           </Button>
           <Button
             as="a"
             href="#services"
             variant="outline"
             size="lg"
-            className="border-white text-white hover:bg-white hover:text-teal-800 font-semibold"
+            className="border-white text-white hover:bg-white hover:text-teal-800 font-medium px-8 py-3"
             aria-label="View our services">
-            Explore Our Services
+            Learn more
           </Button>
         </div>
       </div>
