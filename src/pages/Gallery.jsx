@@ -2,7 +2,7 @@ import { useState } from "react";
 import Container from "../components/common/Container";
 import SectionHeading from "../components/common/SectionHeading";
 import WhatsAppButton from "../components/common/WhatsAppButton";
-import { galleryImages, clinicInfo } from "../utils/dummyData";
+import { galleryItems, clinicInfo } from "../data";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -11,14 +11,14 @@ const Gallery = () => {
   // Get unique categories from gallery images
   const categories = [
     "all",
-    ...new Set(galleryImages.map((image) => image.category)),
+    ...new Set(galleryItems.map((image) => image.category)),
   ];
 
   // Filter images based on selected category
   const filteredImages =
     selectedCategory === "all"
-      ? galleryImages
-      : galleryImages.filter((image) => image.category === selectedCategory);
+      ? galleryItems
+      : galleryItems.filter((image) => image.category === selectedCategory);
 
   const handleImageClick = (image) => {
     setSelectedImage(image);

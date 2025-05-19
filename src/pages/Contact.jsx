@@ -4,7 +4,7 @@ import SectionHeading from "../components/common/SectionHeading";
 import ContactForm from "../components/common/ContactForm";
 import WhatsAppButton from "../components/common/WhatsAppButton";
 import Button from "../components/common/Button";
-import { clinicInfo, faqs } from "../utils/dummyData";
+import { clinicInfo, faqs } from "../data";
 
 const Contact = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState(null);

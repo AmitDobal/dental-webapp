@@ -5,7 +5,7 @@ import SectionHeading from "../components/common/SectionHeading";
 import ServiceCard from "../components/common/ServiceCard";
 import TestimonialCard from "../components/common/TestimonialCard";
 import WhatsAppButton from "../components/common/WhatsAppButton";
-import { services, testimonials, clinicInfo } from "../utils/dummyData";
+import { services, testimonials, clinicInfo } from "../data";
 
 const Home = () => {
   // Get the first 3 services for the home page

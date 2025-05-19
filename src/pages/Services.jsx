@@ -4,7 +4,7 @@ import Container from "../components/common/Container";
 import SectionHeading from "../components/common/SectionHeading";
 import Button from "../components/common/Button";
 import WhatsAppButton from "../components/common/WhatsAppButton";
-import { services, clinicInfo } from "../utils/dummyData";
+import { services, clinicInfo } from "../data";
 
 const Services = () => {
   const location = useLocation();
