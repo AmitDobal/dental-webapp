@@ -16,7 +16,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="bg-teal-800 text-white py-20 md:py-32 relative">
         <div className="absolute inset-0 bg-black opacity-40"></div>
-        <Container className="relative  text-center">
+        <Container className="relative z-10 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             Transform Your Smile with Premium Dental Care
           </h1>

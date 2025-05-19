@@ -18,12 +18,21 @@ const Services = () => {
       if (service) {
         setActiveService(service);
 
-        // Scroll to service details
-        const detailsElement = document.getElementById("service-details");
-        if (detailsElement) {
-          detailsElement.scrollIntoView({ behavior: "smooth" });
-        }
+        // Add a small delay to ensure the DOM is updated before scrolling
+        setTimeout(() => {
+          const detailsElement = document.getElementById("service-details");
+          if (detailsElement) {
+            // Use scrollIntoView with a smooth behavior
+            detailsElement.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        }, 100);
       }
+    } else {
+      // Reset to top of page if no hash
+      window.scrollTo(0, 0);
     }
   }, [location]);
 
@@ -31,6 +40,14 @@ const Services = () => {
     setActiveService(service);
     // Update URL hash without reloading the page
     window.history.pushState(null, "", `#${service.id}`);
+
+    // Add a small delay to ensure the DOM is updated
+    setTimeout(() => {
+      const detailsElement = document.getElementById("service-details");
+      if (detailsElement) {
+        detailsElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
   };
 
   return (
