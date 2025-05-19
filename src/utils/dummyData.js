@@ -281,5 +281,5 @@ export const clinicInfo = {
   },
   mapUrl: "https://maps.google.com/?q=123+Dental+Street+New+York+NY+10001",
   embedMapUrl:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.764431830649!2d-74.0059635!3d40.7127753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDQyJzQ2LjAiTiA3NMKwMDAnMjEuNSJX!5e0!3m2!1sen!2sus!4v1599671994721!5m2!1sen!2sus",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d144679.93131059696!2d76.93561192898501!3d28.555962139700362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1b85fc2a2d89%3A0xbef376182c43ed9d!2sIndira%20Gandhi%20International%20Airport!5e0!3m2!1sen!2sin!4v1747621977317!5m2!1sen!2sin",
 };
