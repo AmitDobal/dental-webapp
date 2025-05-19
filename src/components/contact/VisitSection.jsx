@@ -14,7 +14,7 @@ const VisitSection = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           <div>
-            <GoogleMap address={clinicInfo.address} />
+            <GoogleMap />
           </div>
 
           <div className="bg-white p-6 rounded-lg shadow-md">

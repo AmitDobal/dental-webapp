@@ -22,6 +22,12 @@ const ServiceCard = ({
     }
   };
 
+  const handleCardClick = () => {
+    if (onClick) {
+      onClick();
+    }
+  };
+
   return (
     <div
       className={`bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 
@@ -29,11 +35,12 @@ const ServiceCard = ({
         ${className} 
         ${
           onClick
-            ? "hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
+            ? "hover:shadow-lg cursor-pointer active:scale-95 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50"
             : ""
         }
       `}
       tabIndex={onClick ? 0 : undefined}
+      onClick={handleCardClick}
       onKeyDown={onClick ? handleKeyDown : undefined}
       role={onClick ? "button" : undefined}
       aria-label={onClick ? `View details for ${title}` : undefined}
@@ -73,7 +80,10 @@ const ServiceCard = ({
           <Button
             as={link ? "a" : "button"}
             href={link}
-            onClick={onClick && !link ? onClick : undefined}
+            onClick={(e) => {
+              e.stopPropagation(); // Prevent the card click handler from firing
+              onClick && !link && onClick();
+            }}
             variant="outline"
             size="sm"
             className="w-full"

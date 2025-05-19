@@ -13,7 +13,6 @@ import ServiceModal from "../components/common/ServiceModal";
 import FeaturedServiceCard from "../components/common/FeaturedServiceCard";
 import { services } from "../data/services";
 import { testimonials } from "../data/testimonials";
-import { galleryImages } from "../data/gallery";
 import { transformations } from "../data/transformations";
 import { clinicInfo } from "../data/clinicInfo";
 

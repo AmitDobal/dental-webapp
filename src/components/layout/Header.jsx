@@ -28,7 +28,7 @@ const Header = () => {
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#services", label: "Services" },
-    { href: "#gallery", label: "Gallery" },
+    { href: "#transformations", label: "Gallery" },
     { href: "#testimonials", label: "Testimonials" },
     { href: "#contact", label: "Contact" },
   ];
@@ -50,7 +50,7 @@ const Header = () => {
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -69,8 +69,8 @@ const Header = () => {
               size="sm"
               className={`${
                 isScrolled ? "bg-teal-600 text-white" : "bg-white text-teal-600"
-              } hover:shadow-md`}>
-              Schedule Appointment
+              } hover:shadow-lg font-medium px-6`}>
+              Book Appointment
             </Button>
           </nav>
 
@@ -103,24 +103,24 @@ const Header = () => {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <nav className="md:hidden py-4 mt-2 bg-white rounded-lg shadow-xl">
-            <div className="flex flex-col space-y-3">
+            <div className="flex flex-col space-y-2">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-gray-700 hover:text-teal-600 px-4 py-2 text-sm font-medium"
+                  className="text-gray-700 hover:text-teal-600 hover:bg-gray-50 px-4 py-2 text-sm font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}>
                   {link.label}
                 </a>
               ))}
-              <div className="px-4 pt-2 pb-4">
+              <div className="px-4 pt-2 pb-3">
                 <Button
                   as="a"
                   href="#contact"
                   size="sm"
                   className="w-full bg-teal-600 text-white hover:bg-teal-700"
                   onClick={() => setIsMobileMenuOpen(false)}>
-                  Schedule Appointment
+                  Book Appointment
                 </Button>
               </div>
             </div>

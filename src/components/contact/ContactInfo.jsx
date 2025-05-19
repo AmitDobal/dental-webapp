@@ -170,7 +170,7 @@ const ContactInfo = ({ clinicInfo }) => {
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true">
-                  <path fillRule="evenodd" d={social.icon} clipRule="evenodd" />
+                  <path d={social.icon} />
                 </svg>
               </a>
             ))
