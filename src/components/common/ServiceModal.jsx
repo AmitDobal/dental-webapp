@@ -106,7 +106,7 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
 
               <button
                 onClick={onClose}
-                className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-md hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all duration-200"
+                className="absolute top-4 right-4 z-10 cursor-pointer bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-md hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all duration-200"
                 aria-label="Close modal"
                 tabIndex={0}>
                 <svg

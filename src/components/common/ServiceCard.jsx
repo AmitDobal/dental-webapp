@@ -31,7 +31,7 @@ const ServiceCard = ({
 
   return (
     <div
-      className={`bg-white border border-primary-100 rounded-xl shadow-sm overflow-hidden transition-all duration-300 h-full flex flex-col group
+      className={`bg-white border border-primary-100 rounded-xl shadow-sm overflow-hidden transition-all duration-300 h-full flex flex-col group p-2 rounded-lg
         ${isHovered ? "shadow-lg scale-[1.02] border-primary-200" : ""} 
         ${className} 
         ${
@@ -48,7 +48,7 @@ const ServiceCard = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}>
       {/* Square Image Section */}
-      <div className="relative w-full aspect-square bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center overflow-hidden">
+      <div className="relative w-full aspect-square bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center overflow-hidden rounded-lg">
         {/* Fallback content for missing images */}
         {imgError && (
           <div className="absolute inset-0 flex items-center justify-center text-primary-400 z-10">
@@ -80,7 +80,7 @@ const ServiceCard = ({
         )}
 
         {/* Subtle overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 "></div>
       </div>
 
       {/* Content Section - Optimized spacing */}

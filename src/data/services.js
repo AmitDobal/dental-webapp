@@ -6,7 +6,7 @@ export const services = [
       "Expert root canal therapy to save your natural teeth with advanced techniques and pain-free procedures.",
     longDescription:
       "Our root canal treatments are performed with precision and care using the latest technology. Dr. Manasi specializes in both single and multi-rooted tooth treatments, ensuring minimal discomfort and maximum success rates.",
-    image: "/images/services/root-canal.jpg",
+    image: "/images/services/root-canal.png",
     pricing: {
       startingPrice: "₹3,000",
       priceRange: "₹3,000 - ₹4,000",
