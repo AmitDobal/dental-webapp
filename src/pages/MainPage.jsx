@@ -79,7 +79,7 @@ const MainPage = () => {
         id="transformations"
         className="bg-white"
         direction="up"
-        delay={0.5}>
+        delay={0.3}>
         <div className="container mx-auto px-4 py-20">
           <TransformationsSection transformations={transformations} />
         </div>
@@ -104,7 +104,7 @@ const MainPage = () => {
         id="contact"
         className="bg-white"
         direction="up"
-        delay={1.4}>
+        delay={0.3}>
         <div className="container mx-auto px-4 py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ContactForm />

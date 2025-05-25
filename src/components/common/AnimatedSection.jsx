@@ -6,9 +6,11 @@ const AnimatedSection = ({
   className = "",
   direction = "up",
   delay = 0,
+  id,
 }) => {
   return (
     <motion.div
+      id={id}
       variants={fadeIn(direction, delay)}
       initial="hidden"
       whileInView="show"
