@@ -1,5 +1,22 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import Button from "../common/Button";
+import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
+
+const formFieldVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      type: "spring",
+      stiffness: 120,
+      damping: 16,
+    },
+  }),
+};
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -55,24 +72,38 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+    <motion.div
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true }}
+      variants={staggerContainer}
+      className="bg-white rounded-lg shadow-md p-6">
+      <motion.h3
+        variants={slideUp}
+        className="text-2xl font-semibold text-gray-900 mb-6">
         Send Us a Message
-      </h3>
+      </motion.h3>
 
       {submitStatus && (
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
           className={`p-4 mb-6 rounded ${
             submitStatus.type === "success"
               ? "bg-green-100 text-green-800"
               : "bg-red-100 text-red-800"
           }`}>
           {submitStatus.message}
-        </div>
+        </motion.div>
       )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
+        <motion.div
+          custom={0}
+          variants={formFieldVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}>
           <label
             htmlFor="name"
             className="block text-sm font-medium text-gray-700 mb-1">
@@ -85,12 +116,17 @@ const ContactForm = () => {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
             placeholder="John Doe"
           />
-        </div>
+        </motion.div>
 
-        <div>
+        <motion.div
+          custom={1}
+          variants={formFieldVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}>
           <label
             htmlFor="email"
             className="block text-sm font-medium text-gray-700 mb-1">
@@ -103,12 +139,17 @@ const ContactForm = () => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
             placeholder="john@example.com"
           />
-        </div>
+        </motion.div>
 
-        <div>
+        <motion.div
+          custom={2}
+          variants={formFieldVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}>
           <label
             htmlFor="phone"
             className="block text-sm font-medium text-gray-700 mb-1">
@@ -120,12 +161,17 @@ const ContactForm = () => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
             placeholder="(123) 456-7890"
           />
-        </div>
+        </motion.div>
 
-        <div>
+        <motion.div
+          custom={3}
+          variants={formFieldVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}>
           <label
             htmlFor="subject"
             className="block text-sm font-medium text-gray-700 mb-1">
@@ -138,12 +184,17 @@ const ContactForm = () => {
             value={formData.subject}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
             placeholder="Appointment Request"
           />
-        </div>
+        </motion.div>
 
-        <div>
+        <motion.div
+          custom={4}
+          variants={formFieldVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}>
           <label
             htmlFor="message"
             className="block text-sm font-medium text-gray-700 mb-1">
@@ -156,20 +207,27 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             rows={5}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-teal-500 focus:border-teal-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
             placeholder="Please describe your inquiry..."
           />
-        </div>
+        </motion.div>
 
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full"
-          aria-label="Submit contact form">
-          {isSubmitting ? "Sending..." : "Send Message"}
-        </Button>
+        <motion.div
+          custom={5}
+          variants={formFieldVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}>
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-primary-600 text-white hover:bg-primary-700"
+            aria-label="Submit contact form">
+            {isSubmitting ? "Sending..." : "Send Message"}
+          </Button>
+        </motion.div>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

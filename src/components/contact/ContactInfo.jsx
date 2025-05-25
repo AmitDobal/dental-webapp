@@ -1,29 +1,70 @@
+import { motion } from "framer-motion";
+import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.97 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      delay: i * 0.12,
+      duration: 0.5,
+      type: "spring",
+      stiffness: 120,
+      damping: 16,
+    },
+  }),
+  hover: {
+    scale: 1.02,
+    boxShadow: "0 8px 32px 0 rgba(16, 185, 129, 0.12)",
+    transition: { type: "spring", stiffness: 180, damping: 18 },
+  },
+};
+
 const ContactInfo = ({ clinicInfo }) => {
   // Early return with a placeholder if clinicInfo is not available
   if (!clinicInfo) {
     return (
-      <div className="bg-white rounded-lg shadow-md p-6">
-        <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+      <motion.div
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+        variants={staggerContainer}
+        className="bg-white rounded-lg shadow-md p-6">
+        <motion.h3
+          variants={slideUp}
+          className="text-2xl font-semibold text-gray-900 mb-6">
           Contact Information Loading...
-        </h3>
+        </motion.h3>
         <div className="animate-pulse space-y-6">
           <div className="h-6 bg-gray-200 rounded w-3/4"></div>
           <div className="h-6 bg-gray-200 rounded w-1/2"></div>
           <div className="h-6 bg-gray-200 rounded w-2/3"></div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+    <motion.div
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true }}
+      variants={staggerContainer}
+      className="bg-white rounded-lg shadow-md p-6">
+      <motion.h3
+        variants={slideUp}
+        className="text-2xl font-semibold text-gray-900 mb-6">
         Contact Information
-      </h3>
+      </motion.h3>
 
       <div className="space-y-6">
-        <div className="flex items-start">
-          <div className="flex-shrink-0 text-teal-600 mt-1">
+        <motion.div
+          variants={cardVariants}
+          custom={0}
+          className="flex items-start">
+          <div className="flex-shrink-0 text-primary-600 mt-1">
             <svg
               className="w-6 h-6"
               fill="none"
@@ -50,10 +91,13 @@ const ContactInfo = ({ clinicInfo }) => {
               {clinicInfo.address || "Address information unavailable"}
             </p>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex items-start">
-          <div className="flex-shrink-0 text-teal-600 mt-1">
+        <motion.div
+          variants={cardVariants}
+          custom={1}
+          className="flex items-start">
+          <div className="flex-shrink-0 text-primary-600 mt-1">
             <svg
               className="w-6 h-6"
               fill="none"
@@ -73,7 +117,7 @@ const ContactInfo = ({ clinicInfo }) => {
             {clinicInfo.phone ? (
               <a
                 href={`tel:${clinicInfo.phone}`}
-                className="mt-1 text-teal-600 hover:text-teal-800 transition-colors"
+                className="mt-1 text-primary-600 hover:text-primary-800 transition-colors"
                 aria-label="Call us">
                 {clinicInfo.phone}
               </a>
@@ -83,10 +127,13 @@ const ContactInfo = ({ clinicInfo }) => {
               </p>
             )}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex items-start">
-          <div className="flex-shrink-0 text-teal-600 mt-1">
+        <motion.div
+          variants={cardVariants}
+          custom={2}
+          className="flex items-start">
+          <div className="flex-shrink-0 text-primary-600 mt-1">
             <svg
               className="w-6 h-6"
               fill="none"
@@ -106,7 +153,7 @@ const ContactInfo = ({ clinicInfo }) => {
             {clinicInfo.email ? (
               <a
                 href={`mailto:${clinicInfo.email}`}
-                className="mt-1 text-teal-600 hover:text-teal-800 transition-colors"
+                className="mt-1 text-primary-600 hover:text-primary-800 transition-colors"
                 aria-label="Email us">
                 {clinicInfo.email}
               </a>
@@ -116,10 +163,13 @@ const ContactInfo = ({ clinicInfo }) => {
               </p>
             )}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex items-start">
-          <div className="flex-shrink-0 text-teal-600 mt-1">
+        <motion.div
+          variants={cardVariants}
+          custom={3}
+          className="flex items-start">
+          <div className="flex-shrink-0 text-primary-600 mt-1">
             <svg
               className="w-6 h-6"
               fill="none"
@@ -149,21 +199,23 @@ const ContactInfo = ({ clinicInfo }) => {
               )}
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
-      <div className="mt-8">
+      <motion.div variants={cardVariants} custom={4} className="mt-8">
         <h4 className="text-lg font-medium text-gray-900 mb-4">Follow Us</h4>
         <div className="flex space-x-4">
           {clinicInfo.socialMedia && clinicInfo.socialMedia.length > 0 ? (
             clinicInfo.socialMedia.map((social, index) => (
-              <a
+              <motion.a
                 key={index}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-teal-600 transition-colors"
-                aria-label={`Follow us on ${social.platform}`}>
+                className="text-gray-600 hover:text-primary-600 transition-colors"
+                aria-label={`Follow us on ${social.platform}`}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}>
                 <span className="sr-only">{social.platform}</span>
                 <svg
                   className="w-6 h-6"
@@ -172,7 +224,7 @@ const ContactInfo = ({ clinicInfo }) => {
                   aria-hidden="true">
                   <path d={social.icon} />
                 </svg>
-              </a>
+              </motion.a>
             ))
           ) : (
             <p className="text-gray-600">
@@ -180,8 +232,8 @@ const ContactInfo = ({ clinicInfo }) => {
             </p>
           )}
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

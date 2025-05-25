@@ -71,36 +71,22 @@ const MainPage = () => {
       </AnimatedSection>
 
       {/* Smile Transformations Section */}
-      <AnimatedSection
-        id="transformations"
-        className="bg-white"
-        direction="up"
-        delay={0.3}>
-        <div className="container mx-auto px-4 py-20">
-          <TransformationsSection transformations={transformations} />
-        </div>
+      <AnimatedSection id="transformations" direction="up" delay={0.3}>
+        <TransformationsSection transformations={transformations} />
       </AnimatedSection>
 
       {/* Testimonials Section */}
       <AnimatedSection id="testimonials" direction="up" delay={0.3}>
-        <div className="container mx-auto px-4 py-20 bg-primary-50">
-          <Testimonials testimonials={testimonials} />
-        </div>
+        <Testimonials testimonials={testimonials} />
       </AnimatedSection>
 
       {/* Visit Our Dental Studio Section */}
       <AnimatedSection id="visit" direction="up" delay={0.3}>
-        <div className="bg-gradient-to-b from-white to-primary-50">
-          <VisitSection />
-        </div>
+        <VisitSection />
       </AnimatedSection>
 
       {/* Contact Section */}
-      <AnimatedSection
-        id="contact"
-        className="bg-white"
-        direction="up"
-        delay={0.3}>
+      <AnimatedSection id="contact" direction="up" delay={0.3}>
         <div className="container mx-auto px-4 py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ContactForm />
