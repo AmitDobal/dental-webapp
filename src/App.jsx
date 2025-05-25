@@ -1,3 +1,5 @@
+import { Routes, Route } from "react-router-dom";
+
 // Layout Components
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -9,7 +11,9 @@ function App() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <MainPage />
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+      </Routes>
       <Footer />
     </div>
   );

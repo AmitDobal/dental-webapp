@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Hero from "../components/home/Hero";
 import Services from "../components/home/Services";
 import About from "../components/home/About";
@@ -11,10 +12,13 @@ import VisitSection from "../components/contact/VisitSection";
 import WhatsAppButton from "../components/common/WhatsAppButton";
 import ServiceModal from "../components/common/ServiceModal";
 import FeaturedServiceCard from "../components/common/FeaturedServiceCard";
+import AnimatedSection from "../components/common/AnimatedSection";
+import AnimatedCard from "../components/common/AnimatedCard";
 import { services } from "../data/services";
 import { testimonials } from "../data/testimonials";
 import { transformations } from "../data/transformations";
 import { clinicInfo } from "../data/clinicInfo";
+import { fadeIn, staggerContainer } from "../utils/animations";
 
 const MainPage = () => {
   const [selectedService, setSelectedService] = useState(null);
@@ -144,120 +148,166 @@ const MainPage = () => {
       </section>
 
       {/* About Section */}
-      <section id="about">
+      <AnimatedSection id="about" direction="up" delay={0.2}>
         <div className="container mx-auto px-4">
           <About />
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Services Section */}
-      <section id="services" className="bg-gray-50">
+      <AnimatedSection
+        id="services"
+        className="bg-gray-50"
+        direction="up"
+        delay={0.3}>
         <div className="container mx-auto px-4">
           <Services services={services} />
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Complete Dental Services */}
-      <section id="complete-services" className="py-16">
+      <AnimatedSection
+        id="complete-services"
+        className="py-16"
+        direction="up"
+        delay={0.4}>
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-3">
-            Complete <span className="text-teal-600">Dental Services</span>
-          </h2>
-          <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+          <motion.h2
+            variants={fadeIn("up", 0.5)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-center text-gray-900 mb-3">
+            Complete <span className="text-primary-600">Dental Services</span>
+          </motion.h2>
+          <motion.p
+            variants={fadeIn("up", 0.6)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
             From routine check-ups to advanced procedures, we offer
             comprehensive dental care
-          </p>
+          </motion.p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredServices.map((service, index) => (
-              <FeaturedServiceCard
-                key={index}
-                title={service.title}
-                description={service.description}
-                icon={service.icon}
-                onClick={() => handleServiceClick(service.title)}
-              />
+              <AnimatedCard key={index} delay={index * 0.1}>
+                <FeaturedServiceCard
+                  title={service.title}
+                  description={service.description}
+                  icon={service.icon}
+                  onClick={() => handleServiceClick(service.title)}
+                />
+              </AnimatedCard>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Smile Transformations Section */}
-      <section id="transformations" className="bg-gray-50">
+      <AnimatedSection
+        id="transformations"
+        className="bg-gray-50"
+        direction="up"
+        delay={0.5}>
         <TransformationsSection transformations={transformations} />
-      </section>
+      </AnimatedSection>
 
       {/* Testimonials Section */}
-      <section id="testimonials">
+      <AnimatedSection id="testimonials" direction="up" delay={0.6}>
         <div className="container mx-auto px-4">
           <Testimonials testimonials={testimonials} />
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Visit Our Dental Studio Section */}
-      <section id="visit">
+      <AnimatedSection id="visit" direction="up" delay={0.7}>
         <VisitSection />
-      </section>
+      </AnimatedSection>
 
       {/* FAQ Section */}
-      <section id="faq">
-        <div className="container mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-3">
-            Frequently <span className="text-teal-600">Asked Questions</span>
-          </h2>
-          <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+      <AnimatedSection id="faq" className="py-16" direction="up" delay={0.8}>
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeIn("up", 0.9)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-center text-gray-900 mb-3">
+            Frequently <span className="text-primary-600">Asked Questions</span>
+          </motion.h2>
+          <motion.p
+            variants={fadeIn("up", 1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
             Find answers to common questions about our dental services
-          </p>
+          </motion.p>
           <div className="max-w-3xl mx-auto space-y-6">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="font-semibold text-lg mb-2">
-                Do you accept insurance?
-              </h3>
-              <p className="text-gray-600">
-                Yes, we accept most major dental insurance plans. Please contact
-                our office to verify your specific coverage.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="font-semibold text-lg mb-2">
-                How often should I visit the dentist?
-              </h3>
-              <p className="text-gray-600">
-                We recommend routine check-ups every six months for most
-                patients, though some conditions may require more frequent
-                visits.
-              </p>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <h3 className="font-semibold text-lg mb-2">
-                What payment options do you offer?
-              </h3>
-              <p className="text-gray-600">
-                We accept cash, credit cards, and offer flexible payment plans.
-                We'll work with you to find the best option for your budget.
-              </p>
-            </div>
+            {[
+              {
+                question: "Do you accept insurance?",
+                answer:
+                  "Yes, we accept most major dental insurance plans. Please contact our office to verify your specific coverage.",
+              },
+              {
+                question: "How often should I visit the dentist?",
+                answer:
+                  "We recommend routine check-ups every six months for most patients, though some conditions may require more frequent visits.",
+              },
+              {
+                question: "What payment options do you offer?",
+                answer:
+                  "We accept cash, credit cards, and offer flexible payment plans. We'll work with you to find the best option for your budget.",
+              },
+            ].map((faq, index) => (
+              <AnimatedCard key={index} delay={1.1 + index * 0.1}>
+                <h3 className="font-semibold text-lg mb-2">{faq.question}</h3>
+                <p className="text-gray-600">{faq.answer}</p>
+              </AnimatedCard>
+            ))}
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Contact Section */}
-      <section id="contact" className="bg-gray-50">
+      <AnimatedSection
+        id="contact"
+        className="bg-gray-50"
+        direction="up"
+        delay={1.4}>
         <div className="container mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-3">
+          <motion.h2
+            variants={fadeIn("up", 1.5)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-center text-gray-900 mb-3">
             Ready to{" "}
-            <span className="text-teal-600">Schedule an Appointment?</span>
-          </h2>
-          <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+            <span className="text-primary-600">Schedule an Appointment?</span>
+          </motion.h2>
+          <motion.p
+            variants={fadeIn("up", 1.6)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
             Contact us today to book your visit or ask any questions about our
             services
-          </p>
+          </motion.p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ContactForm />
             <ContactInfo clinicInfo={clinicInfo} />
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* WhatsApp Button */}
       <WhatsAppButton />
