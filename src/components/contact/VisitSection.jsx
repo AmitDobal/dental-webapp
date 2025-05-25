@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import GoogleMap from "./GoogleMap";
 import { clinicInfo } from "../../data/clinicInfo";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
 
@@ -52,12 +51,18 @@ const VisitSection = () => {
             whileHover="hover"
             viewport={{ once: true }}
             custom={0}>
-            <GoogleMap
-              embedUrl={clinicInfo.mapEmbedUrl}
-              title={`${clinicInfo.name} Location`}
-              height="400px"
-              className="w-full rounded-lg shadow-lg"
-            />
+            <div className="w-full rounded-lg shadow-lg overflow-hidden">
+              <iframe
+                src={clinicInfo.mapEmbedUrl}
+                width="100%"
+                height="400"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title={`${clinicInfo.name} Location`}
+              />
+            </div>
           </motion.div>
 
           <motion.div
