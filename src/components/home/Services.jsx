@@ -49,8 +49,8 @@ const Services = ({ services }) => {
           on comfort and quality
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.slice(0, 4).map((service, i) => (
             <motion.div
               key={service.id}
               custom={i}
