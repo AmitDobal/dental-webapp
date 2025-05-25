@@ -69,9 +69,37 @@ const About = () => {
     visible: { opacity: 1, y: 0 },
   };
   const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-    hover: { y: -5, transition: { duration: 0.2 } },
+    hidden: { opacity: 0, y: 40, scale: 0.97 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        delay: i * 0.12,
+        duration: 0.5,
+        type: "spring",
+        stiffness: 120,
+        damping: 16,
+      },
+    }),
+    hover: {
+      scale: 1.04,
+      boxShadow: "0 8px 32px 0 rgba(16, 185, 129, 0.12)",
+      transition: { type: "spring", stiffness: 180, damping: 18 },
+    },
+  };
+
+  const iconVariants = {
+    initial: { scale: 1 },
+    float: {
+      y: [0, -8, 0],
+      transition: { duration: 2.2, repeat: Infinity, ease: "easeInOut" },
+    },
+    hover: {
+      scale: 1.13,
+      y: 0,
+      transition: { type: "spring", stiffness: 300, damping: 18 },
+    },
   };
 
   return (
@@ -176,12 +204,17 @@ const About = () => {
             {aboutData.features.map((feature, index) => (
               <motion.div
                 key={index}
+                custom={index}
                 variants={cardVariants}
+                initial="hidden"
+                animate="visible"
                 whileHover="hover"
                 className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-center h-full">
                 <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ duration: 0.2 }}
+                  variants={iconVariants}
+                  initial="initial"
+                  animate="float"
+                  whileHover="hover"
                   className="flex justify-center mb-4">
                   {getFeatureIcon(feature.icon)}
                 </motion.div>
