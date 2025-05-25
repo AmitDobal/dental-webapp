@@ -1,17 +1,23 @@
+import { clinicInfo } from "../../data/clinicInfo";
+
 const WhatsAppButton = () => {
-  const phoneNumber = "+1234567890"; // Replace with actual clinic WhatsApp number
-  const message = "Hello, I'd like to schedule an appointment.";
+  // Use actual clinic phone number, fallback to default if not available
+  const phoneNumber = clinicInfo?.phone || "+1234567890";
+  const message =
+    "Hello! I'd like to schedule an appointment at your dental clinic.";
 
   const handleClick = () => {
-    const url = `https://wa.me/${phoneNumber.replace(
-      /\D/g,
-      ""
-    )}?text=${encodeURIComponent(message)}`;
+    // Clean phone number (remove all non-digits)
+    const cleanPhoneNumber = phoneNumber.replace(/\D/g, "");
+    const url = `https://wa.me/${cleanPhoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
       handleClick();
     }
   };
@@ -20,8 +26,9 @@ const WhatsAppButton = () => {
     <button
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-colors z-50"
-      aria-label="Contact us on WhatsApp">
+      className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-50 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2"
+      aria-label={`Contact ${clinicInfo?.name || "us"} on WhatsApp`}
+      title="Chat with us on WhatsApp">
       <svg
         className="w-6 h-6"
         fill="currentColor"

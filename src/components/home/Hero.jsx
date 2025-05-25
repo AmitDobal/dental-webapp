@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 import Button from "../common/Button";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
+import {
+  handleBookAppointment,
+  handleConnectNow,
+} from "../../utils/scrollUtils";
 import FloatingImage from "../common/FloatingImage";
 import { Typewriter } from "react-simple-typewriter";
 
@@ -44,16 +48,20 @@ const LeftSection = () => (
       variants={staggerContainer}
       className="flex flex-col sm:flex-row gap-4">
       <Button
-        to="/contact"
+        onClick={() =>
+          handleBookAppointment({ focusForm: true, focusDelay: 1000 })
+        }
         size="lg"
-        className="bg-white !text-primary-800 hover:bg-primary-100 hover:!text-white font-semibold">
+        className="bg-white !text-primary-800 hover:bg-primary-100 hover:!text-white font-semibold"
+        aria-label="Book an appointment - scroll to contact form">
         Book an Appointment Now
       </Button>
       <Button
-        to="/contact"
+        onClick={() => handleConnectNow({ method: "scroll" })}
         variant="outline"
         size="lg"
-        className="border-white text-white hover:bg-white hover:text-primary-800">
+        className="border-white text-white hover:bg-white hover:text-primary-800"
+        aria-label="Connect with us - scroll to contact section">
         Connect Now
       </Button>
     </motion.div>
