@@ -3,6 +3,7 @@ export { clinicInfo } from "./clinicInfo";
 export { services } from "./services";
 export { transformations } from "./transformations";
 export { testimonials } from "./testimonials";
+export { pricingData } from "./pricing";
 
 // Import for re-exports
 import { clinicInfo } from "./clinicInfo";
@@ -16,6 +17,7 @@ export const address = clinicInfo.address;
 export const hours = clinicInfo.hours;
 export const clinicServices = clinicInfo.services;
 export const aboutInfo = clinicInfo.about;
+export const mapConfig = clinicInfo.map;
 
 // Export commonly used data
 export const doctorInfo = {
@@ -30,4 +32,5 @@ export const contactInfo = {
   email: clinicInfo.email,
   address: clinicInfo.address,
   hours: clinicInfo.hours,
+  map: clinicInfo.map,
 };

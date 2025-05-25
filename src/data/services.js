@@ -1,104 +1,218 @@
 export const services = [
   {
     id: 1,
-    title: "General Dentistry",
+    title: "Root Canal Treatment",
     shortDescription:
-      "Comprehensive dental care for your entire family, including check-ups, cleanings, and preventive treatments.",
+      "Expert root canal therapy to save your natural teeth with advanced techniques and pain-free procedures.",
     longDescription:
-      "Our general dentistry services focus on maintaining your oral health through regular check-ups, professional cleanings, and preventive care. We provide comprehensive dental examinations, X-rays, and personalized treatment plans to ensure your teeth and gums stay healthy.",
-    image: "/images/services/general-dentistry.jpeg",
+      "Our root canal treatments are performed with precision and care using the latest technology. Dr. Manasi specializes in both single and multi-rooted tooth treatments, ensuring minimal discomfort and maximum success rates.",
+    image: "/images/services/root-canal.jpg",
+    pricing: {
+      startingPrice: "₹3,000",
+      priceRange: "₹3,000 - ₹4,000",
+      treatments: [
+        {
+          name: "Single-Rooted Tooth RCT",
+          price: "₹3,000",
+          description: "Complete root canal treatment for front teeth",
+        },
+        {
+          name: "Multi-Rooted Tooth RCT",
+          price: "₹4,000",
+          description:
+            "Root canal treatment for back teeth with multiple roots",
+        },
+        {
+          name: "Post-Obturation Composite Restoration",
+          price: "₹1,000",
+          description: "Tooth-colored filling after root canal completion",
+        },
+      ],
+    },
     features: [
-      "Regular check-ups and cleanings",
-      "Dental X-rays",
-      "Cavity fillings",
-      "Gum disease treatment",
-      "Root canal therapy",
-      "Tooth extractions",
+      "Pain-free procedures",
+      "Advanced rotary techniques",
+      "Single-visit treatments available",
+      "Digital X-ray guidance",
+      "Post-treatment restoration",
+      "Follow-up care included",
     ],
   },
   {
     id: 2,
     title: "Cosmetic Dentistry",
     shortDescription:
-      "Transform your smile with our advanced cosmetic dental procedures and treatments.",
+      "Transform your smile with our advanced cosmetic dental procedures including veneers and aesthetic treatments.",
     longDescription:
-      "Our cosmetic dentistry services are designed to enhance the appearance of your smile. From teeth whitening to veneers, we offer a range of treatments to help you achieve the smile you've always wanted.",
+      "Our cosmetic dentistry services are designed to enhance the appearance of your smile. From composite to premium ceramic veneers, we offer a range of treatments to help you achieve the perfect smile.",
     image: "/images/services/cosmetic-dentistry.jpg",
+    pricing: {
+      startingPrice: "₹2,000",
+      priceRange: "₹2,000 - ₹8,000",
+      treatments: [
+        {
+          name: "Composite Veneers (Per Tooth)",
+          price: "₹2,000",
+          description: "Direct composite veneers for smile enhancement",
+        },
+        {
+          name: "EMAX / All-Ceramic Veneers (Per Tooth)",
+          price: "₹8,000",
+          description: "Premium ceramic veneers for natural-looking results",
+        },
+      ],
+    },
     features: [
-      "Teeth whitening",
-      "Porcelain veneers",
-      "Dental bonding",
-      "Smile makeovers",
-      "Invisalign clear aligners",
-      "Gum contouring",
+      "Composite veneers",
+      "EMAX ceramic veneers",
+      "Smile design consultation",
+      "Natural-looking results",
+      "Minimally invasive procedures",
+      "Same-day treatments available",
     ],
   },
   {
     id: 3,
-    title: "Emergency Dental Care",
+    title: "Dental Implants",
     shortDescription:
-      "Immediate attention for dental emergencies and urgent care needs.",
+      "Permanent solution for missing teeth with high-quality dental implants and premium crown options.",
     longDescription:
-      "We understand that dental emergencies can happen at any time. Our emergency dental care services provide prompt attention for urgent dental issues, ensuring you receive the care you need when you need it most.",
-    image: "/images/services/emergency-care.jpg",
+      "Dental implants are a long-lasting solution for replacing missing teeth. Our implant procedures use premium titanium implants with various crown options including PFM and Zirconia crowns with warranty coverage.",
+    image: "/images/services/dental-implants.jpg",
+    pricing: {
+      startingPrice: "₹20,000",
+      priceRange: "₹20,000 - ₹34,000",
+      treatments: [
+        {
+          name: "Dental Implant (Without Crown)",
+          price: "₹20,000",
+          description: "Titanium implant placement surgery",
+        },
+        {
+          name: "PFM Crown (5 Years Warranty)",
+          price: "₹6,500",
+          description: "PFM crown with 5-year warranty coverage",
+        },
+        {
+          name: "Zirconia Crown (10 Years Warranty)",
+          price: "₹12,000",
+          description: "Premium zirconia crown with 10-year warranty",
+        },
+        {
+          name: "Zirconia Crown (15 Years Warranty)",
+          price: "₹14,000",
+          description: "Premium zirconia crown with 15-year warranty",
+        },
+      ],
+    },
     features: [
-      "24/7 emergency care",
-      "Toothache relief",
-      "Broken tooth repair",
-      "Lost filling replacement",
-      "Dental trauma treatment",
-      "Infection management",
+      "Titanium implants",
+      "Multiple crown options",
+      "Warranty coverage available",
+      "3D planning technology",
+      "Minimally invasive surgery",
+      "Long-term success rates",
     ],
   },
   {
     id: 4,
-    title: "Pediatric Dentistry",
+    title: "Tooth Fillings",
     shortDescription:
-      "Specialized dental care for children in a friendly and comfortable environment.",
+      "High-quality tooth-colored fillings to restore your teeth's natural appearance and function.",
     longDescription:
-      "Our pediatric dentistry services are tailored to meet the unique needs of children. We create a positive and comfortable dental experience for your little ones, focusing on preventive care and education.",
-    image: "/images/services/pediatric-dentistry.jpg",
+      "We provide aesthetic tooth fillings using composite and GIC materials. Our fillings are designed to match your natural tooth color while providing excellent durability and function.",
+    image: "/images/services/tooth-fillings.jpg",
+    pricing: {
+      startingPrice: "₹1,000",
+      priceRange: "₹1,000 - ₹1,500",
+      treatments: [
+        {
+          name: "Composite Filling",
+          price: "₹1,200 – ₹1,500",
+          description: "Tooth-colored aesthetic fillings for cavities",
+        },
+        {
+          name: "GIC Filling",
+          price: "₹1,000",
+          description: "Glass ionomer cement filling for specific cases",
+        },
+      ],
+    },
     features: [
-      "Child-friendly environment",
-      "Preventive care",
-      "Dental sealants",
-      "Fluoride treatments",
-      "Early orthodontic evaluation",
-      "Dental education",
+      "Tooth-colored materials",
+      "Mercury-free fillings",
+      "Natural appearance",
+      "Durable restoration",
+      "Single-visit treatment",
+      "Cavity prevention",
     ],
   },
   {
     id: 5,
-    title: "Dental Implants",
+    title: "Crowns & Caps",
     shortDescription:
-      "Permanent solution for missing teeth with natural-looking dental implants.",
+      "Protective crowns and caps to restore damaged teeth with metal and porcelain options.",
     longDescription:
-      "Dental implants are a long-lasting solution for replacing missing teeth. Our implant procedures are performed with precision and care, ensuring a natural look and feel that restores both function and confidence.",
-    image: "/images/services/dental-implants.jpg",
+      "Our crown and cap services provide excellent protection for damaged or weakened teeth. We offer both metal and porcelain-fused-to-metal options for optimal strength and aesthetics.",
+    image: "/images/services/crowns-caps.jpg",
+    pricing: {
+      startingPrice: "₹2,000",
+      priceRange: "₹2,000 - ₹4,500",
+      treatments: [
+        {
+          name: "Metal Crown",
+          price: "₹2,000",
+          description: "Durable metal crown for back teeth",
+        },
+        {
+          name: "PFM Crown",
+          price: "₹4,500",
+          description:
+            "Porcelain fused to metal crown for strength and aesthetics",
+        },
+      ],
+    },
     features: [
-      "Single tooth implants",
-      "Full arch restoration",
-      "Implant-supported dentures",
-      "Bone grafting",
-      "Sinus lifts",
-      "Implant maintenance",
+      "Metal crowns for durability",
+      "PFM crowns for aesthetics",
+      "Custom-fitted design",
+      "Long-lasting protection",
+      "Natural bite restoration",
+      "Color-matched options",
     ],
   },
   {
     id: 6,
-    title: "Orthodontics",
+    title: "Cleaning & Preventive Care",
     shortDescription:
-      "Modern orthodontic solutions for a perfectly aligned smile.",
+      "Professional dental cleaning and preventive treatments to maintain optimal oral health.",
     longDescription:
-      "Our orthodontic services help you achieve a properly aligned smile using the latest techniques and technology. We offer both traditional braces and clear aligner options to suit your needs and lifestyle.",
-    image: "/images/services/orthodontics.jpg",
+      "Regular professional cleaning is essential for maintaining good oral health. Our scaling and polishing services remove plaque, tartar, and stains while preventing gum disease and tooth decay.",
+    image: "/images/services/cleaning-preventive.jpg",
+    pricing: {
+      startingPrice: "₹1,000",
+      priceRange: "₹1,000 - ₹1,200",
+      treatments: [
+        {
+          name: "Scaling",
+          price: "₹1,000",
+          description:
+            "Professional teeth cleaning to remove plaque and tartar",
+        },
+        {
+          name: "Scaling with Polishing",
+          price: "₹1,200",
+          description: "Complete cleaning with polishing for brighter teeth",
+        },
+      ],
+    },
     features: [
-      "Traditional braces",
-      "Clear aligners",
-      "Retainers",
-      "Early intervention",
-      "Adult orthodontics",
-      "Orthodontic maintenance",
+      "Professional scaling",
+      "Teeth polishing",
+      "Plaque removal",
+      "Tartar elimination",
+      "Gum health improvement",
+      "Preventive care guidance",
     ],
   },
 ];
