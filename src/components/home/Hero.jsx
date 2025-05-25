@@ -20,7 +20,6 @@ const HERO_PHRASES = [
 ];
 
 const LeftSection = ({ isMobile }) => {
-  // Scroll-triggered animation variants similar to About.jsx
   const headerVariants = {
     hidden: { opacity: 0, y: isMobile ? -20 : -50 },
     visible: {
@@ -226,10 +225,19 @@ const RightSection = ({ isMobile }) => (
         src="/images/hero/dental-image2.jpeg"
         alt="Floating dental 1"
         className="absolute left-1 top-1 sm:left-2 sm:top-2 w-20 h-28 sm:w-24 sm:h-32 md:w-28 md:h-36 from-primary-600 to-primary-400"
-        animate={isMobile ? {} : { y: [0, -20, 0], x: [0, -15, 0] }}
+        animate={
+          isMobile
+            ? { y: [0, -10, 0], x: [0, -8, 0] }
+            : { y: [0, -20, 0], x: [0, -15, 0] }
+        }
         transition={
           isMobile
-            ? {}
+            ? {
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0,
+              }
             : {
                 duration: 5,
                 repeat: Infinity,
@@ -244,10 +252,19 @@ const RightSection = ({ isMobile }) => (
         src="/images/hero/dental-image3.jpeg"
         alt="Floating dental 2"
         className="absolute right-1 top-4 sm:right-2 sm:top-6 w-16 h-20 sm:w-20 sm:h-24 md:w-24 md:h-28 from-primary-500 to-primary-300"
-        animate={isMobile ? {} : { y: [0, -20, 0], x: [0, 20, 0] }}
+        animate={
+          isMobile
+            ? { y: [0, -10, 0], x: [0, 10, 0] }
+            : { y: [0, -20, 0], x: [0, 20, 0] }
+        }
         transition={
           isMobile
-            ? {}
+            ? {
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.5,
+              }
             : {
                 duration: 6,
                 repeat: Infinity,
@@ -262,10 +279,19 @@ const RightSection = ({ isMobile }) => (
         src="/images/hero/dental-image4.jpeg"
         alt="Floating dental 3"
         className="absolute left-4 sm:left-6 md:left-8 bottom-1 sm:bottom-2 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 from-primary-800 to-primary-500"
-        animate={isMobile ? {} : { y: [0, 25, 0], x: [0, -10, 0] }}
+        animate={
+          isMobile
+            ? { y: [0, 12, 0], x: [0, -5, 0] }
+            : { y: [0, 25, 0], x: [0, -10, 0] }
+        }
         transition={
           isMobile
-            ? {}
+            ? {
+                duration: 3.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              }
             : {
                 duration: 7,
                 repeat: Infinity,
