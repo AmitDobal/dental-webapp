@@ -27,7 +27,7 @@ const LeftSection = () => (
       <Button
         to="/contact"
         size="lg"
-        className="bg-white text-primary-800 hover:bg-primary-100 font-semibold">
+        className="bg-white !text-primary-800 hover:bg-primary-100 hover:!text-white font-semibold">
         Book an Appointment Now
       </Button>
       <Button

@@ -82,14 +82,14 @@ const MainPage = () => {
       </AnimatedSection>
 
       {/* Testimonials Section */}
-      <AnimatedSection id="testimonials" direction="up" delay={0.6}>
+      <AnimatedSection id="testimonials" direction="up" delay={0.3}>
         <div className="container mx-auto px-4 py-20 bg-primary-50">
           <Testimonials testimonials={testimonials} />
         </div>
       </AnimatedSection>
 
       {/* Visit Our Dental Studio Section */}
-      <AnimatedSection id="visit" direction="up" delay={0.7}>
+      <AnimatedSection id="visit" direction="up" delay={0.3}>
         <div className="bg-gradient-to-b from-white to-primary-50">
           <VisitSection />
         </div>
