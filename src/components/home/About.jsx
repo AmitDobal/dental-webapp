@@ -4,7 +4,7 @@ import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
 
 const About = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  const clinicImageUrl = "/images/gallery/office.jpg";
+  const clinicImageUrl = "/images/about/clinic.jpeg";
 
   const handleImageLoad = () => {
     setImageLoaded(true);
