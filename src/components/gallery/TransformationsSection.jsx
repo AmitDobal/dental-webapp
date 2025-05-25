@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Button from "../common/Button";
 import { slideUp, staggerContainer } from "../../utils/animations";
 
@@ -40,31 +40,32 @@ const TransformationsSection = ({ transformations }) => {
       {/* Unified Background Image */}
       <div
         className="absolute inset-0 w-full h-full bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center opacity-100 z-0"
-        aria-hidden="true"></div>
+        aria-hidden="true"
+      />
       {/* Strong Gradient Overlay for Contrast */}
-      <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-white/90 to-primary-50/90 z-10"></div>
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-white/90 to-primary-50/90 z-10" />
 
       <div className="relative z-20 container mx-auto px-4">
-        <div
+        <motion.div
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
           variants={staggerContainer}
           className="py-16">
-          <div
+          <motion.h2
             variants={slideUp}
             className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-3">
             Smile <span className="text-primary-600">Transformations</span>
-          </div>
-          <div
+          </motion.h2>
+          <motion.p
             variants={slideUp}
             className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
             See the amazing results we've achieved for our patients
-          </div>
+          </motion.p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {transformations.map((item, i) => (
-              <div
+              <motion.div
                 key={i}
                 custom={i}
                 variants={cardVariants}
@@ -73,9 +74,11 @@ const TransformationsSection = ({ transformations }) => {
                 whileHover="hover"
                 viewport={{ once: true }}
                 className="h-full">
-                <div
+                <motion.div
                   className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer h-full"
-                  onClick={() => handleImageClick(item)}>
+                  onClick={() => handleImageClick(item)}
+                  whileHover={{ y: -4 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}>
                   <div className="relative h-48 bg-gray-200">
                     <div className="absolute inset-0 flex items-center justify-center text-gray-500 z-0">
                       <span>{item.title}</span>
@@ -93,29 +96,29 @@ const TransformationsSection = ({ transformations }) => {
                     <h3 className="font-semibold text-lg mb-1">{item.title}</h3>
                     <p className="text-sm text-gray-600">{item.description}</p>
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <AnimatePresence>
         {selectedTransformation && (
-          <div
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-75"
             onClick={closeModal}>
-            <div
+            <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               className="bg-white rounded-lg shadow-xl max-w-4xl w-full"
               onClick={(e) => e.stopPropagation()}>
               <div className="relative p-6">
-                <button
+                <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={closeModal}
@@ -134,14 +137,14 @@ const TransformationsSection = ({ transformations }) => {
                       d="M6 18L18 6M6 6l12 12"
                     />
                   </svg>
-                </button>
+                </motion.button>
 
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   {selectedTransformation.title}
                 </h2>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <div
+                  <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.2 }}>
@@ -161,8 +164,8 @@ const TransformationsSection = ({ transformations }) => {
                         }}
                       />
                     </div>
-                  </div>
-                  <div
+                  </motion.div>
+                  <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 }}>
@@ -182,25 +185,33 @@ const TransformationsSection = ({ transformations }) => {
                         }}
                       />
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
 
-                <p className="text-gray-700 mb-6">
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-gray-700 mb-6">
                   {selectedTransformation.fullDescription ||
                     selectedTransformation.description}
-                </p>
+                </motion.p>
 
-                <div className="flex justify-end">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="flex justify-end">
                   <Button
                     to="#contact"
                     onClick={closeModal}
                     className="bg-primary-600 text-white hover:bg-primary-700">
                     Book a Consultation
                   </Button>
-                </div>
+                </motion.div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

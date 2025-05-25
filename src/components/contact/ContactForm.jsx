@@ -62,6 +62,7 @@ const ContactForm = () => {
         message: "",
       });
     } catch (error) {
+      console.error("Form submission error:", error);
       setSubmitStatus({
         type: "error",
         message: "Something went wrong. Please try again later.",

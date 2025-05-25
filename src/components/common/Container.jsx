@@ -2,7 +2,8 @@ const Container = ({
   children,
   className = "",
   size = "default",
-  as: Component = "div",
+  // eslint-disable-next-line no-unused-vars
+  as: ElementType = "div",
   ...props
 }) => {
   const baseClasses = "mx-auto px-4 w-full";
@@ -17,9 +18,9 @@ const Container = ({
   const containerClasses = `${baseClasses} ${sizeClasses[size]} ${className}`;
 
   return (
-    <Component className={containerClasses} {...props}>
+    <ElementType className={containerClasses} {...props}>
       {children}
-    </Component>
+    </ElementType>
   );
 };
 
