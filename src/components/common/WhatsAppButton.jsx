@@ -1,4 +1,5 @@
-import { clinicInfo } from "../../data/clinicInfo";
+import { motion } from "framer-motion";
+import { clinicInfo } from "../../data";
 
 const WhatsAppButton = () => {
   // Use actual clinic phone number from updated data

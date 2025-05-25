@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Button from "../common/Button";
 import NavLink from "../common/NavLink";
-import { clinicInfo } from "../../data/clinicInfo";
+import { clinicInfo } from "../../data";
 import { handleMobileNavigation } from "../../utils/scrollUtils";
 
 const Header = () => {
