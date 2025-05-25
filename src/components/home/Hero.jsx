@@ -2,6 +2,17 @@ import { motion } from "framer-motion";
 import Button from "../common/Button";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
 import FloatingImage from "../common/FloatingImage";
+import { Typewriter } from "react-simple-typewriter";
+
+const HERO_PHRASES = [
+  "Your Smile, Our Passion",
+  "Expert Dental Care",
+  "Confident Smiles Start Here",
+  "Brighten Your Smile Today",
+  "Gentle Hands, Beautiful Results",
+  "Where Every Smile Matters",
+  "Transforming Smiles, Transforming Lives",
+];
 
 const LeftSection = () => (
   <motion.div
@@ -11,15 +22,23 @@ const LeftSection = () => (
     className="text-white">
     <motion.h1
       variants={slideUp}
-      className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-      Think Dentistry
-      <br />
-      <span className="text-primary-300">Think Us</span>
+      className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 min-h-[4.5rem]">
+      <span className="text-primary-100 block">
+        <Typewriter
+          words={HERO_PHRASES}
+          loop={0}
+          cursor
+          cursorStyle="|"
+          typeSpeed={60}
+          deleteSpeed={40}
+          delaySpeed={1800}
+        />
+      </span>
     </motion.h1>
     <motion.p
       variants={slideUp}
       className="text-xl md:text-2xl text-primary-100 mb-8">
-      Smile and the World Smiles with You
+      Creating healthy, beautiful smiles for life
     </motion.p>
     <motion.div
       variants={staggerContainer}
