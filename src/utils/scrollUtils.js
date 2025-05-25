@@ -1,3 +1,5 @@
+import { clinicInfo } from "../data/clinicInfo";
+
 /**
  * Utility functions for smooth scrolling and navigation
  */
@@ -85,15 +87,18 @@ export const handleBookAppointment = (options = {}) => {
 export const handleConnectNow = (options = {}) => {
   const {
     method = "scroll",
-    phoneNumber = "",
-    whatsappNumber = "",
-    whatsappMessage = "Hi! I'm interested in your dental services.",
+    phoneNumber = clinicInfo?.phone || "",
+    whatsappNumber = clinicInfo?.phone || "",
+    whatsappMessage = `Hi! I'm interested in dental services at ${
+      clinicInfo?.name || "your clinic"
+    }.`,
   } = options;
 
   switch (method) {
     case "whatsapp":
       if (whatsappNumber) {
-        const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+        const cleanNumber = whatsappNumber.replace(/\D/g, "");
+        const url = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(
           whatsappMessage
         )}`;
         window.open(url, "_blank");

@@ -1,10 +1,9 @@
 import { clinicInfo } from "../../data/clinicInfo";
 
 const WhatsAppButton = () => {
-  // Use actual clinic phone number, fallback to default if not available
-  const phoneNumber = clinicInfo?.phone || "+1234567890";
-  const message =
-    "Hello! I'd like to schedule an appointment at your dental clinic.";
+  // Use actual clinic phone number from updated data
+  const phoneNumber = clinicInfo?.phone || "+91 96993 74343";
+  const message = `Hello! I'd like to schedule an appointment at ${clinicInfo.name}. Please let me know your availability.`;
 
   const handleClick = () => {
     // Clean phone number (remove all non-digits)

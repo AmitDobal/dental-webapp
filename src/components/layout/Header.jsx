@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "../common/Button";
 import NavLink from "../common/NavLink";
+import { clinicInfo } from "../../data/clinicInfo";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,11 +44,12 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <a
             href="#home"
-            className={`text-2xl font-bold transition-colors ${
+            className={`text-xl sm:text-2xl font-bold transition-colors ${
               isScrolled ? "text-primary-600" : "text-white"
             }`}
-            aria-label="Manifest Dental Clinic">
-            Manifest Dental
+            aria-label={clinicInfo.name}>
+            <span className="hidden sm:inline">Manifest Dental</span>
+            <span className="sm:hidden">Manifest</span>
           </a>
 
           {/* Desktop Navigation */}
