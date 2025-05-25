@@ -3,7 +3,6 @@ import Hero from "../components/home/Hero";
 import Services from "../components/home/Services";
 import About from "../components/home/About";
 import Testimonials from "../components/home/Testimonials";
-import GalleryGrid from "../components/gallery/GalleryGrid";
 import TransformationsSection from "../components/gallery/TransformationsSection";
 import ContactForm from "../components/contact/ContactForm";
 import ContactInfo from "../components/contact/ContactInfo";
@@ -51,7 +50,7 @@ const MainPage = () => {
   }, []);
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen antialiased">
       {/* Hero Section */}
       <section id="home" className="relative">
         <Hero />
