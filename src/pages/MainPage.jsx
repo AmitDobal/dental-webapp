@@ -58,9 +58,7 @@ const MainPage = () => {
 
       {/* About Section */}
       <AnimatedSection id="about" direction="up" delay={0.2}>
-        <div className="container mx-auto px-4 py-20 bg-gradient-to-b from-white to-primary-50">
-          <About />
-        </div>
+        <About />
       </AnimatedSection>
 
       {/* Services Section */}

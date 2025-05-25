@@ -75,128 +75,131 @@ const About = () => {
   };
 
   return (
-    <div className="relative min-h-[80vh] bg-gradient-to-b from-white to-primary-50 overflow-hidden">
+    <div className="relative w-full min-h-[80vh] bg-gradient-to-b from-white to-primary-50 overflow-hidden">
       {/* Background Image */}
       <div
-        className="absolute inset-0 w-full h-full bg-[url('/images/about/about-bg.jpg')] bg-cover bg-center opacity-20 z-0"
+        className="absolute inset-0 w-full h-full bg-[url('/images/about/about-bg.jpg')] bg-cover bg-center opacity-30 z-0"
         aria-hidden="true"></div>
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/80 to-primary-50/80 z-10"></div>
-      <motion.div
-        initial="initial"
-        animate="animate"
-        variants={staggerContainer}
-        className="relative z-20 py-16 px-4 sm:px-6 lg:px-8">
-        <motion.div variants={slideUp} className="text-center mb-12">
-          <motion.h2
-            variants={textVariants}
-            className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            {aboutData.heading.split(aboutData.highlight)[0]}
-            <span className="text-primary-600">{aboutData.highlight}</span>
-            {aboutData.heading.split(aboutData.highlight)[1]}
-          </motion.h2>
-          <motion.p
-            variants={textVariants}
-            className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
-            {aboutData.subheading}
-          </motion.p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 items-center">
-          {/* Clinic Image */}
-          <motion.div variants={fadeIn} className="order-2 md:order-1">
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              className="bg-gray-100 rounded-lg overflow-hidden shadow-lg h-full">
-              {/* Fallback content for missing images */}
-              <div
-                className={`w-full h-[300px] sm:h-[400px] flex items-center justify-center ${
-                  imageLoaded ? "hidden" : "block"
-                }`}>
-                <span className="text-gray-500 text-lg">Clinic Image</span>
-              </div>
-              <motion.img
-                initial={{ opacity: 0 }}
-                animate={{ opacity: imageLoaded ? 1 : 0 }}
-                transition={{ duration: 0.5 }}
-                src={aboutData.image}
-                alt="Manifest Dental Clinic"
-                className={`w-full h-[300px] sm:h-[400px] object-cover ${
-                  imageLoaded ? "block" : "hidden"
-                }`}
-                onLoad={handleImageLoad}
-                onError={handleImageError}
-              />
-            </motion.div>
-          </motion.div>
-
-          {/* About Text */}
-          <motion.div
-            variants={slideUp}
-            className="order-1 md:order-2 flex flex-col justify-center">
-            <motion.h3
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-white/80 to-primary-50/80 z-10"></div>
+      <div className="relative z-20 container mx-auto px-4">
+        <motion.div
+          initial="initial"
+          animate="animate"
+          variants={staggerContainer}
+          className="py-16">
+          <motion.div variants={slideUp} className="text-center mb-12">
+            <motion.h2
               variants={textVariants}
-              className="text-2xl font-semibold text-primary-600 mb-4">
-              Welcome to Manifest Dental Studio
-            </motion.h3>
+              className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              {aboutData.heading.split(aboutData.highlight)[0]}
+              <span className="text-primary-600">{aboutData.highlight}</span>
+              {aboutData.heading.split(aboutData.highlight)[1]}
+            </motion.h2>
             <motion.p
               variants={textVariants}
-              className="text-gray-700 mb-6 text-base sm:text-lg">
-              {aboutData.aboutText}
+              className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
+              {aboutData.subheading}
             </motion.p>
-            <motion.a
-              href="#services"
-              whileHover={{ x: 5 }}
-              whileTap={{ scale: 0.95 }}
-              className="text-primary-600 font-medium hover:text-primary-800 inline-flex items-center group">
-              Explore our services
-              <motion.svg
-                className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </motion.svg>
-            </motion.a>
           </motion.div>
-        </div>
 
-        {/* Features */}
-        <motion.div
-          variants={staggerContainer}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {aboutData.features.map((feature, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
+            {/* Left: About Text */}
             <motion.div
-              key={index}
-              variants={cardVariants}
-              whileHover="hover"
-              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-center h-full">
-              <motion.div
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.2 }}
-                className="flex justify-center mb-4">
-                {getFeatureIcon(feature.icon)}
-              </motion.div>
+              variants={slideUp}
+              className="order-2 md:order-1 flex flex-col justify-center">
               <motion.h3
                 variants={textVariants}
-                className="font-semibold text-xl text-primary-600 mb-3">
-                {feature.title}
+                className="text-2xl font-semibold text-primary-600 mb-4">
+                Welcome to Manifest Dental Studio
               </motion.h3>
               <motion.p
                 variants={textVariants}
-                className="text-gray-700 text-base sm:text-lg">
-                {feature.description}
+                className="text-gray-700 mb-6 text-base sm:text-lg">
+                {aboutData.aboutText}
               </motion.p>
+              <motion.a
+                href="#services"
+                whileHover={{ x: 5 }}
+                whileTap={{ scale: 0.95 }}
+                className="text-primary-600 font-medium hover:text-primary-800 inline-flex items-center group">
+                Explore our services
+                <motion.svg
+                  className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </motion.svg>
+              </motion.a>
             </motion.div>
-          ))}
+            {/* Right: Clinic Image */}
+            <motion.div
+              variants={fadeIn}
+              className="order-1 md:order-2 flex justify-center">
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="bg-gray-100 rounded-lg overflow-hidden shadow-lg w-full max-w-md h-[300px] sm:h-[400px] flex items-center justify-center">
+                {/* Fallback content for missing images */}
+                <div
+                  className={`w-full h-full flex items-center justify-center ${
+                    imageLoaded ? "hidden" : "block"
+                  }`}>
+                  <span className="text-gray-500 text-lg">Clinic Image</span>
+                </div>
+                <motion.img
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: imageLoaded ? 1 : 0 }}
+                  transition={{ duration: 0.5 }}
+                  src={aboutData.image}
+                  alt="Manifest Dental Clinic"
+                  className={`w-full h-full object-cover ${
+                    imageLoaded ? "block" : "hidden"
+                  }`}
+                  onLoad={handleImageLoad}
+                  onError={handleImageError}
+                />
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Features */}
+          <motion.div
+            variants={staggerContainer}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {aboutData.features.map((feature, index) => (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                whileHover="hover"
+                className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-center h-full">
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex justify-center mb-4">
+                  {getFeatureIcon(feature.icon)}
+                </motion.div>
+                <motion.h3
+                  variants={textVariants}
+                  className="font-semibold text-xl text-primary-600 mb-3">
+                  {feature.title}
+                </motion.h3>
+                <motion.p
+                  variants={textVariants}
+                  className="text-gray-700 text-base sm:text-lg">
+                  {feature.description}
+                </motion.p>
+              </motion.div>
+            ))}
+          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </div>
   );
 };
