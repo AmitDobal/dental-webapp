@@ -69,7 +69,7 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
           {/* Modal content */}
           <motion.div
             ref={modalRef}
-            className="bg-white rounded-2xl shadow-2xl border border-primary-100 max-w-3xl w-full max-h-[90vh] overflow-y-auto relative z-10"
+            className="bg-white rounded-2xl shadow-2xl border border-primary-100 max-w-4xl w-full max-h-[90vh] overflow-y-auto relative z-10"
             initial="hidden"
             animate="visible"
             exit="exit"
@@ -117,16 +117,65 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
               </h2>
               <p className="text-gray-700 mb-6">{service.longDescription}</p>
 
+              {/* Pricing Section */}
+              {service.pricing && (
+                <div className="mb-6 bg-primary-50 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold text-primary-700 mb-4 flex items-center">
+                    <svg
+                      className="w-5 h-5 mr-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+                      />
+                    </svg>
+                    Treatment Pricing
+                  </h3>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {service.pricing.treatments.map((treatment, index) => (
+                      <div
+                        key={index}
+                        className="bg-white rounded-lg p-4 border border-primary-200">
+                        <div className="flex justify-between items-start mb-2">
+                          <h4 className="font-semibold text-gray-900 text-sm">
+                            {treatment.name}
+                          </h4>
+                          <span className="text-primary-600 font-bold text-lg">
+                            {treatment.price}
+                          </span>
+                        </div>
+                        <p className="text-gray-600 text-xs">
+                          {treatment.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-4 p-3 bg-primary-100 rounded-lg">
+                    <p className="text-primary-800 text-sm font-medium">
+                      💡 All procedures include consultation, follow-up care,
+                      and use high-quality materials with sterilization
+                      protocols.
+                    </p>
+                  </div>
+                </div>
+              )}
+
               {service.features && service.features.length > 0 && (
                 <div className="mb-6">
                   <h3 className="text-lg font-semibold text-primary-700 mb-3">
                     Services Included:
                   </h3>
-                  <ul className="space-y-2">
+                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     {service.features.map((feature, index) => (
                       <li key={index} className="flex items-start">
                         <svg
-                          className="w-5 h-5 text-primary-600 mr-2 mt-1"
+                          className="w-5 h-5 text-primary-600 mr-2 mt-1 flex-shrink-0"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24">
@@ -137,7 +186,7 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
                             d="M5 13l4 4L19 7"
                           />
                         </svg>
-                        <span className="text-gray-700">{feature}</span>
+                        <span className="text-gray-700 text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>

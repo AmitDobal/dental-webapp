@@ -45,12 +45,12 @@ const Services = ({ services }) => {
           Our <span className="text-primary-600">Premium Services</span>
         </h2>
         <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
-          Comprehensive dental care tailored to your specific needs with a focus
-          on comfort and quality
+          Comprehensive dental care with transparent pricing and exceptional
+          quality
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.slice(0, 4).map((service, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.slice(0, 6).map((service, i) => (
             <motion.div
               key={service.id}
               custom={i}
@@ -64,10 +64,11 @@ const Services = ({ services }) => {
                 description={service.shortDescription}
                 image={service.image}
                 altText={`${service.title} service image`}
-                buttonText="Learn More"
+                buttonText="View Details & Pricing"
                 showButton={true}
                 onClick={() => handleServiceClick(service)}
                 className="cursor-pointer"
+                pricing={service.pricing}
               />
             </motion.div>
           ))}

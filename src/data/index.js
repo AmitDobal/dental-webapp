@@ -3,6 +3,7 @@ export { clinicInfo } from "./clinicInfo";
 export { services } from "./services";
 export { transformations } from "./transformations";
 export { testimonials } from "./testimonials";
+export { pricingData } from "./pricing";
 
 // Import for re-exports
 import { clinicInfo } from "./clinicInfo";

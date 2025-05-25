@@ -11,6 +11,7 @@ const ServiceCard = ({
   buttonText = "Learn More",
   className = "",
   onClick,
+  pricing,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [imgError, setImgError] = useState(false);
@@ -46,7 +47,7 @@ const ServiceCard = ({
       aria-label={onClick ? `View details for ${title}` : undefined}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}>
-      <div className="relative aspect-square w-full bg-white h-62 flex items-center justify-center p-3">
+      <div className="relative aspect-square w-full bg-white h-48 flex items-center justify-center p-3">
         {/* Fallback content for missing images */}
         {imgError && (
           <div className="absolute inset-0 flex items-center justify-center text-gray-400 z-10 bg-gray-100">
@@ -67,7 +68,21 @@ const ServiceCard = ({
         <h3 className="text-lg text-center font-semibold text-gray-900 mb-2">
           {title}
         </h3>
-        {/* <p className="text-gray-600 mb-3 text-sm">{description}</p> */}
+
+        {/* Pricing Information */}
+        {pricing && (
+          <div className="mb-3 text-center">
+            <div className="text-primary-600 font-bold text-lg">
+              Starting from {pricing.startingPrice}
+            </div>
+            {pricing.priceRange && (
+              <div className="text-gray-500 text-sm">
+                Range: {pricing.priceRange}
+              </div>
+            )}
+          </div>
+        )}
+
         {showButton && (
           <div className="mt-auto">
             <Button
