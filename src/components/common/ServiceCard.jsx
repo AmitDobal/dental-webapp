@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const ServiceCard = ({
   title,
-  description,
+  description: _description,
   image,
   altText,
   link,
@@ -64,7 +64,9 @@ const ServiceCard = ({
         )}
       </div>
       <div className="p-4 flex-1 flex flex-col">
-        <h3 className="text-lg text-center font-semibold text-gray-900 mb-2">{title}</h3>
+        <h3 className="text-lg text-center font-semibold text-gray-900 mb-2">
+          {title}
+        </h3>
         {/* <p className="text-gray-600 mb-3 text-sm">{description}</p> */}
         {showButton && (
           <div className="mt-auto">

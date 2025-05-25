@@ -60,6 +60,7 @@ const ContactForm = ({ className = "", ...props }) => {
         message: "",
       });
     } catch (error) {
+      console.error("Form submission error:", error);
       setFormStatus({
         status: "error",
         message: "Oops! Something went wrong. Please try again later.",

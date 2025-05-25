@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 
 const Button = ({
   children,
-  as: Component = "button",
+  // eslint-disable-next-line no-unused-vars
+  as: ElementType = "button",
   variant = "primary",
   size = "md",
   className = "",
@@ -36,9 +37,9 @@ const Button = ({
   }
 
   return (
-    <Component className={classes} {...props}>
+    <ElementType className={classes} {...props}>
       {children}
-    </Component>
+    </ElementType>
   );
 };
 
