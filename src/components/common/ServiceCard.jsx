@@ -47,8 +47,8 @@ const ServiceCard = ({
       aria-label={onClick ? `View details for ${title}` : undefined}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}>
-      {/* Image Section - Made smaller */}
-      <div className="relative w-full h-32 bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center overflow-hidden">
+      {/* Square Image Section */}
+      <div className="relative w-full aspect-square bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center overflow-hidden">
         {/* Fallback content for missing images */}
         {imgError && (
           <div className="absolute inset-0 flex items-center justify-center text-primary-400 z-10">
@@ -84,15 +84,15 @@ const ServiceCard = ({
       </div>
 
       {/* Content Section - Optimized spacing */}
-      <div className="p-4 flex-1 flex flex-col">
-        <h3 className="text-base font-semibold text-gray-900 mb-3 text-center leading-tight">
+      <div className="p-3 flex-1 flex flex-col">
+        <h3 className="text-sm font-semibold text-gray-900 mb-2 text-center leading-tight">
           {title}
         </h3>
 
         {/* Pricing Information - More compact */}
         {pricing && (
-          <div className="mb-3 text-center">
-            <div className="text-primary-600 font-bold text-base">
+          <div className="mb-2 text-center">
+            <div className="text-primary-600 font-bold text-sm">
               From {pricing.startingPrice}
             </div>
             {pricing.priceRange && (
@@ -115,7 +115,7 @@ const ServiceCard = ({
               }}
               variant="outline"
               size="sm"
-              className="w-full border-primary-500 text-primary-600 hover:bg-primary-50 hover:border-primary-600 focus:ring-primary-400 text-sm py-2 transition-all duration-200"
+              className="w-full border-primary-500 text-primary-600 hover:bg-primary-50 hover:border-primary-600 focus:ring-primary-400 text-xs py-1.5 transition-all duration-200"
               aria-label={`Learn more about ${title}`}>
               {buttonText}
             </Button>

@@ -52,9 +52,9 @@ const Services = ({ services }) => {
           <div className="w-20 h-1 bg-primary-600 mx-auto rounded-full"></div>
         </div>
 
-        {/* Optimized grid for smaller cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {services.slice(0, 6).map((service, i) => (
+        {/* 4 cards per row grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-7xl mx-auto mb-8">
+          {services.slice(0, 4).map((service, i) => (
             <motion.div
               key={service.id}
               custom={i}
@@ -78,8 +78,32 @@ const Services = ({ services }) => {
           ))}
         </div>
 
+        {/* See More Button */}
+        <div className="text-center mb-12">
+          <Button
+            as="a"
+            href="/services"
+            variant="outline"
+            size="md"
+            className="border-primary-600 text-primary-600 hover:bg-primary-50 hover:border-primary-700 px-8 py-3 font-medium transition-all duration-200">
+            See All Services
+            <svg
+              className="w-4 h-4 ml-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </Button>
+        </div>
+
         {/* Call to action section */}
-        <div className="mt-16 text-center">
+        <div className="text-center">
           <div className="bg-white rounded-2xl shadow-sm border border-primary-100 p-8 max-w-2xl mx-auto">
             <h3 className="text-xl font-semibold text-gray-900 mb-3">
               Ready to Transform Your Smile?
