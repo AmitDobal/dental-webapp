@@ -82,7 +82,7 @@ const RightSection = () => (
     className="relative w-full flex justify-center items-center mt-8 lg:mt-0 min-h-[340px]">
     <div className="relative w-full h-[340px] sm:h-[400px] md:h-[500px] flex items-center justify-center">
       {/* Central Big Image */}
-      <div className="relative z-20 w-40 h-56 sm:w-56 sm:h-80 md:w-72 md:h-[22rem] bg-gradient-to-br from-primary-700 to-primary-600 rounded-2xl shadow-2xl border-4 border-white overflow-hidden flex items-center justify-center mx-auto">
+      <div className="relative z-10 w-60 h-72 sm:w-56 sm:h-80 md:w-96 md:h-[30rem] bg-gradient-to-br from-primary-700 to-primary-600 rounded-2xl shadow-2xl border-4 border-white overflow-hidden flex items-center justify-center mx-auto">
         <img
           src="/images/hero/dental-image1.jpeg"
           alt="Main dental procedure"
@@ -93,7 +93,7 @@ const RightSection = () => (
       <FloatingImage
         src="/images/hero/dental-image2.jpeg"
         alt="Floating dental 1"
-        className="absolute left-2 top-2 w-20 h-28 sm:w-28 sm:h-36 from-primary-600 to-primary-400"
+        className="absolute left-2 top-2 w-24 h-36 sm:w-28 sm:h-36 from-primary-600 to-primary-400"
         animate={{ y: [0, -30, 0], x: [0, -20, 0] }}
         transition={{
           duration: 5,
@@ -107,7 +107,7 @@ const RightSection = () => (
       <FloatingImage
         src="/images/hero/dental-image3.jpeg"
         alt="Floating dental 2"
-        className="absolute right-2 top-6 w-16 h-20 sm:w-24 sm:h-28 from-primary-500 to-primary-300"
+        className="absolute right-2 top-6 w-20 h-24 sm:w-24 sm:h-28 from-primary-500 to-primary-300"
         animate={{ y: [0, -25, 0], x: [0, 25, 0] }}
         transition={{
           duration: 6,
