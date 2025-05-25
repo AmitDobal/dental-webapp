@@ -5,23 +5,23 @@ import Button from "../common/Button";
 import { motion } from "framer-motion";
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.97 },
+  hidden: { opacity: 0, y: 30, scale: 0.98 },
   visible: (i) => ({
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      delay: i * 0.12,
-      duration: 0.5,
+      delay: i * 0.08,
+      duration: 0.4,
       type: "spring",
-      stiffness: 120,
-      damping: 16,
+      stiffness: 140,
+      damping: 20,
     },
   }),
   hover: {
-    scale: 1.04,
-    boxShadow: "0 8px 32px 0 rgba(16, 185, 129, 0.12)",
-    transition: { type: "spring", stiffness: 180, damping: 18 },
+    scale: 1.02,
+    boxShadow: "0 4px 20px 0 rgba(16, 185, 129, 0.08)",
+    transition: { type: "spring", stiffness: 200, damping: 20 },
   },
 };
 
@@ -41,15 +41,19 @@ const Services = ({ services }) => {
   return (
     <div className="relative w-full min-h-[80vh] bg-gradient-to-b from-primary-50 to-white overflow-hidden py-16">
       <div className="relative z-10 container mx-auto px-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-3">
-          Our <span className="text-primary-600">Premium Services</span>
-        </h2>
-        <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
-          Comprehensive dental care with transparent pricing and exceptional
-          quality
-        </p>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            Our <span className="text-primary-600">Premium Services</span>
+          </h2>
+          <p className="text-gray-600 max-w-3xl mx-auto mb-2">
+            Comprehensive dental care with transparent pricing and exceptional
+            quality
+          </p>
+          <div className="w-20 h-1 bg-primary-600 mx-auto rounded-full"></div>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Optimized grid for smaller cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {services.slice(0, 6).map((service, i) => (
             <motion.div
               key={service.id}
@@ -64,25 +68,37 @@ const Services = ({ services }) => {
                 description={service.shortDescription}
                 image={service.image}
                 altText={`${service.title} service image`}
-                buttonText="View Details & Pricing"
+                buttonText="View Details"
                 showButton={true}
                 onClick={() => handleServiceClick(service)}
-                className="cursor-pointer"
+                className="cursor-pointer h-full"
                 pricing={service.pricing}
               />
             </motion.div>
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <Button
-            to="#contact"
-            size="lg"
-            className="bg-primary-600 text-white hover:bg-primary-700 font-medium px-8 py-3 rounded-md shadow-lg">
-            Schedule a Consultation
-          </Button>
+        {/* Call to action section */}
+        <div className="mt-16 text-center">
+          <div className="bg-white rounded-2xl shadow-sm border border-primary-100 p-8 max-w-2xl mx-auto">
+            <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              Ready to Transform Your Smile?
+            </h3>
+            <p className="text-gray-600 mb-6">
+              Schedule a consultation with Dr. Manasi and discover the perfect
+              treatment for your needs.
+            </p>
+            <Button
+              as="a"
+              href="#contact"
+              size="lg"
+              className="bg-primary-600 text-white hover:bg-primary-700 font-medium px-8 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200">
+              Schedule Consultation
+            </Button>
+          </div>
         </div>
       </div>
+
       <ServiceModal
         service={selectedService}
         isOpen={isModalOpen}
