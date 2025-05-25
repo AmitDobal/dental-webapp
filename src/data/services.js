@@ -6,7 +6,7 @@ export const services = [
       "Comprehensive dental care for your entire family, including check-ups, cleanings, and preventive treatments.",
     longDescription:
       "Our general dentistry services focus on maintaining your oral health through regular check-ups, professional cleanings, and preventive care. We provide comprehensive dental examinations, X-rays, and personalized treatment plans to ensure your teeth and gums stay healthy.",
-    image: "/images/services/general-dentistry.jpg",
+    image: "/images/services/general-dentistry.jpeg",
     features: [
       "Regular check-ups and cleanings",
       "Dental X-rays",

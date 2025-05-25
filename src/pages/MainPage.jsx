@@ -67,9 +67,7 @@ const MainPage = () => {
         className="bg-primary-50"
         direction="up"
         delay={0.3}>
-        <div className="container mx-auto px-4 py-20">
-          <Services services={services} onServiceClick={handleServiceClick} />
-        </div>
+        <Services services={services} onServiceClick={handleServiceClick} />
       </AnimatedSection>
 
       {/* Smile Transformations Section */}
