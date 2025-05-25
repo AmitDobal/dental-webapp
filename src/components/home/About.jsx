@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
 
 const About = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -19,7 +21,7 @@ const About = () => {
         "Our team of experienced dentists provides exceptional care using the latest techniques and technology.",
       icon: (
         <svg
-          className="w-10 h-10 text-teal-500"
+          className="w-10 h-10 text-primary-600"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -39,7 +41,7 @@ const About = () => {
         "Our state-of-the-art clinic is equipped with advanced dental technology for precise diagnoses and treatments.",
       icon: (
         <svg
-          className="w-10 h-10 text-teal-500"
+          className="w-10 h-10 text-primary-600"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -59,7 +61,7 @@ const About = () => {
         "We've created a relaxing atmosphere to make your dental visit as comfortable and stress-free as possible.",
       icon: (
         <svg
-          className="w-10 h-10 text-teal-500"
+          className="w-10 h-10 text-primary-600"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -75,57 +77,95 @@ const About = () => {
     },
   ];
 
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+    hover: {
+      y: -5,
+      transition: { duration: 0.2 },
+    },
+  };
+
   return (
-    <div className="py-16">
-      <h2 className="text-3xl font-bold text-center text-gray-900 mb-3">
-        About <span className="text-teal-600">Our Dental Studio</span>
-      </h2>
-      <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
-        Dedicated to providing exceptional dental care with a focus on patient
-        comfort and satisfaction
-      </p>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      variants={staggerContainer}
+      className="py-16 px-4 sm:px-6 lg:px-8">
+      <motion.div variants={slideUp} className="text-center mb-12">
+        <motion.h2
+          variants={textVariants}
+          className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          About <span className="text-primary-600">Our Dental Studio</span>
+        </motion.h2>
+        <motion.p
+          variants={textVariants}
+          className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
+          Dedicated to providing exceptional dental care with a focus on patient
+          comfort and satisfaction
+        </motion.p>
+      </motion.div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         {/* Clinic Image */}
-        <div className="order-2 md:order-1">
-          <div className="bg-gray-200 rounded-lg overflow-hidden shadow-md h-full">
+        <motion.div variants={fadeIn} className="order-2 md:order-1">
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+            className="bg-gray-100 rounded-lg overflow-hidden shadow-lg h-full">
             {/* Fallback content for missing images */}
             <div
-              className={`w-full h-full flex items-center justify-center ${
+              className={`w-full h-[300px] sm:h-[400px] flex items-center justify-center ${
                 imageLoaded ? "hidden" : "block"
               }`}>
               <span className="text-gray-500 text-lg">Clinic Image</span>
             </div>
-            <img
+            <motion.img
+              initial={{ opacity: 0 }}
+              animate={{ opacity: imageLoaded ? 1 : 0 }}
+              transition={{ duration: 0.5 }}
               src={clinicImageUrl}
               alt="Manifest Dental Clinic"
-              className={`w-full h-full object-cover ${
+              className={`w-full h-[300px] sm:h-[400px] object-cover ${
                 imageLoaded ? "block" : "hidden"
               }`}
               onLoad={handleImageLoad}
               onError={handleImageError}
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* About Text */}
-        <div className="order-1 md:order-2 flex flex-col justify-center">
-          <h3 className="text-2xl font-semibold text-teal-600 mb-4">
+        <motion.div
+          variants={slideUp}
+          className="order-1 md:order-2 flex flex-col justify-center">
+          <motion.h3
+            variants={textVariants}
+            className="text-2xl font-semibold text-primary-600 mb-4">
             Welcome to Manifest Dental Studio
-          </h3>
-          <p className="text-gray-700 mb-6">
+          </motion.h3>
+          <motion.p
+            variants={textVariants}
+            className="text-gray-700 mb-6 text-base sm:text-lg">
             At Manifest Dental Studio, we believe everyone deserves a healthy
             smile. Our experienced team uses the latest technology to provide
             comprehensive dental care in a comfortable environment. From routine
             check-ups to advanced cosmetic procedures, we're committed to
             helping you achieve and maintain optimal oral health.
-          </p>
-          <a
+          </motion.p>
+          <motion.a
             href="#services"
-            className="text-teal-600 font-medium hover:text-teal-800 inline-flex items-center">
+            whileHover={{ x: 5 }}
+            whileTap={{ scale: 0.95 }}
+            className="text-primary-600 font-medium hover:text-primary-800 inline-flex items-center group">
             Explore our services
-            <svg
-              className="w-4 h-4 ml-2"
+            <motion.svg
+              className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24">
@@ -135,26 +175,41 @@ const About = () => {
                 strokeWidth={2}
                 d="M14 5l7 7m0 0l-7 7m7-7H3"
               />
-            </svg>
-          </a>
-        </div>
+            </motion.svg>
+          </motion.a>
+        </motion.div>
       </div>
 
       {/* Features */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <motion.div
+        variants={staggerContainer}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {features.map((feature, index) => (
-          <div
+          <motion.div
             key={index}
-            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow text-center">
-            <div className="flex justify-center mb-4">{feature.icon}</div>
-            <h3 className="font-semibold text-lg text-teal-600 mb-3">
+            variants={cardVariants}
+            whileHover="hover"
+            className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-center h-full">
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ duration: 0.2 }}
+              className="flex justify-center mb-4">
+              {feature.icon}
+            </motion.div>
+            <motion.h3
+              variants={textVariants}
+              className="font-semibold text-xl text-primary-600 mb-3">
               {feature.title}
-            </h3>
-            <p className="text-gray-700">{feature.description}</p>
-          </div>
+            </motion.h3>
+            <motion.p
+              variants={textVariants}
+              className="text-gray-700 text-base sm:text-lg">
+              {feature.description}
+            </motion.p>
+          </motion.div>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

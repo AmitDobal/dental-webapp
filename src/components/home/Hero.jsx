@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Button from "../common/Button";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
+import image1 from "../../../public/images/hero/dental-image1.jpeg";
 
 const Hero = () => {
   return (
@@ -105,10 +106,12 @@ const Hero = () => {
                 ease: "easeInOut",
               }}
               className="relative">
-              <div className="w-full h-[500px] bg-gradient-to-br from-primary-700 to-primary-600 rounded-lg shadow-2xl flex items-center justify-center">
-                <span className="text-white text-2xl font-semibold">
-                  Dental Care Image
-                </span>
+              <div className="w-full h-[500px] bg-gradient-to-br from-primary-700 to-primary-600 rounded-lg shadow-2xl flex items-center justify-center overflow-hidden">
+                <img
+                  src={image1}
+                  alt="Dentist performing dental procedure"
+                  className="w-full h-full object-cover rounded-lg"
+                />
               </div>
               {/* Floating Elements */}
               <motion.div
