@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { clinicInfo } from "../../data";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
-import ClickableMap from "../common/ClickableMap";
+import SimpleMap from "../common/SimpleMap";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40, scale: 0.97 },
@@ -48,27 +48,27 @@ const VisitSection = () => {
         <motion.p
           variants={slideUp}
           className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
-          We're conveniently located to serve your dental needs. Click on the
-          map to get directions or view our location on Google Maps.
+          We're conveniently located to serve your dental needs. Find us easily
+          using the map below.
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           <motion.div
             variants={cardVariants}
             initial="hidden"
             whileInView="visible"
             whileHover="hover"
             viewport={{ once: true }}
-            custom={0}>
-            <ClickableMap
-              embedUrl={clinicInfo.map.embedUrlBasic}
-              directionsUrl={clinicInfo.map.directionsUrl}
-              placeUrl={clinicInfo.map.placeUrl}
-              title={`${clinicInfo.name} Location`}
-              height="400"
-              showClickHint={true}
-              preferDirections={false}
-            />
+            custom={0}
+            className="h-full">
+            <div className="h-full bg-white rounded-lg shadow-md overflow-hidden">
+              <SimpleMap
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.3313995454405!2d73.0714861!3d19.049161599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c31c5007c729%3A0x1ff8490609dee63!2sDr.Manasi&#39;s%20Manifest%20Dental%20Studio%20Kharghar!5e0!3m2!1sen!2sin!4v1748210893318!5m2!1sen!2sin"
+                title={`${clinicInfo.name} Location`}
+                height="100%"
+                className="h-full"
+              />
+            </div>
           </motion.div>
 
           <motion.div
@@ -78,7 +78,7 @@ const VisitSection = () => {
             whileHover="hover"
             viewport={{ once: true }}
             custom={1}
-            className="bg-white p-6 rounded-lg shadow-md">
+            className="bg-white p-6 rounded-lg shadow-md h-full flex flex-col">
             <div className="mb-6">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 Location
@@ -126,7 +126,7 @@ const VisitSection = () => {
               </motion.div>
             </div>
 
-            <div>
+            <div className="flex-1">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 Contact Information
               </h3>

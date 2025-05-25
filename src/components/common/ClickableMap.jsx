@@ -82,18 +82,25 @@ const ClickableMap = ({
     setHasError(false);
   }, [embedUrl]);
 
+  // Handle height styling
+  const isFullHeight = height === "100%";
+  const containerClasses = isFullHeight ? "h-full min-h-[500px]" : "";
+  const mapContainerClasses = isFullHeight ? "h-full" : "";
+  const mapContainerStyle = isFullHeight ? {} : { height: height };
+
   return (
-    <div className={`relative group ${className}`}>
+    <div className={`relative group ${className} ${containerClasses}`}>
       {/* Map Container */}
       <div
-        className="relative w-full rounded-lg shadow-lg overflow-hidden cursor-pointer transition-all duration-300 transform group-hover:scale-[1.02] group-hover:shadow-xl"
+        className={`relative w-full rounded-lg shadow-lg overflow-hidden cursor-pointer transition-all duration-300 transform group-hover:scale-[1.02] group-hover:shadow-xl ${mapContainerClasses}`}
         onClick={handleMapClick}
         onKeyDown={handleKeyDown}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         tabIndex={0}
         role="button"
-        aria-label={`Open ${title} in Google Maps`}>
+        aria-label={`Open ${title} in Google Maps`}
+        style={mapContainerStyle}>
         {/* Loading Placeholder */}
         {!isLoaded && (
           <div className="absolute inset-0 bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center z-10">
@@ -236,53 +243,6 @@ const ClickableMap = ({
 
         {/* Focus Ring */}
         <div className="absolute inset-0 rounded-lg ring-2 ring-primary-500 ring-opacity-0 group-focus:ring-opacity-50 transition-all duration-200 pointer-events-none"></div>
-      </div>
-
-      {/* Action Buttons (Optional) */}
-      <div className="mt-3 flex space-x-2">
-        <button
-          onClick={() => window.open(placeUrl, "_blank", "noopener,noreferrer")}
-          className="flex-1 bg-primary-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors duration-200 flex items-center justify-center space-x-2">
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-            />
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-            />
-          </svg>
-          <span>View Location</span>
-        </button>
-
-        <button
-          onClick={() =>
-            window.open(directionsUrl, "_blank", "noopener,noreferrer")
-          }
-          className="flex-1 bg-white border border-primary-600 text-primary-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-50 transition-colors duration-200 flex items-center justify-center space-x-2">
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-            />
-          </svg>
-          <span>Get Directions</span>
-        </button>
       </div>
     </div>
   );
