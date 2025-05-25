@@ -52,7 +52,7 @@ const LeftSection = () => (
           handleBookAppointment({ focusForm: true, focusDelay: 1000 })
         }
         size="lg"
-        className="bg-white !text-primary-800 hover:bg-primary-100 hover:!text-white font-semibold"
+        className="bg-white !text-primary-800 hover:bg-primary-100 hover:!text-white font-semibold cursor-pointer"
         aria-label="Book an appointment - scroll to contact form">
         Book an Appointment Now
       </Button>
@@ -60,8 +60,8 @@ const LeftSection = () => (
         onClick={() => handleConnectNow({ method: "scroll" })}
         variant="outline"
         size="lg"
-        className="border-white text-white hover:bg-white hover:text-primary-800"
-        aria-label="Connect with us - scroll to contact section">
+        className="border-white text-white hover:bg-white hover:text-primary-800 cursor-pointer"
+        aria-label="Connect with us - scroll to contact section ">
         Connect Now
       </Button>
     </motion.div>
