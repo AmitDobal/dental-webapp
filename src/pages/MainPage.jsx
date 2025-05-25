@@ -81,10 +81,19 @@ const MainPage = () => {
 
       {/* Contact Section */}
       <AnimatedSection id="contact" direction="up" delay={0.3}>
-        <div className="container mx-auto px-4 py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <ContactForm />
-            <ContactInfo clinicInfo={clinicInfo} />
+        <div className="relative w-full min-h-[80vh] bg-gradient-to-b from-white to-primary-50 overflow-hidden">
+          {/* Background Image */}
+          <div
+            className="absolute inset-0 w-full h-full bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center opacity-20 z-0"
+            aria-hidden="true"></div>
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-white/90 to-primary-50/90 z-10"></div>
+
+          <div className="relative z-20 container mx-auto px-4 py-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <ContactForm />
+              <ContactInfo clinicInfo={clinicInfo} />
+            </div>
           </div>
         </div>
       </AnimatedSection>
