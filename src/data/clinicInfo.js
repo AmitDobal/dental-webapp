@@ -64,12 +64,12 @@ export const clinicInfo = {
   ],
   // About section data
   about: {
-    heading: "Meet Dr. Manasi Surwade",
+    heading: "Dr. Manasi Surwade",
     subheading:
       "Dedicated to providing exceptional dental care with a focus on patient comfort and satisfaction",
     description:
       "Led by Dr. Manasi Surwade, our clinic combines years of expertise with state-of-the-art technology to provide comprehensive dental care in a comfortable, welcoming environment. We believe everyone deserves a healthy, beautiful smile.",
-    image: "/images/about/clinic.jpeg",
+    image: "/images/about/dr-manasi.jpeg",
     features: [
       {
         title: "Expert Specialist",

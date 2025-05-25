@@ -73,7 +73,8 @@ const About = () => {
           {/* Header Section */}
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              {clinicInfo.about.heading}
+              Meet{" "}
+              <span className="text-primary-600">{clinicInfo.about.heading}</span>
             </h2>
             <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto">
               {clinicInfo.about.subheading}
@@ -147,9 +148,7 @@ const About = () => {
                 <img
                   src={clinicInfo.about.image}
                   alt={`${clinicInfo.doctor.name} - ${clinicInfo.name}`}
-                  className={`w-full h-full object-cover ${
-                    imageLoaded ? "block" : "hidden"
-                  }`}
+                  className={`w-full h-full object-cover `}
                   onLoad={handleImageLoad}
                   onError={handleImageError}
                   loading="lazy"
