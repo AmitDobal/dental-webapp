@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { clinicInfo } from "../../data";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
+import ClickableMap from "../common/ClickableMap";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40, scale: 0.97 },
@@ -47,7 +48,8 @@ const VisitSection = () => {
         <motion.p
           variants={slideUp}
           className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
-          We're conveniently located to serve your dental needs
+          We're conveniently located to serve your dental needs. Click on the
+          map to get directions or view our location on Google Maps.
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
@@ -58,18 +60,15 @@ const VisitSection = () => {
             whileHover="hover"
             viewport={{ once: true }}
             custom={0}>
-            <div className="w-full rounded-lg shadow-lg overflow-hidden">
-              <iframe
-                src={clinicInfo.mapEmbedUrl}
-                width="100%"
-                height="400"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={`${clinicInfo.name} Location`}
-              />
-            </div>
+            <ClickableMap
+              embedUrl={clinicInfo.map.embedUrlBasic}
+              directionsUrl={clinicInfo.map.directionsUrl}
+              placeUrl={clinicInfo.map.placeUrl}
+              title={`${clinicInfo.name} Location`}
+              height="400"
+              showClickHint={true}
+              preferDirections={false}
+            />
           </motion.div>
 
           <motion.div
