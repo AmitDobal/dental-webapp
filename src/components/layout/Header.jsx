@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Button from "../common/Button";
 import NavLink from "../common/NavLink";
-import { clinicInfo } from "../../data/clinicInfo";
+import { clinicInfo } from "../../data";
+import { handleMobileNavigation } from "../../utils/scrollUtils";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,6 +28,22 @@ const Header = () => {
     }
   };
 
+  // Handle mobile navigation with smooth scrolling
+  const handleMobileNavClick = (e, href) => {
+    e.preventDefault();
+
+    // Extract section ID from href
+    if (href && href.startsWith("#")) {
+      const sectionId = href.substring(1);
+
+      // Use the mobile navigation utility
+      handleMobileNavigation(sectionId, () => setIsMobileMenuOpen(false), {
+        delay: 150, // Slightly longer delay for smoother UX
+        offset: -80, // Account for fixed header height
+      });
+    }
+  };
+
   const navLinks = [
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
@@ -47,7 +65,8 @@ const Header = () => {
             className={`text-xl sm:text-2xl font-bold transition-colors ${
               isScrolled ? "text-primary-600" : "text-white"
             }`}
-            aria-label={clinicInfo.name}>
+            aria-label={clinicInfo.name}
+            onClick={(e) => handleMobileNavClick(e, "#home")}>
             <span className="hidden sm:inline">Manifest Dental</span>
             <span className="sm:hidden">Manifest</span>
           </a>
@@ -117,7 +136,7 @@ const Header = () => {
                   href={link.href}
                   label={link.label}
                   className="text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-4 py-2 text-sm font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => handleMobileNavClick(e, link.href)}
                 />
               ))}
               <div className="px-4 pt-2 pb-3">
@@ -126,7 +145,7 @@ const Header = () => {
                   href="#contact"
                   size="sm"
                   className="w-full bg-primary-600 text-white hover:bg-primary-700"
-                  onClick={() => setIsMobileMenuOpen(false)}>
+                  onClick={(e) => handleMobileNavClick(e, "#contact")}>
                   Book Appointment
                 </Button>
               </div>

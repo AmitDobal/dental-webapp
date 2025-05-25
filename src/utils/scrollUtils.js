@@ -167,3 +167,27 @@ export const enableSmoothScrollForAnchors = () => {
     });
   };
 };
+
+/**
+ * Handles mobile navigation scrolling with optimized settings
+ * @param {string} sectionId - The ID of the target section
+ * @param {Function} closeMenu - Function to close the mobile menu
+ * @param {Object} options - Additional scroll options
+ */
+export const handleMobileNavigation = (sectionId, closeMenu, options = {}) => {
+  const { delay = 100, offset = -80 } = options;
+
+  // Close mobile menu first
+  if (closeMenu && typeof closeMenu === "function") {
+    closeMenu();
+  }
+
+  // Add delay to allow menu close animation to complete
+  setTimeout(() => {
+    scrollToSection(sectionId, {
+      behavior: "smooth",
+      block: "start",
+      offset: offset, // Account for fixed header height
+    });
+  }, delay);
+};

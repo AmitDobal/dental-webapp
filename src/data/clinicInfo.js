@@ -62,4 +62,33 @@ export const clinicInfo = {
     "Excellence in Root Canal Treatment",
     "Patient Choice Award 2022",
   ],
+  // About section data
+  about: {
+    heading: "Meet Dr. Manasi Surwade",
+    subheading:
+      "Dedicated to providing exceptional dental care with a focus on patient comfort and satisfaction",
+    description:
+      "Led by Dr. Manasi Surwade, our clinic combines years of expertise with state-of-the-art technology to provide comprehensive dental care in a comfortable, welcoming environment. We believe everyone deserves a healthy, beautiful smile.",
+    image: "/images/about/clinic.jpeg",
+    features: [
+      {
+        title: "Expert Specialist",
+        description:
+          "Dr. Manasi Surwade brings years of expertise in cosmetic dentistry and root canal treatment.",
+        icon: "user",
+      },
+      {
+        title: "Advanced Technology",
+        description:
+          "State-of-the-art equipment and modern techniques for precise diagnoses and treatments.",
+        icon: "chip",
+      },
+      {
+        title: "Patient Comfort",
+        description:
+          "We prioritize your comfort and well-being, creating a relaxing environment for all procedures.",
+        icon: "heart",
+      },
+    ],
+  },
 };

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { clinicInfo } from "../../data/clinicInfo";
+import { clinicInfo } from "../../data";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
 
 const Footer = () => {

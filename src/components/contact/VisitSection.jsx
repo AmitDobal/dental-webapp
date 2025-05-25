@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { clinicInfo } from "../../data/clinicInfo";
+import { clinicInfo } from "../../data";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
 
 const cardVariants = {
@@ -30,8 +30,15 @@ const VisitSection = () => {
       whileInView="animate"
       viewport={{ once: true }}
       variants={staggerContainer}
-      className="relative w-full min-h-[80vh] bg-gradient-to-b from-primary-50 to-white overflow-hidden py-16">
-      <div className="relative z-10 container mx-auto px-4">
+      className="relative w-full min-h-[80vh] bg-gradient-to-b from-white to-primary-50 overflow-hidden py-16">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 w-full h-full bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center opacity-20 z-0"
+        aria-hidden="true"></div>
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-white/90 to-primary-50/90 z-10"></div>
+
+      <div className="relative z-20 container mx-auto px-4">
         <motion.h2
           variants={slideUp}
           className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-3">
