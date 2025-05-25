@@ -81,8 +81,10 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden p-2 rounded-md focus:outline-none ${
-              isScrolled ? "text-gray-700" : "text-white"
+            className={`md:hidden p-2 rounded-md focus:outline-none transition-all duration-300 ${
+              isScrolled
+                ? "text-gray-700 hover:bg-gray-100"
+                : "text-white bg-black/20 hover:bg-black/30 backdrop-blur-sm border border-white/20"
             }`}
             onClick={handleMobileMenuToggle}
             onKeyDown={handleKeyDown}
