@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Button from "../common/Button";
 import NavLink from "../common/NavLink";
+import { clinicInfo } from "../../data/clinicInfo";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,11 +44,12 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <a
             href="#home"
-            className={`text-2xl font-bold transition-colors ${
+            className={`text-xl sm:text-2xl font-bold transition-colors ${
               isScrolled ? "text-primary-600" : "text-white"
             }`}
-            aria-label="Manifest Dental Clinic">
-            Manifest Dental
+            aria-label={clinicInfo.name}>
+            <span className="hidden sm:inline">Manifest Dental</span>
+            <span className="sm:hidden">Manifest</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -79,8 +81,10 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden p-2 rounded-md focus:outline-none ${
-              isScrolled ? "text-gray-700" : "text-white"
+            className={`md:hidden p-2 rounded-md focus:outline-none transition-all duration-300 ${
+              isScrolled
+                ? "text-gray-700 hover:bg-gray-100"
+                : "text-white bg-black/20 hover:bg-black/30 backdrop-blur-sm border border-white/20"
             }`}
             onClick={handleMobileMenuToggle}
             onKeyDown={handleKeyDown}

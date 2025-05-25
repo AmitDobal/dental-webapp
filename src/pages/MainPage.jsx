@@ -10,6 +10,7 @@ import VisitSection from "../components/contact/VisitSection";
 import WhatsAppButton from "../components/common/WhatsAppButton";
 import ServiceModal from "../components/common/ServiceModal";
 import AnimatedSection from "../components/common/AnimatedSection";
+import { enableSmoothScrollForAnchors } from "../utils/scrollUtils";
 import { services } from "../data/services";
 import { testimonials } from "../data/testimonials";
 import { transformations } from "../data/transformations";
@@ -35,18 +36,11 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute("href"));
-        if (target) {
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      });
-    });
+    // Enable smooth scrolling for all anchor links
+    const cleanup = enableSmoothScrollForAnchors();
+
+    // Cleanup function
+    return cleanup;
   }, []);
 
   return (
