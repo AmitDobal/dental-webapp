@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Button from "../common/Button";
+import NavLink from "../common/NavLink";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -43,7 +44,7 @@ const Header = () => {
           <a
             href="#home"
             className={`text-2xl font-bold transition-colors ${
-              isScrolled ? "text-teal-600" : "text-white"
+              isScrolled ? "text-primary-600" : "text-white"
             }`}
             aria-label="Manifest Dental Clinic">
             Manifest Dental
@@ -52,23 +53,25 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <a
+              <NavLink
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium transition-colors ${
+                label={link.label}
+                className={
                   isScrolled
-                    ? "text-gray-700 hover:text-teal-600"
-                    : "text-white hover:text-teal-200"
-                }`}>
-                {link.label}
-              </a>
+                    ? "text-gray-700 hover:text-primary-600 focus:text-primary-600"
+                    : "text-white hover:text-primary-200 focus:text-primary-200"
+                }
+              />
             ))}
             <Button
               as="a"
               href="#contact"
               size="sm"
-              className={`${
-                isScrolled ? "bg-teal-600 text-white" : "bg-white text-teal-600"
+              className={`$${
+                isScrolled
+                  ? "bg-primary-600 text-white hover:bg-primary-700"
+                  : "bg-white text-primary-800 hover:bg-primary-100"
               } hover:shadow-lg font-medium px-6`}>
               Book Appointment
             </Button>
@@ -105,20 +108,20 @@ const Header = () => {
           <nav className="md:hidden py-4 mt-2 bg-white rounded-lg shadow-xl">
             <div className="flex flex-col space-y-2">
               {navLinks.map((link) => (
-                <a
+                <NavLink
                   key={link.href}
                   href={link.href}
-                  className="text-gray-700 hover:text-teal-600 hover:bg-gray-50 px-4 py-2 text-sm font-medium"
-                  onClick={() => setIsMobileMenuOpen(false)}>
-                  {link.label}
-                </a>
+                  label={link.label}
+                  className="text-gray-700 hover:text-primary-600 hover:bg-gray-50 px-4 py-2 text-sm font-medium"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                />
               ))}
               <div className="px-4 pt-2 pb-3">
                 <Button
                   as="a"
                   href="#contact"
                   size="sm"
-                  className="w-full bg-teal-600 text-white hover:bg-teal-700"
+                  className="w-full bg-primary-600 text-white hover:bg-primary-700"
                   onClick={() => setIsMobileMenuOpen(false)}>
                   Book Appointment
                 </Button>

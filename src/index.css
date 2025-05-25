@@ -1,57 +1,74 @@
-@import "tailwindcss/preflight";
-@tailwind utilities;
-@import "tailwindcss";
-/* Custom base styles */
+/* Custom base styles */@import "tailwindcss";
+
+@theme {
+  /* Primary Colors (Blue) */
+  --color-primary-50: oklch(0.98 0.02 240);
+  --color-primary-100: oklch(0.95 0.04 240);
+  --color-primary-200: oklch(0.9 0.06 240);
+  --color-primary-300: oklch(0.85 0.08 240);
+  --color-primary-400: oklch(0.8 0.1 240);
+  --color-primary-500: oklch(0.75 0.12 240);
+  --color-primary-600: oklch(0.7 0.14 240);
+  --color-primary-700: oklch(0.65 0.16 240);
+  --color-primary-800: oklch(0.6 0.18 240);
+  --color-primary-900: oklch(0.55 0.2 240);
+  --color-primary-950: oklch(0.5 0.22 240);
+
+  /* Secondary Colors (Purple) */
+  --color-secondary-50: oklch(0.98 0.02 280);
+  --color-secondary-100: oklch(0.95 0.04 280);
+  --color-secondary-200: oklch(0.9 0.06 280);
+  --color-secondary-300: oklch(0.85 0.08 280);
+  --color-secondary-400: oklch(0.8 0.1 280);
+  --color-secondary-500: oklch(0.75 0.12 280);
+  --color-secondary-600: oklch(0.7 0.14 280);
+  --color-secondary-700: oklch(0.65 0.16 280);
+  --color-secondary-800: oklch(0.6 0.18 280);
+  --color-secondary-900: oklch(0.55 0.2 280);
+  --color-secondary-950: oklch(0.5 0.22 280);
+
+  /* Success Colors (Green) */
+  --color-success-50: oklch(0.98 0.02 140);
+  --color-success-100: oklch(0.95 0.04 140);
+  --color-success-200: oklch(0.9 0.06 140);
+  --color-success-300: oklch(0.85 0.08 140);
+  --color-success-400: oklch(0.8 0.1 140);
+  --color-success-500: oklch(0.75 0.12 140);
+  --color-success-600: oklch(0.7 0.14 140);
+  --color-success-700: oklch(0.65 0.16 140);
+  --color-success-800: oklch(0.6 0.18 140);
+  --color-success-900: oklch(0.55 0.2 140);
+  --color-success-950: oklch(0.5 0.22 140);
+
+  /* Danger Colors (Red) */
+  --color-danger-50: oklch(0.98 0.02 25);
+  --color-danger-100: oklch(0.95 0.04 25);
+  --color-danger-200: oklch(0.9 0.06 25);
+  --color-danger-300: oklch(0.85 0.08 25);
+  --color-danger-400: oklch(0.8 0.1 25);
+  --color-danger-500: oklch(0.75 0.12 25);
+  --color-danger-600: oklch(0.7 0.14 25);
+  --color-danger-700: oklch(0.65 0.16 25);
+  --color-danger-800: oklch(0.6 0.18 25);
+  --color-danger-900: oklch(0.55 0.2 25);
+  --color-danger-950: oklch(0.5 0.22 25);
+
+  /* Gray Colors */
+  /* --color-gray-50: oklch(0.98 0.01 0);
+  --color-gray-100: oklch(0.95 0.01 0);
+  --color-gray-200: oklch(0.9 0.01 0);
+  --color-gray-300: oklch(0.85 0.01 0);
+  --color-gray-400: oklch(0.8 0.01 0);
+  --color-gray-500: oklch(0.75 0.01 0);
+  --color-gray-600: oklch(0.7 0.01 0);
+  --color-gray-700: oklch(0.65 0.01 0);
+  --color-gray-800: oklch(0.6 0.01 0);
+  --color-gray-900: oklch(0.55 0.01 0);
+  --color-gray-950: oklch(0.5 0.01 0); */
+}
+
 @layer base {
   html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: #1f2937;
-    background-color: white;
-    padding-top: 4rem; /* Space for fixed header */
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-weight: bold;
-  }
-
-  /* Set focus styles for accessibility */
-  *:focus-visible {
-    outline: none;
-    --tw-ring-offset-width: 2px;
-    --tw-ring-color: #10b981;
-    --tw-ring-offset-color: #fff;
-    box-shadow: 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color),
-      0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  }
-}
-
-/* Custom component styles */
-@layer components {
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.25rem;
-    font-weight: 500;
-    transition-property: color, background-color, border-color;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 150ms;
-  }
-}
-
-/* Custom utility styles */
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+    font-family: system-ui, sans-serif;
   }
 }

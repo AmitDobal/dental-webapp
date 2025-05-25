@@ -1,34 +1,79 @@
+import { motion } from "framer-motion";
 import GoogleMap from "./GoogleMap";
 import { clinicInfo } from "../../data/clinicInfo";
+import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40, scale: 0.97 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      delay: i * 0.12,
+      duration: 0.5,
+      type: "spring",
+      stiffness: 120,
+      damping: 16,
+    },
+  }),
+  hover: {
+    scale: 1.02,
+    boxShadow: "0 8px 32px 0 rgba(16, 185, 129, 0.12)",
+    transition: { type: "spring", stiffness: 180, damping: 18 },
+  },
+};
 
 const VisitSection = () => {
   return (
-    <div className="py-16 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-3">
-          Visit <span className="text-teal-600">Our Dental Studio</span>
-        </h2>
-        <p className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+    <motion.div
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true }}
+      variants={staggerContainer}
+      className="relative w-full min-h-[80vh] bg-gradient-to-b from-primary-50 to-white overflow-hidden py-16">
+      <div className="relative z-10 container mx-auto px-4">
+        <motion.h2
+          variants={slideUp}
+          className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-3">
+          Visit <span className="text-primary-600">Our Dental Studio</span>
+        </motion.h2>
+        <motion.p
+          variants={slideUp}
+          className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
           We're conveniently located to serve your dental needs
-        </p>
+        </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-          <div>
+          <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            whileHover="hover"
+            viewport={{ once: true }}
+            custom={0}>
             <GoogleMap
               embedUrl={clinicInfo.mapEmbedUrl}
               title={`${clinicInfo.name} Location`}
               height="400px"
-              className="w-full"
+              className="w-full rounded-lg shadow-lg"
             />
-          </div>
+          </motion.div>
 
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <motion.div
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            whileHover="hover"
+            viewport={{ once: true }}
+            custom={1}
+            className="bg-white p-6 rounded-lg shadow-md">
             <div className="mb-6">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 Location
               </h3>
-              <div className="flex items-start">
-                <div className="flex-shrink-0 text-teal-600 mt-1">
+              <motion.div variants={fadeIn} className="flex items-start">
+                <div className="flex-shrink-0 text-primary-600 mt-1">
                   <svg
                     className="w-6 h-6"
                     fill="none"
@@ -51,14 +96,14 @@ const VisitSection = () => {
                 <div className="ml-4">
                   <p className="text-gray-700">{clinicInfo.address}</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
             <div className="mb-6">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 Office Hours
               </h3>
-              <div className="space-y-2">
+              <motion.div variants={fadeIn} className="space-y-2">
                 {clinicInfo.hours.map((day, index) => (
                   <div
                     key={index}
@@ -67,16 +112,16 @@ const VisitSection = () => {
                     <span>{day.hours}</span>
                   </div>
                 ))}
-              </div>
+              </motion.div>
             </div>
 
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-4">
                 Contact Information
               </h3>
-              <div className="space-y-3">
+              <motion.div variants={fadeIn} className="space-y-3">
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 text-teal-600 mt-1">
+                  <div className="flex-shrink-0 text-primary-600 mt-1">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -93,14 +138,14 @@ const VisitSection = () => {
                   <div className="ml-4">
                     <a
                       href={`tel:${clinicInfo.phone}`}
-                      className="text-teal-600 hover:text-teal-800 transition-colors">
+                      className="text-primary-600 hover:text-primary-800 transition-colors">
                       {clinicInfo.phone}
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start">
-                  <div className="flex-shrink-0 text-teal-600 mt-1">
+                  <div className="flex-shrink-0 text-primary-600 mt-1">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -117,7 +162,7 @@ const VisitSection = () => {
                   <div className="ml-4">
                     <a
                       href={`mailto:${clinicInfo.email}`}
-                      className="text-teal-600 hover:text-teal-800 transition-colors">
+                      className="text-primary-600 hover:text-primary-800 transition-colors">
                       {clinicInfo.email}
                     </a>
                   </div>
@@ -125,13 +170,15 @@ const VisitSection = () => {
 
                 <div className="mt-6 flex space-x-4">
                   {clinicInfo.socialMedia.map((social, index) => (
-                    <a
+                    <motion.a
                       key={index}
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-teal-600 transition-colors"
-                      aria-label={`Follow us on ${social.platform}`}>
+                      className="text-gray-600 hover:text-primary-600 transition-colors"
+                      aria-label={`Follow us on ${social.platform}`}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}>
                       <svg
                         className="w-6 h-6"
                         fill="currentColor"
@@ -143,15 +190,15 @@ const VisitSection = () => {
                           clipRule="evenodd"
                         />
                       </svg>
-                    </a>
+                    </motion.a>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
