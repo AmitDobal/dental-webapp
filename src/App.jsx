@@ -14,7 +14,9 @@ import GalleryPage from "./pages/GalleryPage";
 function App() {
   const location = useLocation();
   const showLayout =
-    location.pathname === "/" || location.pathname === "/services";
+    location.pathname === "/" ||
+    location.pathname === "/services" ||
+    location.pathname === "/gallery";
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
