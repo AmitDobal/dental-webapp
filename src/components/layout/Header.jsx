@@ -141,7 +141,7 @@ const Header = () => {
               className={`${
                 isScrolled
                   ? "bg-primary-600 text-white hover:bg-primary-700"
-                  : "bg-white text-primary-800 hover:bg-primary-100"
+                  : "bg-white !text-primary-800 hover:bg-primary-100 hover:!text-white"
               } hover:shadow-lg font-medium px-6`}
               onClick={(e) => handleNavClick(e, "#contact")}>
               Book Appointment

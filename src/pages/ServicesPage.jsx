@@ -78,7 +78,7 @@ const ServicesPage = () => {
                 as="a"
                 href="#services"
                 size="lg"
-                className="bg-white text-primary-600 hover:bg-primary-50 font-medium px-8 py-3 rounded-lg shadow-lg">
+                className="bg-white !text-primary-600 hover:!text-white hover:bg-primary-50 font-medium px-8 py-3 rounded-lg shadow-lg">
                 Explore Services
               </Button>
               <Button
@@ -258,7 +258,7 @@ const ServicesPage = () => {
                   as="a"
                   href="#contact"
                   size="lg"
-                  className="bg-white text-primary-600 hover:bg-primary-50 font-medium px-8 py-3 rounded-lg shadow-lg">
+                  className="bg-white !text-primary-600 hover:!text-white hover:bg-primary-50 font-medium px-8 py-3 rounded-lg shadow-lg">
                   Book Appointment
                 </Button>
               </div>
