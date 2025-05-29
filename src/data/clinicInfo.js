@@ -9,7 +9,7 @@ export const clinicInfo = {
   },
   address: "123 Main Street, Mumbai, Maharashtra 400001",
   phone: "+91 96993 74343",
-  email: "info@manifestdental.com",
+  email: "manifest.dental.studio@gmail.com",
   website: "www.manifestdental.com",
   hours: [
     {
