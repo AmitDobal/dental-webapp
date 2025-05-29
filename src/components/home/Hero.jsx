@@ -195,7 +195,7 @@ const LeftSection = ({ isMobile }) => {
             viewport={{ once: true }}
             custom={0.1}
             className="text-xs sm:text-sm text-primary-200">
-            Based On 200+ Reviews
+            Based On 50+ Reviews
           </motion.p>
         </div>
       </motion.div>
@@ -301,6 +301,60 @@ const RightSection = ({ isMobile }) => (
         }
         zIndex="z-10"
       />
+      {/* Floating Card 4 - Bottom Right */}
+      <FloatingImage
+        src="/images/hero/dental-image5.jpeg"
+        alt="Floating dental 4"
+        className="absolute right-4 sm:right-6 md:right-0 bottom-2 sm:bottom-4 w-24 h-16 sm:w-20 sm:h-20 md:w-36 md:h-30 from-primary-400 to-primary-200"
+        animate={
+          isMobile
+            ? { y: [0, 10, 0], x: [0, 8, 0] }
+            : { y: [0, 20, 0], x: [0, 15, 0] }
+        }
+        transition={
+          isMobile
+            ? {
+                duration: 3.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.7,
+              }
+            : {
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.5,
+              }
+        }
+        zIndex="z-10"
+      />
+      {/* Floating Card 5 - Center Left */}
+      {/* <FloatingImage
+        src="/images/hero/dental-image6.jpeg"
+        alt="Floating dental 5"
+        className="absolute left-2 sm:left-4 md:left-10 top-1/2 -translate-y-1/2 w-12 h-16 sm:w-14 sm:h-20 md:w-16 md:h-24 from-primary-700 to-primary-400"
+        animate={
+          isMobile
+            ? { y: [0, -8, 0], x: [0, 6, 0] }
+            : { y: [0, -16, 0], x: [0, 12, 0] }
+        }
+        transition={
+          isMobile
+            ? {
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.2,
+              }
+            : {
+                duration: 7,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 2.5,
+              }
+        }
+        zIndex="z-10"
+      /> */}
     </div>
   </motion.div>
 );
