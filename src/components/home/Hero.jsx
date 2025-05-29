@@ -2,12 +2,11 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Button from "../common/Button";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
-import {
-  handleBookAppointment,
-  handleConnectNow,
-} from "../../utils/scrollUtils";
+import { handleBookAppointment } from "../../utils/scrollUtils";
 import FloatingImage from "../common/FloatingImage";
 import { Typewriter } from "react-simple-typewriter";
+import Icon from "../common/Icon";
+import { clinicInfo } from "../../data";
 
 const HERO_PHRASES = [
   "Your Smile, Our Passion",
@@ -146,12 +145,22 @@ const LeftSection = ({ isMobile }) => {
           Book an Appointment Now
         </Button>
         <Button
-          onClick={() => handleConnectNow({ method: "scroll" })}
+          onClick={() => {
+            // WhatsApp chat logic (same as WhatsAppButton)
+            const phoneNumber = clinicInfo?.phone || "+91 96993 74343";
+            const message = `Hello! I'd like to schedule an appointment at ${clinicInfo.name}. Please let me know your availability.`;
+            const cleanPhoneNumber = phoneNumber.replace(/\D/g, "");
+            const url = `https://wa.me/${cleanPhoneNumber}?text=${encodeURIComponent(
+              message
+            )}`;
+            window.open(url, "_blank", "noopener,noreferrer");
+          }}
           variant="outline"
           size="lg"
-          className="border-white text-white hover:bg-white hover:text-primary-800 cursor-pointer"
-          aria-label="Connect with us - scroll to contact section ">
+          className="border-white text-white hover:bg-white hover:text-primary-800 cursor-pointer flex items-center gap-2"
+          aria-label="Connect with us on WhatsApp">
           Connect Now
+          <Icon name="whatsapp" className="w-10 h-10 text-green-400" />
         </Button>
       </motion.div>
 
