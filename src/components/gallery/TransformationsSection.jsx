@@ -4,6 +4,7 @@ import Button from "../common/Button";
 import { slideUp, staggerContainer } from "../../utils/animations";
 import Modal from "../common/Modal";
 import TransformationDetails from "./TransformationDetails";
+import { useNavigate } from "react-router-dom";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40, scale: 0.97 },
@@ -28,6 +29,7 @@ const cardVariants = {
 
 const TransformationsSection = ({ transformations }) => {
   const [selectedTransformation, setSelectedTransformation] = useState(null);
+  const navigate = useNavigate();
 
   const handleImageClick = (transformation) => {
     setSelectedTransformation(transformation);
@@ -101,6 +103,14 @@ const TransformationsSection = ({ transformations }) => {
                 </motion.div>
               </motion.div>
             ))}
+          </div>
+          <div className="flex justify-center mt-12">
+            <Button
+              size="lg"
+              className="bg-primary-600 text-white hover:bg-primary-700 font-medium px-8 py-3 rounded-lg shadow-lg"
+              onClick={() => navigate("/gallery")}>
+              View Full Gallery
+            </Button>
           </div>
         </motion.div>
       </div>

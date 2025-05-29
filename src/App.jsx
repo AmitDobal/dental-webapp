@@ -9,6 +9,7 @@ import Footer from "./components/layout/Footer";
 import MainPage from "./pages/MainPage";
 import ServicesPage from "./pages/ServicesPage";
 import NotFound from "./pages/NotFound";
+import GalleryPage from "./pages/GalleryPage";
 
 function App() {
   const location = useLocation();
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/services" element={<ServicesPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       {showLayout && <Footer />}
