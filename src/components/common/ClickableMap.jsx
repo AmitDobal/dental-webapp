@@ -249,3 +249,4 @@ const ClickableMap = ({
 };
 
 export default ClickableMap;
+ 

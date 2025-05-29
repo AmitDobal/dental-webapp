@@ -97,11 +97,18 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <a
             href="/"
-            className={`text-xl sm:text-2xl font-bold transition-colors ${
+            className={`flex items-center gap-2 text-xl sm:text-2xl font-bold transition-colors ${
               isScrolled ? "text-primary-600" : "text-white"
             }`}
             aria-label={clinicInfo.name}
             onClick={(e) => handleNavClick(e, "/")}>
+            <img
+              src="/images/dental-logo.png"
+              alt="Manifest Dental Clinic Logo"
+              className="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-white shadow-md border border-primary-100 transition-all duration-300"
+              loading="eager"
+              decoding="async"
+            />
             <span className="hidden sm:inline">Manifest Dental</span>
             <span className="sm:hidden">Manifest</span>
           </a>
@@ -134,7 +141,7 @@ const Header = () => {
               className={`${
                 isScrolled
                   ? "bg-primary-600 text-white hover:bg-primary-700"
-                  : "bg-white text-primary-800 hover:bg-primary-100"
+                  : "bg-white !text-primary-800 hover:bg-primary-100 hover:!text-white"
               } hover:shadow-lg font-medium px-6`}
               onClick={(e) => handleNavClick(e, "#contact")}>
               Book Appointment

@@ -27,6 +27,25 @@ const Button = ({
 
   const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
 
+  // If 'to' prop is provided and starts with '#', use <a> for anchor navigation with smooth scroll
+  if (to && to.startsWith("#")) {
+    const handleAnchorClick = (e) => {
+      e.preventDefault();
+      const el = document.getElementById(to.slice(1));
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+      if (props.onClick) {
+        props.onClick(e);
+      }
+    };
+    return (
+      <a href={to} className={classes} {...props} onClick={handleAnchorClick}>
+        {children}
+      </a>
+    );
+  }
+
   // If 'to' prop is provided, use Link component
   if (to) {
     return (

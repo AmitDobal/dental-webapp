@@ -4,6 +4,7 @@ export { services } from "./services";
 export { transformations } from "./transformations";
 export { testimonials } from "./testimonials";
 export { pricingData } from "./pricing";
+export { default as galleryImages } from "./gallery";
 
 // Import for re-exports
 import { clinicInfo } from "./clinicInfo";

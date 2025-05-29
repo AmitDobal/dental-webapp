@@ -4,6 +4,8 @@ import ServiceCard from "../components/common/ServiceCard";
 import ServiceModal from "../components/common/ServiceModal";
 import Button from "../components/common/Button";
 import { services } from "../data";
+import { useNavigate, useLocation } from "react-router-dom";
+import { handleAnchorNavigation } from "../utils/scrollUtils";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -39,6 +41,8 @@ const cardVariants = {
 const ServicesPage = () => {
   const [selectedService, setSelectedService] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleServiceClick = (service) => {
     setSelectedService(service);
@@ -78,7 +82,7 @@ const ServicesPage = () => {
                 as="a"
                 href="#services"
                 size="lg"
-                className="bg-white text-primary-600 hover:bg-primary-50 font-medium px-8 py-3 rounded-lg shadow-lg">
+                className="bg-white !text-primary-600 hover:!text-white hover:bg-primary-50 font-medium px-8 py-3 rounded-lg shadow-lg">
                 Explore Services
               </Button>
               <Button
@@ -86,7 +90,10 @@ const ServicesPage = () => {
                 href="#contact"
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-primary-600 font-medium px-8 py-3 rounded-lg">
+                className="border-white text-white hover:bg-white hover:text-primary-600 font-medium px-8 py-3 rounded-lg"
+                onClick={(e) =>
+                  handleAnchorNavigation(e, "#contact", { navigate, location })
+                }>
                 Book Consultation
               </Button>
             </div>
@@ -258,7 +265,13 @@ const ServicesPage = () => {
                   as="a"
                   href="#contact"
                   size="lg"
-                  className="bg-white text-primary-600 hover:bg-primary-50 font-medium px-8 py-3 rounded-lg shadow-lg">
+                  className="bg-white !text-primary-600 hover:!text-white hover:bg-primary-50 font-medium px-8 py-3 rounded-lg shadow-lg"
+                  onClick={(e) =>
+                    handleAnchorNavigation(e, "#contact", {
+                      navigate,
+                      location,
+                    })
+                  }>
                   Book Appointment
                 </Button>
               </div>

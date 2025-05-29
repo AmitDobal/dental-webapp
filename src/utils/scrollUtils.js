@@ -191,3 +191,32 @@ export const handleMobileNavigation = (sectionId, closeMenu, options = {}) => {
     });
   }, delay);
 };
+
+/**
+ * Handles anchor navigation across pages (SPA)
+ * Navigates to home if not already there, then scrolls to the anchor
+ * @param {Event} e - The click event
+ * @param {string} href - The anchor href (e.g., #contact)
+ * @param {object} options - { navigate, location, offset, delay }
+ */
+export const handleAnchorNavigation = (
+  e,
+  href,
+  { navigate, location, offset = -80, delay = 100 } = {}
+) => {
+  if (!href || !href.startsWith("#")) return;
+  e.preventDefault();
+  const sectionId = href.substring(1);
+  if (location.pathname !== "/") {
+    navigate("/");
+    setTimeout(() => {
+      scrollToSection(sectionId, {
+        behavior: "smooth",
+        block: "start",
+        offset,
+      });
+    }, delay);
+    return;
+  }
+  scrollToSection(sectionId, { behavior: "smooth", block: "start", offset });
+};

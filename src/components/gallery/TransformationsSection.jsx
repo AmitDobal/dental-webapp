@@ -2,6 +2,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "../common/Button";
 import { slideUp, staggerContainer } from "../../utils/animations";
+import Modal from "../common/Modal";
+import TransformationDetails from "./TransformationDetails";
+import { useNavigate } from "react-router-dom";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40, scale: 0.97 },
@@ -26,6 +29,7 @@ const cardVariants = {
 
 const TransformationsSection = ({ transformations }) => {
   const [selectedTransformation, setSelectedTransformation] = useState(null);
+  const navigate = useNavigate();
 
   const handleImageClick = (transformation) => {
     setSelectedTransformation(transformation);
@@ -100,119 +104,24 @@ const TransformationsSection = ({ transformations }) => {
               </motion.div>
             ))}
           </div>
+          <div className="flex justify-center mt-12">
+            <Button
+              size="lg"
+              className="bg-primary-600 text-white hover:bg-primary-700 font-medium px-8 py-3 rounded-lg shadow-lg"
+              onClick={() => navigate("/gallery")}>
+              View Full Gallery
+            </Button>
+          </div>
         </motion.div>
       </div>
 
       <AnimatePresence>
-        {selectedTransformation && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-75"
-            onClick={closeModal}>
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white rounded-lg shadow-xl max-w-4xl w-full"
-              onClick={(e) => e.stopPropagation()}>
-              <div className="relative p-6">
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={closeModal}
-                  className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
-                  aria-label="Close modal">
-                  <svg
-                    className="w-5 h-5 text-gray-700"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </motion.button>
-
-                <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                  {selectedTransformation.title}
-                </h2>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.2 }}>
-                    <h3 className="text-lg font-medium text-gray-700 mb-2">
-                      Before
-                    </h3>
-                    <div className="bg-gray-200 rounded overflow-hidden h-60">
-                      <img
-                        src={
-                          selectedTransformation.beforeImage ||
-                          selectedTransformation.image
-                        }
-                        alt={`Before: ${selectedTransformation.title}`}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          e.target.style.display = "none";
-                        }}
-                      />
-                    </div>
-                  </motion.div>
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}>
-                    <h3 className="text-lg font-medium text-gray-700 mb-2">
-                      After
-                    </h3>
-                    <div className="bg-gray-200 rounded overflow-hidden h-60">
-                      <img
-                        src={
-                          selectedTransformation.afterImage ||
-                          selectedTransformation.image
-                        }
-                        alt={`After: ${selectedTransformation.title}`}
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          e.target.style.display = "none";
-                        }}
-                      />
-                    </div>
-                  </motion.div>
-                </div>
-
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 }}
-                  className="text-gray-700 mb-6">
-                  {selectedTransformation.fullDescription ||
-                    selectedTransformation.description}
-                </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="flex justify-end">
-                  <Button
-                    to="#contact"
-                    onClick={closeModal}
-                    className="bg-primary-600 text-white hover:bg-primary-700">
-                    Book a Consultation
-                  </Button>
-                </motion.div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
+        <Modal isOpen={!!selectedTransformation} onClose={closeModal}>
+          <TransformationDetails
+            transformation={selectedTransformation}
+            onClose={closeModal}
+          />
+        </Modal>
       </AnimatePresence>
     </div>
   );
