@@ -27,6 +27,15 @@ const Button = ({
 
   const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
 
+  // If 'to' prop is provided and starts with '#', use <a> for anchor navigation
+  if (to && to.startsWith("#")) {
+    return (
+      <a href={to} className={classes} {...props}>
+        {children}
+      </a>
+    );
+  }
+
   // If 'to' prop is provided, use Link component
   if (to) {
     return (
