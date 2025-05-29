@@ -7,7 +7,6 @@ import TransformationsSection from "../components/gallery/TransformationsSection
 import ContactForm from "../components/contact/ContactForm";
 import ContactInfo from "../components/contact/ContactInfo";
 import VisitSection from "../components/contact/VisitSection";
-import WhatsAppButton from "../components/common/WhatsAppButton";
 import ServiceModal from "../components/common/ServiceModal";
 import AnimatedSection from "../components/common/AnimatedSection";
 import { enableSmoothScrollForAnchors } from "../utils/scrollUtils";
@@ -94,10 +93,6 @@ const MainPage = () => {
           </div>
         </div>
       </AnimatedSection>
-
-      {/* WhatsApp Button */}
-      <WhatsAppButton />
-
       {/* Service Modal */}
       <ServiceModal
         service={selectedService}

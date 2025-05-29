@@ -10,6 +10,7 @@ import MainPage from "./pages/MainPage";
 import ServicesPage from "./pages/ServicesPage";
 import NotFound from "./pages/NotFound";
 import GalleryPage from "./pages/GalleryPage";
+import WhatsAppButton from "./components/common/WhatsAppButton";
 
 function App() {
   const location = useLocation();
@@ -31,6 +32,8 @@ function App() {
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+       {/* WhatsApp Button */}
+       <WhatsAppButton />
       {showLayout && <Footer />}
     </div>
   );
