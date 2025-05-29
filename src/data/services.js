@@ -94,6 +94,11 @@ export const services = [
           description: "PFM crown with 5-year warranty coverage",
         },
         {
+          name: "Zirconia Crown (5 Years Warranty)",
+          price: "₹10,000",
+          description: "Premium zirconia crown with 5-year warranty",
+        },
+        {
           name: "Zirconia Crown (10 Years Warranty)",
           price: "₹12,000",
           description: "Premium zirconia crown with 10-year warranty",
