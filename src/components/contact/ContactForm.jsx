@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import Button from "../common/Button";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
+import emailjs from "@emailjs/browser";
+import { clinicInfo } from "../../data";
 
 const formFieldVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -19,6 +21,7 @@ const formFieldVariants = {
 };
 
 const ContactForm = () => {
+  const formRef = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -44,28 +47,47 @@ const ContactForm = () => {
     setSubmitStatus(null);
 
     try {
-      // In a real application, you would send the form data to your backend
-      // For now, we'll simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      //TODO: Change the email to the actual email
+      const result = await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        "aatemplate_ta4mlp5",
+        {
+          from_name: formData.name,
+          // from_email: formData.email,
+          from_email: "amit.dobalwork14@gmail.com",
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+          to_name: "Dr. Amit Dobal", // Replace with your name
+          to_email: "amit.dobalwork14@gmail.com", // Replace with your email
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
 
-      setSubmitStatus({
-        type: "success",
-        message: "Thank you for your message! We'll get back to you soon.",
-      });
+      if (result.text === "OK") {
+        setSubmitStatus({
+          type: "success",
+          message: "Thank you for your message! We'll get back to you soon.",
+        });
 
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
-      });
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        throw new Error("Failed to send email");
+      }
     } catch (error) {
       console.error("Form submission error:", error);
       setSubmitStatus({
         type: "error",
-        message: "Something went wrong. Please try again later.",
+        message:
+          "Something went wrong. Please try again later. If the problem persists, please contact us directly at " +
+          clinicInfo.email,
       });
     } finally {
       setIsSubmitting(false);
@@ -98,7 +120,7 @@ const ContactForm = () => {
         </motion.div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
         <motion.div
           custom={0}
           variants={formFieldVariants}
