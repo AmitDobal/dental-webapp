@@ -1,30 +1,51 @@
-import { motion } from "framer-motion";
+import { useState, useCallback, useEffect } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 import TestimonialCard from "../common/TestimonialCard";
-import Button from "../common/Button";
+import TestimonialModal from "../common/TestimonialModal";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.97 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      delay: i * 0.12,
-      duration: 0.5,
-      type: "spring",
-      stiffness: 120,
-      damping: 16,
-    },
-  }),
-  hover: {
-    scale: 1.04,
-    boxShadow: "0 8px 32px 0 rgba(16, 185, 129, 0.12)",
-    transition: { type: "spring", stiffness: 180, damping: 18 },
-  },
-};
+import { motion } from "framer-motion";
 
 const Testimonials = ({ testimonials }) => {
+  const [selectedTestimonial, setSelectedTestimonial] = useState(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "center",
+    loop: true,
+    skipSnaps: false,
+    dragFree: false,
+  });
+
+  // Auto-play functionality
+  const autoplay = useCallback(() => {
+    if (!emblaApi) return;
+    emblaApi.scrollNext();
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const interval = setInterval(autoplay, 5000);
+    return () => clearInterval(interval);
+  }, [emblaApi, autoplay]);
+
+  // Pause autoplay on hover
+  const handleMouseEnter = useCallback(() => {
+    if (!emblaApi) return;
+    emblaApi.stop();
+  }, [emblaApi]);
+
+  const handleMouseLeave = useCallback(() => {
+    if (!emblaApi) return;
+    emblaApi.start();
+  }, [emblaApi]);
+
+  const handleTestimonialClick = (testimonial) => {
+    setSelectedTestimonial(testimonial);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedTestimonial(null);
+  };
+
   return (
     <div className="relative w-full min-h-[80vh] overflow-hidden">
       {/* Unified Background Image */}
@@ -53,45 +74,74 @@ const Testimonials = ({ testimonials }) => {
             at Manifest Dental Clinic
           </motion.p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.slice(0, 3).map((testimonial, i) => (
-              <motion.div
-                key={testimonial.id}
-                custom={i}
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                whileHover="hover"
-                viewport={{ once: true }}
-                className="h-full">
-                <TestimonialCard testimonial={testimonial} />
-              </motion.div>
-            ))}
-          </div>
+          {/* Carousel Container */}
+          <div className="relative max-w-6xl mx-auto">
+            <div
+              className="overflow-hidden"
+              ref={emblaRef}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}>
+              <div className="flex">
+                {testimonials.map((testimonial) => (
+                  <div
+                    key={testimonial.id}
+                    className="flex-[0_0_100%] md:flex-[0_0_33.33%] min-w-0 px-4">
+                    <TestimonialCard
+                      testimonial={testimonial}
+                      onClick={handleTestimonialClick}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
 
-          <motion.div variants={fadeIn} className="text-center mt-10">
-            <Button
-              to="#testimonials"
-              variant="outline"
-              className="text-primary-600 hover:text-primary-800 font-medium">
-              Read more testimonials
-              <svg
-                className="w-4 h-4 ml-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </svg>
-            </Button>
-          </motion.div>
+            {/* Navigation Buttons */}
+            <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none">
+              <button
+                onClick={() => emblaApi?.scrollPrev()}
+                className="pointer-events-auto bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300 -translate-x-1/2"
+                aria-label="Previous testimonial">
+                <svg
+                  className="w-6 h-6 text-primary-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
+              <button
+                onClick={() => emblaApi?.scrollNext()}
+                className="pointer-events-auto bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300 translate-x-1/2"
+                aria-label="Next testimonial">
+                <svg
+                  className="w-6 h-6 text-primary-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
         </motion.div>
       </div>
+
+      {/* Testimonial Modal */}
+      <TestimonialModal
+        testimonial={selectedTestimonial}
+        isOpen={!!selectedTestimonial}
+        onClose={handleCloseModal}
+      />
     </div>
   );
 };
