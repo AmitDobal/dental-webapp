@@ -50,7 +50,7 @@ const ContactForm = () => {
       //TODO: Change the email to the actual email
       const result = await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        "aatemplate_ta4mlp5",
+        "template_ta4mlp5",
         {
           from_name: formData.name,
           // from_email: formData.email,
