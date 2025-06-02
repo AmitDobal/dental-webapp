@@ -1,8 +1,28 @@
 import Button from "./Button";
 import Modal from "./Modal";
+import { handleBookAppointment } from "../../utils/scrollUtils";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const ServiceModal = ({ service, isOpen, onClose }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   if (!isOpen || !service) return null;
+
+  const handleBookAppointmentClick = () => {
+    onClose(); // Close the modal first
+    // If we're on the services page, navigate to home first
+    if (location.pathname === "/services") {
+      navigate("/");
+      // Wait for navigation to complete before scrolling
+      setTimeout(() => {
+        handleBookAppointment({ focusForm: true, focusDelay: 1000 });
+      }, 100);
+    } else {
+      // If we're already on the home page, just scroll
+      handleBookAppointment({ focusForm: true, focusDelay: 1000 });
+    }
+  };
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
@@ -162,9 +182,8 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
             Close
           </Button>
           <Button
-            to="#contact"
-            className="bg-primary-600 text-white hover:bg-primary-700 px-6"
-            onClick={onClose}>
+            onClick={handleBookAppointmentClick}
+            className="bg-primary-600 text-white hover:bg-primary-700 px-6">
             Book Appointment
           </Button>
         </div>
