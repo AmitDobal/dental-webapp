@@ -7,6 +7,12 @@ export const services = [
     longDescription:
       "Our root canal treatments are performed with precision and care using the latest technology. Dr. Manasi specializes in both single and multi-rooted tooth treatments, ensuring minimal discomfort and maximum success rates.",
     image: "/images/services/root-canal.png",
+    images: [
+      "/images/services/root-canal.png",
+      "/images/services/root-canal.png",
+      "/images/services/root-canal.png",
+      "/images/services/root-canal.png",
+    ],
     pricing: {
       startingPrice: "₹3,000",
       priceRange: "₹3,000 - ₹4,000",
@@ -46,6 +52,10 @@ export const services = [
     longDescription:
       "Our cosmetic dentistry services are designed to enhance the appearance of your smile. From composite to premium ceramic veneers, we offer a range of treatments to help you achieve the perfect smile.",
     image: "/images/services/cosmetic-dentistry.jpg",
+    images: [
+      "/images/services/root-canal.png",
+      "/images/services/root-canal.png",
+    ],
     pricing: {
       startingPrice: "₹2,000",
       priceRange: "₹2,000 - ₹8,000",
@@ -79,6 +89,9 @@ export const services = [
     longDescription:
       "Dental implants are a long-lasting solution for replacing missing teeth. Our implant procedures use premium titanium implants with various crown options including PFM and Zirconia crowns with warranty coverage.",
     image: "/images/services/dental-implants.jpg",
+    images: [
+      "/images/services/root-canal.png",
+    ],
     pricing: {
       startingPrice: "₹20,000",
       priceRange: "₹20,000 - ₹34,000",
