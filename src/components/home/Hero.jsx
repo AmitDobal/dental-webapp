@@ -251,13 +251,13 @@ const RightSection = ({ isMobile, onImageClick }) => (
         transition={
           isMobile
             ? {
-                duration: 3,
+                duration: 1.2,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 0,
               }
             : {
-                duration: 5,
+                duration: 1.8,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 0,
@@ -284,16 +284,16 @@ const RightSection = ({ isMobile, onImageClick }) => (
         transition={
           isMobile
             ? {
-                duration: 4,
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.3,
+              }
+            : {
+                duration: 2.2,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 0.5,
-              }
-            : {
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1,
               }
         }
         zIndex="z-10"
@@ -314,16 +314,16 @@ const RightSection = ({ isMobile, onImageClick }) => (
         transition={
           isMobile
             ? {
-                duration: 3.5,
+                duration: 1.3,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.6,
+              }
+            : {
+                duration: 2.5,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 1,
-              }
-            : {
-                duration: 7,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 2,
               }
         }
         zIndex="z-10"
@@ -344,16 +344,16 @@ const RightSection = ({ isMobile, onImageClick }) => (
         transition={
           isMobile
             ? {
-                duration: 3.5,
+                duration: 1.4,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: 0.7,
+                delay: 0.4,
               }
             : {
-                duration: 6,
+                duration: 2.8,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: 1.5,
+                delay: 0.8,
               }
         }
         zIndex="z-10"
