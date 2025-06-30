@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
 import ServiceCard from "../common/ServiceCard";
 import ServiceModal from "../common/ServiceModal";
 import Button from "../common/Button";
@@ -143,18 +144,7 @@ const Services = ({ services }) => {
             size="md"
             className="bg-white border-white text-primary-900 hover:bg-gray-100 hover:border-gray-200 px-8 py-3 font-medium transition-all duration-200">
             See All Services
-            <svg
-              className="w-4 h-4 ml-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
+            <ChevronRight className="w-4 h-4 ml-2" />
           </Button>
         </motion.div>
 

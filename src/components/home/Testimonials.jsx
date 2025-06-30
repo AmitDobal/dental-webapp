@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import TestimonialCard from "../common/TestimonialCard";
 import TestimonialModal from "../common/TestimonialModal";
@@ -158,18 +159,7 @@ const Testimonials = ({ testimonials }) => {
                 viewport={{ once: true }}
                 className="pointer-events-auto bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300 -translate-x-1/2"
                 aria-label="Previous testimonial">
-                <svg
-                  className="w-6 h-6 text-primary-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
+                <ChevronLeft className="w-6 h-6 text-primary-600" />
               </motion.button>
               <motion.button
                 onClick={() => emblaApi?.scrollNext()}
@@ -181,18 +171,7 @@ const Testimonials = ({ testimonials }) => {
                 viewport={{ once: true }}
                 className="pointer-events-auto bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300 translate-x-1/2"
                 aria-label="Next testimonial">
-                <svg
-                  className="w-6 h-6 text-primary-600"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
+                <ChevronRight className="w-6 h-6 text-primary-600" />
               </motion.button>
             </div>
           </motion.div>

@@ -3,6 +3,14 @@ import Modal from "./Modal";
 import { handleBookAppointment } from "../../utils/scrollUtils";
 import { useNavigate, useLocation } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  X,
+  DollarSign,
+  Info,
+  Check,
+} from "lucide-react";
 
 const ServiceModal = ({ service, isOpen, onClose }) => {
   const navigate = useNavigate();
@@ -72,36 +80,14 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
                     className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300 z-20"
                     aria-label="Previous image"
                     tabIndex={0}>
-                    <svg
-                      className="w-6 h-6 text-primary-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M15 19l-7-7 7-7"
-                      />
-                    </svg>
+                    <ChevronLeft className="w-6 h-6 text-primary-600" />
                   </button>
                   <button
                     onClick={() => emblaApi?.scrollNext()}
                     className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300 z-20"
                     aria-label="Next image"
                     tabIndex={0}>
-                    <svg
-                      className="w-6 h-6 text-primary-600"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
+                    <ChevronRight className="w-6 h-6 text-primary-600" />
                   </button>
                 </>
               )}
@@ -131,19 +117,7 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
             className="absolute top-4 right-4 z-10 cursor-pointer bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-md hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all duration-200"
             aria-label="Close modal"
             tabIndex={0}>
-            <svg
-              className="w-5 h-5 text-primary-600"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <X className="w-5 h-5 text-primary-600" />
           </button>
         </div>
 
@@ -159,18 +133,7 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
           {service.pricing && (
             <div className="mb-6 bg-gradient-to-br from-primary-50 to-primary-100/50 rounded-xl p-6 border border-primary-200/50">
               <h3 className="text-lg font-semibold text-primary-700 mb-4 flex items-center">
-                <svg
-                  className="w-5 h-5 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
-                  />
-                </svg>
+                <DollarSign className="w-5 h-5 mr-2" />
                 Treatment Pricing
               </h3>
 
@@ -196,18 +159,7 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
 
               <div className="mt-4 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-primary-200/50">
                 <p className="text-primary-800 text-sm font-medium flex items-start">
-                  <svg
-                    className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                  <Info className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
                   All procedures include consultation, follow-up care, and use
                   high-quality materials with sterilization protocols.
                 </p>
@@ -223,18 +175,7 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 {service.features.map((feature, index) => (
                   <li key={index} className="flex items-start">
-                    <svg
-                      className="w-4 h-4 text-primary-600 mr-3 mt-1 flex-shrink-0"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
+                    <Check className="w-4 h-4 text-primary-600 mr-3 mt-1 flex-shrink-0" />
                     <span className="text-gray-700 text-sm leading-relaxed">
                       {feature}
                     </span>

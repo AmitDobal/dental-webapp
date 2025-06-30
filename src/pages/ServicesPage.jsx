@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { CheckCircle, DollarSign, Heart } from "lucide-react";
 import ServiceCard from "../components/common/ServiceCard";
 import ServiceModal from "../components/common/ServiceModal";
 import Button from "../components/common/Button";
@@ -170,18 +171,7 @@ const ServicesPage = () => {
                 viewport={{ once: true }}
                 className="text-center">
                 <div className="bg-primary-200/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border border-primary-200/30">
-                  <svg
-                    className="w-8 h-8 text-primary-200"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+                  <CheckCircle className="w-8 h-8 text-primary-200" />
                 </div>
                 <h4 className="font-semibold text-white mb-2">Expert Care</h4>
                 <p className="text-primary-100 text-sm">
@@ -197,18 +187,7 @@ const ServicesPage = () => {
                 viewport={{ once: true }}
                 className="text-center">
                 <div className="bg-primary-200/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border border-primary-200/30">
-                  <svg
-                    className="w-8 h-8 text-primary-200"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
-                    />
-                  </svg>
+                  <DollarSign className="w-8 h-8 text-primary-200" />
                 </div>
                 <h4 className="font-semibold text-white mb-2">
                   Transparent Pricing
@@ -226,18 +205,7 @@ const ServicesPage = () => {
                 viewport={{ once: true }}
                 className="text-center">
                 <div className="bg-primary-200/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border border-primary-200/30">
-                  <svg
-                    className="w-8 h-8 text-primary-200"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    />
-                  </svg>
+                  <Heart className="w-8 h-8 text-primary-200" />
                 </div>
                 <h4 className="font-semibold text-white mb-2">
                   Patient Comfort

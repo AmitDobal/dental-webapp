@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const GalleryModal = ({ images, selectedIndex, onClose, setSelectedIndex }) => {
   const modalRef = useRef();
@@ -46,18 +47,7 @@ const GalleryModal = ({ images, selectedIndex, onClose, setSelectedIndex }) => {
             className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors duration-200"
             aria-label="Close modal"
             tabIndex={0}>
-            <svg
-              className="w-5 h-5 text-gray-700"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
+            <X className="w-5 h-5 text-gray-700" />
           </button>
           <div className="flex items-center justify-center w-full h-full min-h-[60vh] p-6">
             <button
@@ -65,18 +55,7 @@ const GalleryModal = ({ images, selectedIndex, onClose, setSelectedIndex }) => {
               className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
               aria-label="Previous image"
               tabIndex={0}>
-              <svg
-                className="w-6 h-6 text-gray-700"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
+              <ChevronLeft className="w-6 h-6 text-gray-700" />
             </button>
             <img
               src={image.src}
@@ -89,18 +68,7 @@ const GalleryModal = ({ images, selectedIndex, onClose, setSelectedIndex }) => {
               className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm hover:bg-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
               aria-label="Next image"
               tabIndex={0}>
-              <svg
-                className="w-6 h-6 text-gray-700"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
+              <ChevronRight className="w-6 h-6 text-gray-700" />
             </button>
           </div>
           <div className="text-center p-2 text-gray-700 text-sm font-medium">
