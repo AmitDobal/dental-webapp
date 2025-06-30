@@ -43,15 +43,15 @@ const GalleryImageCard = ({ image, index, onClick }) => {
   const aspect = image.type === "square" ? "aspect-square" : "aspect-[4/3]";
   return (
     <div
-      className={`bg-gray-100 rounded-lg overflow-hidden shadow-md ${aspect} relative cursor-pointer`}
+      className={`bg-white/10 backdrop-blur-sm rounded-lg overflow-hidden shadow-lg border border-white/20 ${aspect} relative cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl hover:border-primary-200/40`}
       onClick={() => onClick(index)}
       tabIndex={0}
       aria-label={image.alt}
       role="button"
       onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && onClick(index)}>
       {!loaded && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-200 animate-pulse">
-          <div className="w-12 h-12 rounded-full bg-gray-300" />
+        <div className="absolute inset-0 flex items-center justify-center bg-white/5 animate-pulse">
+          <div className="w-12 h-12 rounded-full bg-primary-200/20" />
         </div>
       )}
       <img

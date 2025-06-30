@@ -33,7 +33,7 @@ const cardVariants = {
   },
   hover: {
     scale: 1.02,
-    boxShadow: "0 4px 20px 0 rgba(16, 185, 129, 0.08)",
+    boxShadow: "0 4px 20px 0 rgba(16, 185, 129, 0.15)",
     transition: { type: "spring", stiffness: 200, damping: 20 },
   },
 };
@@ -54,12 +54,12 @@ const ServicesPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-primary-50">
+    <div className="min-h-screen bg-gradient-to-b from-primary-900 to-primary-800">
       {/* Hero Section */}
-      <div className="relative w-full bg-gradient-to-b from-primary-600 to-primary-700 overflow-hidden py-20">
+      <div className="relative w-full bg-gradient-to-b from-primary-900 to-primary-800 overflow-hidden py-20">
         {/* Background Image */}
         <div
-          className="absolute inset-0 w-full h-full bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center opacity-20 z-0"
+          className="absolute inset-0 w-full h-full bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center opacity-10 z-0"
           aria-hidden="true"></div>
 
         <div className="relative z-10 container mx-auto px-4 text-center">
@@ -110,16 +110,16 @@ const ServicesPage = () => {
             whileInView="visible"
             viewport={{ once: true }}
             className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Complete{" "}
-              <span className="text-primary-600">Treatment Options</span>
+              <span className="text-primary-200">Treatment Options</span>
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto mb-6">
+            <p className="text-primary-100 max-w-3xl mx-auto mb-6">
               Dr. Manasi's Manifest Dental Studio offers a comprehensive range
               of dental services with transparent pricing and the highest
               quality standards.
             </p>
-            <div className="w-20 h-1 bg-primary-600 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-primary-200 mx-auto rounded-full"></div>
           </motion.div>
 
           {/* All Services Grid */}
@@ -157,16 +157,21 @@ const ServicesPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
             viewport={{ once: true }}
-            className="mt-20 bg-white rounded-2xl shadow-lg border border-primary-100 p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            className="mt-20 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">
               Why Choose Dr. Manasi's Manifest Dental Studio?
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <div className="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="text-center">
+                <div className="bg-primary-200/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border border-primary-200/30">
                   <svg
-                    className="w-8 h-8 text-primary-600"
+                    className="w-8 h-8 text-primary-200"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24">
@@ -178,19 +183,22 @@ const ServicesPage = () => {
                     />
                   </svg>
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">
-                  Expert Care
-                </h4>
-                <p className="text-gray-600 text-sm">
+                <h4 className="font-semibold text-white mb-2">Expert Care</h4>
+                <p className="text-primary-100 text-sm">
                   Dr. Manasi brings years of expertise in cosmetic dentistry and
                   root canal treatment.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="text-center">
-                <div className="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="text-center">
+                <div className="bg-primary-200/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border border-primary-200/30">
                   <svg
-                    className="w-8 h-8 text-primary-600"
+                    className="w-8 h-8 text-primary-200"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24">
@@ -202,19 +210,24 @@ const ServicesPage = () => {
                     />
                   </svg>
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">
+                <h4 className="font-semibold text-white mb-2">
                   Transparent Pricing
                 </h4>
-                <p className="text-gray-600 text-sm">
+                <p className="text-primary-100 text-sm">
                   Clear, upfront pricing with no hidden costs. Quality care at
                   affordable rates.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="text-center">
-                <div className="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="text-center">
+                <div className="bg-primary-200/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border border-primary-200/30">
                   <svg
-                    className="w-8 h-8 text-primary-600"
+                    className="w-8 h-8 text-primary-200"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24">
@@ -226,14 +239,14 @@ const ServicesPage = () => {
                     />
                   </svg>
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">
+                <h4 className="font-semibold text-white mb-2">
                   Patient Comfort
                 </h4>
-                <p className="text-gray-600 text-sm">
+                <p className="text-primary-100 text-sm">
                   Modern techniques and a comfortable environment for
                   stress-free dental care.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
 
@@ -244,7 +257,7 @@ const ServicesPage = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             viewport={{ once: true }}
             className="mt-16 text-center">
-            <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 max-w-3xl mx-auto text-white">
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 max-w-3xl mx-auto text-white border border-white/20">
               <h3 className="text-2xl font-bold mb-4">
                 Ready to Start Your Dental Journey?
               </h3>
