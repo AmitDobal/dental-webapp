@@ -47,43 +47,39 @@ const MainPage = () => {
       </section>
 
       {/* About Section */}
-      <AnimatedSection id="about" direction="up" delay={0.2}>
+      <section id="about" className="relative">
         <About />
-      </AnimatedSection>
+      </section>
 
       {/* Services Section */}
-      <AnimatedSection
-        id="services"
-        className="bg-primary-50"
-        direction="up"
-        delay={0.3}>
+      <section id="services" className="relative">
         <Services services={services} onServiceClick={handleServiceClick} />
-      </AnimatedSection>
+      </section>
 
       {/* Smile Transformations Section */}
-      <AnimatedSection id="transformations" direction="up" delay={0.3}>
+      <section id="transformations" className="relative">
         <TransformationsSection transformations={transformations} />
-      </AnimatedSection>
+      </section>
 
       {/* Testimonials Section */}
-      <AnimatedSection id="testimonials" direction="up" delay={0.3}>
+      <section id="testimonials" className="relative">
         <Testimonials testimonials={testimonials} />
-      </AnimatedSection>
+      </section>
 
       {/* Visit Our Dental Studio Section */}
-      <AnimatedSection id="visit" direction="up" delay={0.3}>
+      <section id="visit" className="relative">
         <VisitSection />
-      </AnimatedSection>
+      </section>
 
       {/* Contact Section */}
-      <AnimatedSection id="contact" direction="up" delay={0.3}>
-        <div className="relative w-full min-h-[80vh] bg-gradient-to-b from-white to-primary-50 overflow-hidden">
+      <section id="contact" className="relative">
+        <div className="relative w-full min-h-[80vh] bg-gradient-to-b from-primary-900 to-primary-800 overflow-hidden">
           {/* Background Image */}
           <div
             className="absolute inset-0 w-full h-full bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center opacity-20 z-0"
             aria-hidden="true"></div>
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-white/90 to-primary-50/90 z-10"></div>
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-primary-900/90 to-primary-800/90 z-10"></div>
 
           <div className="relative z-20 container mx-auto px-4 py-20">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -92,7 +88,7 @@ const MainPage = () => {
             </div>
           </div>
         </div>
-      </AnimatedSection>
+      </section>
       {/* Service Modal */}
       <ServiceModal
         service={selectedService}

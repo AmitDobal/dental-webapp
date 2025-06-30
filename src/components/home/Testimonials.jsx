@@ -1,9 +1,47 @@
 import { useState, useCallback, useEffect } from "react";
+import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import TestimonialCard from "../common/TestimonialCard";
 import TestimonialModal from "../common/TestimonialModal";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
-import { motion } from "framer-motion";
+
+const headerVariants = {
+  hidden: { opacity: 0, y: -30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const navButtonVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+  hover: {
+    scale: 1.1,
+    boxShadow: "0 8px 25px rgba(255,255,255,0.3)",
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+  tap: {
+    scale: 0.95,
+    transition: {
+      duration: 0.1,
+    },
+  },
+};
 
 const Testimonials = ({ testimonials }) => {
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
@@ -47,58 +85,77 @@ const Testimonials = ({ testimonials }) => {
   };
 
   return (
-    <div className="relative w-full min-h-[80vh] overflow-hidden">
+    <div className="relative w-full min-h-[80vh] bg-gradient-to-b from-primary-900 to-primary-800 overflow-hidden">
       {/* Unified Background Image */}
       <div
-        className="absolute inset-0 w-full h-full bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center opacity-100 z-0"
+        className="absolute inset-0 w-full h-full bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center opacity-20 z-0"
         aria-hidden="true"></div>
       {/* Strong Gradient Overlay for Contrast */}
-      <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-white/90 to-primary-50/90 z-10"></div>
+      <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-primary-900/90 to-primary-800/90 z-10"></div>
 
       <div className="relative z-20 container mx-auto px-4">
         <motion.div
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.3 }}
           variants={staggerContainer}
           className="py-16">
           <motion.h2
-            variants={slideUp}
-            className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-3">
-            What <span className="text-primary-600">Our Patients Say</span>
+            variants={headerVariants}
+            className="text-3xl sm:text-4xl font-bold text-center text-white mb-3">
+            What <span className="text-primary-100">Our Patients Say</span>
           </motion.h2>
           <motion.p
-            variants={slideUp}
-            className="text-gray-600 text-center max-w-3xl mx-auto mb-12">
+            variants={headerVariants}
+            className="text-primary-200 text-center max-w-3xl mx-auto mb-12">
             Read testimonials from our satisfied patients about their experience
             at Manifest Dental Clinic
           </motion.p>
 
           {/* Carousel Container */}
-          <div className="relative max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative max-w-6xl mx-auto">
             <div
               className="overflow-hidden"
               ref={emblaRef}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}>
               <div className="flex">
-                {testimonials.map((testimonial) => (
-                  <div
+                {testimonials.map((testimonial, index) => (
+                  <motion.div
                     key={testimonial.id}
-                    className="flex-[0_0_100%] md:flex-[0_0_33.33%] min-w-0 px-4">
+                    className="flex-[0_0_100%] md:flex-[0_0_33.33%] min-w-0 px-4"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.6,
+                      delay: index * 0.1,
+                      ease: "easeOut",
+                    }}>
                     <TestimonialCard
                       testimonial={testimonial}
                       onClick={handleTestimonialClick}
                     />
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
 
             {/* Navigation Buttons */}
             <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none">
-              <button
+              <motion.button
                 onClick={() => emblaApi?.scrollPrev()}
+                variants={navButtonVariants}
+                initial="hidden"
+                whileInView="visible"
+                whileHover="hover"
+                whileTap="tap"
+                viewport={{ once: true }}
                 className="pointer-events-auto bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300 -translate-x-1/2"
                 aria-label="Previous testimonial">
                 <svg
@@ -113,9 +170,15 @@ const Testimonials = ({ testimonials }) => {
                     d="M15 19l-7-7 7-7"
                   />
                 </svg>
-              </button>
-              <button
+              </motion.button>
+              <motion.button
                 onClick={() => emblaApi?.scrollNext()}
+                variants={navButtonVariants}
+                initial="hidden"
+                whileInView="visible"
+                whileHover="hover"
+                whileTap="tap"
+                viewport={{ once: true }}
                 className="pointer-events-auto bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300 translate-x-1/2"
                 aria-label="Next testimonial">
                 <svg
@@ -130,9 +193,9 @@ const Testimonials = ({ testimonials }) => {
                     d="M9 5l7 7-7 7"
                   />
                 </svg>
-              </button>
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 

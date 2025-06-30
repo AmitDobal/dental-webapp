@@ -31,8 +31,8 @@ const ServiceCard = ({
 
   return (
     <div
-      className={`bg-white border border-primary-100 rounded-xl shadow-sm overflow-hidden transition-all duration-300 h-full flex flex-col group p-2 rounded-lg
-        ${isHovered ? "shadow-lg scale-[1.02] border-primary-200" : ""} 
+      className={`bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl shadow-sm overflow-hidden transition-all duration-300 h-full flex flex-col group p-2 rounded-lg
+        ${isHovered ? "shadow-lg scale-[1.02] border-white/50" : ""} 
         ${className} 
         ${
           onClick
@@ -48,10 +48,10 @@ const ServiceCard = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}>
       {/* Square Image Section */}
-      <div className="relative w-full aspect-square bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center overflow-hidden rounded-lg">
+      <div className="relative w-full aspect-square bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center overflow-hidden rounded-lg">
         {/* Fallback content for missing images */}
         {imgError && (
-          <div className="absolute inset-0 flex items-center justify-center text-primary-400 z-10">
+          <div className="absolute inset-0 flex items-center justify-center text-white/60 z-10">
             <div className="text-center">
               <svg
                 className="w-8 h-8 mx-auto mb-2"
@@ -85,18 +85,18 @@ const ServiceCard = ({
 
       {/* Content Section - Optimized spacing */}
       <div className="p-3 flex-1 flex flex-col">
-        <h3 className="text-sm font-semibold text-gray-900 mb-2 text-center leading-tight">
+        <h3 className="text-sm font-semibold text-white mb-2 text-center leading-tight">
           {title}
         </h3>
 
         {/* Pricing Information - More compact */}
         {pricing && (
           <div className="mb-2 text-center">
-            <div className="text-primary-600 font-bold text-sm">
+            <div className="text-primary-200 font-bold text-sm">
               From {pricing.startingPrice}
             </div>
             {pricing.priceRange && (
-              <div className="text-gray-500 text-xs mt-1">
+              <div className="text-white/70 text-xs mt-1">
                 {pricing.priceRange}
               </div>
             )}
@@ -115,7 +115,7 @@ const ServiceCard = ({
               }}
               variant="outline"
               size="sm"
-              className="w-full border-primary-500 text-primary-600 hover:bg-primary-50 hover:border-primary-600 focus:ring-primary-400 text-xs py-1.5 transition-all duration-200"
+              className="w-full bg-white border-white text-primary-900 hover:bg-gray-100 hover:border-gray-200 focus:ring-primary-400 text-xs py-1.5 transition-all duration-200 font-medium"
               aria-label={`Learn more about ${title}`}>
               {buttonText}
             </Button>
