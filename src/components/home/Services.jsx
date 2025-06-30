@@ -1,39 +1,31 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Stethoscope } from "lucide-react";
 import ServiceCard from "../common/ServiceCard";
 import ServiceModal from "../common/ServiceModal";
 import Button from "../common/Button";
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.98 },
-  visible: (i) => ({
+  hidden: { opacity: 0, y: 30, scale: 0.9 },
+  visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: {
-      delay: i * 0.08,
-      duration: 0.4,
+      duration: 0.6,
       type: "spring",
-      stiffness: 140,
-      damping: 20,
+      stiffness: 100,
+      damping: 15,
     },
-  }),
-  hover: {
-    scale: 1.02,
-    boxShadow: "0 4px 20px 0 rgba(16, 185, 129, 0.08)",
-    transition: { type: "spring", stiffness: 200, damping: 20 },
   },
-};
-
-const headerVariants = {
-  hidden: { opacity: 0, y: -30 },
-  visible: {
-    opacity: 1,
-    y: 0,
+  hover: {
+    y: -8,
+    scale: 1.05,
     transition: {
-      duration: 0.8,
-      ease: "easeOut",
+      duration: 0.3,
+      type: "spring",
+      stiffness: 300,
+      damping: 20,
     },
   },
 };
@@ -87,20 +79,23 @@ const Services = ({ services }) => {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-12">
-          <motion.h2
-            variants={headerVariants}
-            className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Our <span className="text-primary-100">Premium Services</span>
-          </motion.h2>
-          <motion.p
-            variants={headerVariants}
-            className="text-primary-200 max-w-3xl mx-auto mb-2">
-            Comprehensive dental care with transparent pricing and exceptional
-            quality
-          </motion.p>
           <motion.div
-            variants={headerVariants}
-            className="w-20 h-1 bg-primary-400 mx-auto rounded-full"></motion.div>
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mb-6">
+            <div className="bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full w-20 h-20 flex items-center justify-center mx-auto shadow-lg border-2 border-cyan-300/50">
+              <Stethoscope className="w-10 h-10 text-white" />
+            </div>
+          </motion.div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Our Services
+          </h2>
+          <p className="text-primary-100 text-lg max-w-2xl mx-auto">
+            Comprehensive dental care services to keep your smile healthy and
+            beautiful.
+          </p>
         </motion.div>
 
         {/* 4 cards per row grid */}

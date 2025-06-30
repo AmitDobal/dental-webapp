@@ -133,7 +133,9 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
           {service.pricing && (
             <div className="mb-6 bg-gradient-to-br from-primary-50 to-primary-100/50 rounded-xl p-6 border border-primary-200/50">
               <h3 className="text-lg font-semibold text-primary-700 mb-4 flex items-center">
-                <DollarSign className="w-5 h-5 mr-2" />
+                <div className="bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full p-1 mr-2 shadow-lg">
+                  <DollarSign className="w-4 h-4 text-white" />
+                </div>
                 Treatment Pricing
               </h3>
 
@@ -159,7 +161,9 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
 
               <div className="mt-4 p-4 bg-white/70 backdrop-blur-sm rounded-lg border border-primary-200/50">
                 <p className="text-primary-800 text-sm font-medium flex items-start">
-                  <Info className="w-4 h-4 mr-2 mt-0.5 flex-shrink-0" />
+                  <div className="bg-gradient-to-br from-blue-400 to-blue-600 rounded-full p-1 mr-2 mt-0.5 flex-shrink-0 shadow-lg">
+                    <Info className="w-3 h-3 text-white" />
+                  </div>
                   All procedures include consultation, follow-up care, and use
                   high-quality materials with sterilization protocols.
                 </p>
@@ -175,7 +179,9 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 {service.features.map((feature, index) => (
                   <li key={index} className="flex items-start">
-                    <Check className="w-4 h-4 text-primary-600 mr-3 mt-1 flex-shrink-0" />
+                    <div className="bg-gradient-to-br from-green-400 to-green-600 rounded-full p-1 mr-3 mt-1 flex-shrink-0 shadow-lg">
+                      <Check className="w-3 h-3 text-white" />
+                    </div>
                     <span className="text-gray-700 text-sm leading-relaxed">
                       {feature}
                     </span>

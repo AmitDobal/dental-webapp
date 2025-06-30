@@ -170,8 +170,8 @@ const ServicesPage = () => {
                 transition={{ delay: 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
                 className="text-center">
-                <div className="bg-primary-200/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border border-primary-200/30">
-                  <CheckCircle className="w-8 h-8 text-primary-200" />
+                <div className="bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border-2 border-emerald-300/50 shadow-lg">
+                  <CheckCircle className="w-8 h-8 text-white drop-shadow-sm" />
                 </div>
                 <h4 className="font-semibold text-white mb-2">Expert Care</h4>
                 <p className="text-primary-100 text-sm">
@@ -186,8 +186,8 @@ const ServicesPage = () => {
                 transition={{ delay: 0.2, duration: 0.5 }}
                 viewport={{ once: true }}
                 className="text-center">
-                <div className="bg-primary-200/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border border-primary-200/30">
-                  <DollarSign className="w-8 h-8 text-primary-200" />
+                <div className="bg-gradient-to-br from-amber-400 to-amber-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border-2 border-amber-300/50 shadow-lg">
+                  <DollarSign className="w-8 h-8 text-white drop-shadow-sm" />
                 </div>
                 <h4 className="font-semibold text-white mb-2">
                   Transparent Pricing
@@ -204,8 +204,8 @@ const ServicesPage = () => {
                 transition={{ delay: 0.3, duration: 0.5 }}
                 viewport={{ once: true }}
                 className="text-center">
-                <div className="bg-primary-200/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border border-primary-200/30">
-                  <Heart className="w-8 h-8 text-primary-200" />
+                <div className="bg-gradient-to-br from-rose-400 to-rose-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border-2 border-rose-300/50 shadow-lg">
+                  <Heart className="w-8 h-8 text-white drop-shadow-sm" />
                 </div>
                 <h4 className="font-semibold text-white mb-2">
                   Patient Comfort

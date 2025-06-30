@@ -61,18 +61,26 @@ const TestimonialCard = ({ testimonial, onClick }) => {
         <div className="ml-4">
           <h3 className="text-lg font-semibold text-gray-900">{name}</h3>
           <p className="text-sm text-gray-600">{role}</p>
+          <div className="flex items-center mt-2">
+            <div className="bg-gradient-to-br from-amber-400 to-amber-600 rounded-full p-1 mr-2 shadow-lg">
+              <Star className="w-3 h-3 text-white" />
+            </div>
+            {[...Array(5)].map((_, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.1, duration: 0.3 }}
+                className="text-amber-400">
+                <Star
+                  className={`w-4 h-4 ${
+                    i < rating ? "fill-current" : "text-gray-300"
+                  }`}
+                />
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
-
-      <div className="flex items-center mb-4">
-        {[...Array(5)].map((_, i) => (
-          <Star
-            key={i}
-            className={`w-6 h-6 ${
-              i < rating ? "text-yellow-400 fill-current" : "text-gray-300"
-            }`}
-          />
-        ))}
       </div>
 
       <p className="text-base leading-relaxed text-gray-600 line-clamp-3">

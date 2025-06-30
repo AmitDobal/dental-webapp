@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import TestimonialCard from "../common/TestimonialCard";
 import TestimonialModal from "../common/TestimonialModal";
@@ -101,17 +101,25 @@ const Testimonials = ({ testimonials }) => {
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerContainer}
           className="py-16">
-          <motion.h2
-            variants={headerVariants}
-            className="text-3xl sm:text-4xl font-bold text-center text-white mb-3">
-            What <span className="text-primary-100">Our Patients Say</span>
-          </motion.h2>
-          <motion.p
-            variants={headerVariants}
-            className="text-primary-200 text-center max-w-3xl mx-auto mb-12">
-            Read testimonials from our satisfied patients about their experience
-            at Manifest Dental Clinic
-          </motion.p>
+          <motion.div variants={headerVariants} className="text-center mb-12">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mb-6">
+              <div className="bg-gradient-to-br from-amber-400 to-amber-600 rounded-full w-20 h-20 flex items-center justify-center mx-auto shadow-lg border-2 border-amber-300/50">
+                <Star className="w-10 h-10 text-white" />
+              </div>
+            </motion.div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              What Our Patients Say
+            </h2>
+            <p className="text-primary-100 text-lg max-w-2xl mx-auto">
+              Real experiences from our satisfied patients who have transformed
+              their smiles with us.
+            </p>
+          </motion.div>
 
           {/* Carousel Container */}
           <motion.div

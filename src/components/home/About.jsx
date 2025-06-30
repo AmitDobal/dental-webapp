@@ -1,20 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { User, Lightbulb, Heart } from "lucide-react";
+import { User, Lightbulb, Heart, Award, DollarSign } from "lucide-react";
 import { clinicInfo } from "../../data";
-
-const getFeatureIcon = (icon) => {
-  if (icon === "user") {
-    return <User className="w-10 h-10 text-primary-600" />;
-  }
-  if (icon === "chip") {
-    return <Lightbulb className="w-10 h-10 text-primary-600" />;
-  }
-  if (icon === "heart") {
-    return <Heart className="w-10 h-10 text-primary-600" />;
-  }
-  return null;
-};
 
 const About = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -35,7 +22,7 @@ const About = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
@@ -72,7 +59,7 @@ const About = () => {
   };
 
   const featureVariants = {
-    hidden: { opacity: 0, y: 40, scale: 0.9 },
+    hidden: { opacity: 0, y: 30, scale: 0.9 },
     visible: (i) => ({
       opacity: 1,
       y: 0,
@@ -80,17 +67,26 @@ const About = () => {
       transition: {
         delay: i * 0.1,
         duration: 0.6,
-        ease: "easeOut",
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
       },
     }),
     hover: {
-      y: -8,
-      scale: 1.02,
+      y: -5,
+      scale: 1.05,
       transition: {
         duration: 0.3,
-        ease: "easeOut",
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
       },
     },
+  };
+
+  const iconVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
   };
 
   return (
@@ -221,27 +217,71 @@ const About = () => {
 
           {/* Features Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {clinicInfo.about.features.map((feature, index) => (
+            <motion.div
+              variants={featureVariants}
+              custom={0}
+              className="text-center">
               <motion.div
-                key={index}
-                custom={index}
-                variants={featureVariants}
+                variants={iconVariants}
+                custom={0}
                 whileHover="hover"
-                className="bg-white/20 backdrop-blur-sm p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-center h-full border border-white/30">
-                <motion.div
-                  className="flex justify-center mb-4"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}>
-                  {getFeatureIcon(feature.icon)}
-                </motion.div>
-                <h3 className="font-semibold text-xl text-white mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-white/90 text-base sm:text-lg">
-                  {feature.description}
-                </p>
+                className="mb-4">
+                <div className="bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-lg border-2 border-emerald-300/50">
+                  <Award className="w-8 h-8 text-white" />
+                </div>
               </motion.div>
-            ))}
+              <h3 className="text-xl font-semibold text-white mb-2">
+                Expert Care
+              </h3>
+              <p className="text-primary-100">
+                Dr. Manasi brings years of expertise in cosmetic dentistry and
+                root canal treatment.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={featureVariants}
+              custom={1}
+              className="text-center">
+              <motion.div
+                variants={iconVariants}
+                custom={1}
+                whileHover="hover"
+                className="mb-4">
+                <div className="bg-gradient-to-br from-amber-400 to-amber-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-lg border-2 border-amber-300/50">
+                  <DollarSign className="w-8 h-8 text-white" />
+                </div>
+              </motion.div>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                Transparent Pricing
+              </h3>
+              <p className="text-primary-100">
+                Clear, upfront pricing with no hidden costs. Quality care at
+                affordable rates.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={featureVariants}
+              custom={2}
+              className="text-center">
+              <motion.div
+                variants={iconVariants}
+                custom={2}
+                whileHover="hover"
+                className="mb-4">
+                <div className="bg-gradient-to-br from-rose-400 to-rose-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-lg border-2 border-rose-300/50">
+                  <Heart className="w-8 h-8 text-white" />
+                </div>
+              </motion.div>
+              <h3 className="text-xl font-semibold text-white mb-2">
+                Patient Comfort
+              </h3>
+              <p className="text-primary-100">
+                Modern techniques and a comfortable environment for stress-free
+                dental care.
+              </p>
+            </motion.div>
           </div>
         </motion.div>
       </div>

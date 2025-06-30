@@ -163,7 +163,9 @@ const ContactInfo = ({ clinicInfo }) => {
             variants={iconVariants}
             whileHover="hover"
             className="flex-shrink-0 text-primary-300 mt-1">
-            <MapPin className="w-6 h-6" />
+            <div className="bg-gradient-to-br from-blue-400 to-blue-600 rounded-full p-2 shadow-lg">
+              <MapPin className="w-6 h-6 text-white" />
+            </div>
           </motion.div>
           <motion.div
             className="ml-4"
@@ -185,7 +187,9 @@ const ContactInfo = ({ clinicInfo }) => {
             variants={iconVariants}
             whileHover="hover"
             className="flex-shrink-0 text-primary-300 mt-1">
-            <Phone className="w-6 h-6" />
+            <div className="bg-gradient-to-br from-green-400 to-green-600 rounded-full p-2 shadow-lg">
+              <Phone className="w-6 h-6 text-white" />
+            </div>
           </motion.div>
           <motion.div
             className="ml-4"
@@ -218,7 +222,9 @@ const ContactInfo = ({ clinicInfo }) => {
             variants={iconVariants}
             whileHover="hover"
             className="flex-shrink-0 text-primary-300 mt-1">
-            <Mail className="w-6 h-6" />
+            <div className="bg-gradient-to-br from-purple-400 to-purple-600 rounded-full p-2 shadow-lg">
+              <Mail className="w-6 h-6 text-white" />
+            </div>
           </motion.div>
           <motion.div
             className="ml-4"
@@ -251,7 +257,9 @@ const ContactInfo = ({ clinicInfo }) => {
             variants={iconVariants}
             whileHover="hover"
             className="flex-shrink-0 text-primary-300 mt-1">
-            <Clock className="w-6 h-6" />
+            <div className="bg-gradient-to-br from-orange-400 to-orange-600 rounded-full p-2 shadow-lg">
+              <Clock className="w-6 h-6 text-white" />
+            </div>
           </motion.div>
           <motion.div
             className="ml-4"
@@ -273,8 +281,7 @@ const ContactInfo = ({ clinicInfo }) => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.05, duration: 0.3 }}
-                    whileHover={{ x: 3 }}
-                    transition={{ duration: 0.2 }}>
+                    whileHover={{ x: 3 }}>
                     <span>{day.days}: </span>
                     <span>{day.hours}</span>
                   </motion.p>

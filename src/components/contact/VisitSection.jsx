@@ -156,7 +156,9 @@ const VisitSection = () => {
                 whileHover={{ x: 5 }}
                 transition={{ duration: 0.2 }}>
                 <div className="flex-shrink-0 text-primary-300 mt-1">
-                  <MapPin className="w-6 h-6" />
+                  <div className="bg-gradient-to-br from-blue-400 to-blue-600 rounded-full p-2 shadow-lg">
+                    <MapPin className="w-6 h-6 text-white" />
+                  </div>
                 </div>
                 <div className="ml-4">
                   <p className="text-white/90">{clinicInfo.address}</p>
@@ -198,7 +200,9 @@ const VisitSection = () => {
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}>
                   <div className="flex-shrink-0 text-primary-300 mt-1">
-                    <Phone className="w-6 h-6" />
+                    <div className="bg-gradient-to-br from-green-400 to-green-600 rounded-full p-2 shadow-lg">
+                      <Phone className="w-6 h-6 text-white" />
+                    </div>
                   </div>
                   <div className="ml-4">
                     <a
@@ -214,7 +218,9 @@ const VisitSection = () => {
                   whileHover={{ x: 5 }}
                   transition={{ duration: 0.2 }}>
                   <div className="flex-shrink-0 text-primary-300 mt-1">
-                    <Mail className="w-6 h-6" />
+                    <div className="bg-gradient-to-br from-purple-400 to-purple-600 rounded-full p-2 shadow-lg">
+                      <Mail className="w-6 h-6 text-white" />
+                    </div>
                   </div>
                   <div className="ml-4">
                     <a

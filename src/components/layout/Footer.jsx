@@ -141,7 +141,9 @@ const Footer = () => {
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}>
                 <div className="flex-shrink-0 text-primary-300 mt-1 group-hover:text-primary-200 transition-colors">
-                  <MapPin className="w-4 h-4 mr-2" />
+                  <div className="bg-gradient-to-br from-blue-400 to-blue-600 rounded-full p-1 shadow-lg">
+                    <MapPin className="w-4 h-4 text-white" />
+                  </div>
                 </div>
                 <p className="text-primary-100 text-sm leading-relaxed">
                   {clinicInfo.address}
@@ -153,7 +155,9 @@ const Footer = () => {
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}>
                 <div className="flex-shrink-0 text-primary-300 group-hover:text-primary-200 transition-colors">
-                  <Phone className="w-4 h-4 mr-2" />
+                  <div className="bg-gradient-to-br from-green-400 to-green-600 rounded-full p-1 shadow-lg">
+                    <Phone className="w-4 h-4 text-white" />
+                  </div>
                 </div>
                 <a
                   href={`tel:${clinicInfo.phone}`}
@@ -167,7 +171,9 @@ const Footer = () => {
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}>
                 <div className="flex-shrink-0 text-primary-300 group-hover:text-primary-200 transition-colors">
-                  <Mail className="w-4 h-4 mr-2" />
+                  <div className="bg-gradient-to-br from-purple-400 to-purple-600 rounded-full p-1 shadow-lg">
+                    <Mail className="w-4 h-4 text-white" />
+                  </div>
                 </div>
                 <a
                   href={`mailto:${clinicInfo.email}`}

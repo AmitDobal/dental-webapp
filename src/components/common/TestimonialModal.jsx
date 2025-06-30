@@ -21,16 +21,39 @@ const TestimonialModal = ({ testimonial, isOpen, onClose }) => {
 
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-white rounded-xl shadow-xl z-50 p-6">
-            <button
-              onClick={onClose}
-              className="absolute right-4 top-4 text-gray-400 hover:text-gray-600 transition-colors"
-              aria-label="Close modal">
-              <X className="w-6 h-6" />
-            </button>
+            exit={{ opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden border border-white/30">
+            {/* Header */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.3 }}
+              className="bg-gradient-to-r from-primary-600 to-primary-700 p-6 text-white relative">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-4">
+                  <div className="bg-gradient-to-br from-amber-400 to-amber-600 rounded-full p-3 shadow-lg">
+                    <Star className="w-8 h-8 text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold">Patient Testimonial</h2>
+                    <p className="text-primary-100 text-sm">
+                      Real experience from our patient
+                    </p>
+                  </div>
+                </div>
+                <motion.button
+                  onClick={onClose}
+                  className="text-white hover:text-primary-200 transition-colors p-2 rounded-full hover:bg-white/10"
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ duration: 0.2 }}>
+                  <X className="w-6 h-6" />
+                </motion.button>
+              </div>
+            </motion.div>
 
             <div className="flex items-center mb-6">
               <div className="w-16 h-16 rounded-full overflow-hidden mr-4 bg-gray-200 flex items-center justify-center text-gray-600 relative">
