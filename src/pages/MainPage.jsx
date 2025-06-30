@@ -8,7 +8,6 @@ import ContactForm from "../components/contact/ContactForm";
 import ContactInfo from "../components/contact/ContactInfo";
 import VisitSection from "../components/contact/VisitSection";
 import ServiceModal from "../components/common/ServiceModal";
-import AnimatedSection from "../components/common/AnimatedSection";
 import { enableSmoothScrollForAnchors } from "../utils/scrollUtils";
 import { services, testimonials, transformations, clinicInfo } from "../data";
 
