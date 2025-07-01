@@ -137,7 +137,7 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4 text-white">Contact Info</h3>
             <div className="space-y-3">
               <motion.div
-                className="flex items-start group"
+                className="flex items-start group gap-2"
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}>
                 <div className="flex-shrink-0 text-primary-300 mt-1 group-hover:text-primary-200 transition-colors">
@@ -151,7 +151,7 @@ const Footer = () => {
               </motion.div>
 
               <motion.div
-                className="flex items-center group"
+                className="flex items-center group gap-2"
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}>
                 <div className="flex-shrink-0 text-primary-300 group-hover:text-primary-200 transition-colors">
@@ -167,11 +167,11 @@ const Footer = () => {
               </motion.div>
 
               <motion.div
-                className="flex items-center group"
+                className="flex items-center group gap-2"
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}>
                 <div className="flex-shrink-0 text-primary-300 group-hover:text-primary-200 transition-colors">
-                  <div className="bg-gradient-to-br from-purple-400 to-purple-600 rounded-full p-1 shadow-lg">
+                  <div className="bg-gradient-to-br from-purple-400 to-purple-600 rounded-full p-1 shadow-lg ">
                     <Mail className="w-4 h-4 text-white" />
                   </div>
                 </div>
