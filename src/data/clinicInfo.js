@@ -3,26 +3,22 @@ export const clinicInfo = {
   tagline: "Cosmetic Dentist & Root Canal Specialist",
   doctor: {
     name: "Dr. Manasi Surwade",
-    qualifications: "B.D.S., M.D.S. (MUHS, MUMBAI), F.PPFA (USA)",
+    qualifications: "B.D.S., M.D.S. (MUHS, MUMBAI), F.PPFA (USA), PhD Scholar",
     registration: "REG. NO. A-42318",
     specialization: "Cosmetic Dentist & Root Canal Specialist",
   },
-  address: "123 Main Street, Mumbai, Maharashtra 400001",
+  address: "Dr.Manasi Manifest Dental Studio, Shop No 5, Shree Raj Ratnadeep, Neelkanth Sweets Road, near LIC Office, Sector 20, Kharghar, Maharashtra 410210",
   phone: "+91 96993 74343",
   email: "manifest.dental.studio@gmail.com",
   website: "www.manifestdental.com",
   hours: [
     {
-      days: "Monday - Sunday",
-      hours: "10:00 AM - 2:00 PM",
+      days: "Monday - Saturday",
+      hours: "05:30 PM - 09:30 PM",
     },
     {
-      days: "Monday - Sunday",
-      hours: "5:00 PM - 10:00 PM",
-    },
-    {
-      days: "Emergency",
-      hours: "24/7 Available",
+      days: "Sunday",
+      hours: "10:00 AM - 02:00 PM & 05:30 PM - 09:30 PM",
     },
   ],
   services: [
@@ -30,7 +26,7 @@ export const clinicInfo = {
     "Root Canal Treatment",
     "Dental Implants",
     "Teeth Whitening",
-    "Orthodontics",
+    "Smile Designing",
     "Preventive Care",
     "Oral Surgery",
     "Pediatric Dentistry",
@@ -89,7 +85,7 @@ export const clinicInfo = {
   about: {
     heading: "Dr. Manasi Surwade",
     subheading:
-      "Dedicated to providing exceptional dental care with a focus on patient comfort and satisfaction",
+      "Dedicated to providing exceptional dental care with the team of dedicated specalists for various types of treatment needs.",
     description:
       "Led by Dr. Manasi Surwade, our clinic combines years of expertise with state-of-the-art technology to provide comprehensive dental care in a comfortable, welcoming environment. We believe everyone deserves a healthy, beautiful smile.",
     image: "/images/about/dr-manasi.jpeg",

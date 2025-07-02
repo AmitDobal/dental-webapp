@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { User, Lightbulb, Heart, Award, DollarSign } from "lucide-react";
+import { User, Lightbulb, Heart, Award, IndianRupee } from "lucide-react";
 import { clinicInfo } from "../../data";
 
 const About = () => {
@@ -109,11 +109,11 @@ const About = () => {
           <motion.div className="text-center mb-12" variants={headerVariants}>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Meet{" "}
-              <span className="text-primary-100">
+              <span className="text-white">
                 {clinicInfo.about.heading}
               </span>
             </h2>
-            <p className="text-base sm:text-lg text-primary-100 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg text-white max-w-3xl mx-auto">
               {clinicInfo.about.subheading}
             </p>
           </motion.div>
@@ -124,11 +124,11 @@ const About = () => {
             <motion.div
               className="order-2 md:order-1 flex flex-col justify-center"
               variants={itemVariants}>
-              <h3 className="text-2xl font-semibold text-primary-100 mb-4">
+              <h3 className="text-2xl font-semibold text-white mb-4">
                 Welcome to {clinicInfo.name}
               </h3>
 
-              <p className="text-primary-200 mb-6 text-base sm:text-lg">
+              <p className="text-white mb-6 text-base sm:text-lg">
                 {clinicInfo.about.description}
               </p>
 
@@ -150,7 +150,7 @@ const About = () => {
                 <p className="text-white/80 text-sm mb-1">
                   {clinicInfo.doctor.registration}
                 </p>
-                <p className="text-primary-200 font-medium text-sm">
+                <p className="text-white font-medium text-sm">
                   {clinicInfo.doctor.specialization}
                 </p>
               </motion.div>
@@ -233,7 +233,7 @@ const About = () => {
               <h3 className="text-xl font-semibold text-white mb-2">
                 Expert Care
               </h3>
-              <p className="text-primary-100">
+              <p className="text-white">
                 Dr. Manasi brings years of expertise in cosmetic dentistry and
                 root canal treatment.
               </p>
@@ -249,13 +249,13 @@ const About = () => {
                 whileHover="hover"
                 className="mb-4">
                 <div className="bg-gradient-to-br from-amber-400 to-amber-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-lg border-2 border-amber-300/50">
-                  <DollarSign className="w-8 h-8 text-white" />
+                  <IndianRupee className="w-8 h-8 text-white" />
                 </div>
               </motion.div>
               <h3 className="text-xl font-semibold text-white mb-2">
                 Transparent Pricing
               </h3>
-              <p className="text-primary-100">
+              <p className="text-white">
                 Clear, upfront pricing with no hidden costs. Quality care at
                 affordable rates.
               </p>
@@ -277,7 +277,7 @@ const About = () => {
               <h3 className="text-xl font-semibold text-white mb-2">
                 Patient Comfort
               </h3>
-              <p className="text-primary-100">
+              <p className="text-white">
                 Modern techniques and a comfortable environment for stress-free
                 dental care.
               </p>

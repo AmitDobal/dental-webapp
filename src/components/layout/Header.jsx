@@ -110,7 +110,7 @@ const Header = () => {
               loading="eager"
               decoding="async"
             />
-            <span className="hidden sm:inline">Manifest Dental</span>
+            <span className="hidden sm:inline">Dr. Manasi's Manifest Dental Studio</span>
             <span className="sm:hidden">Manifest</span>
           </a>
 

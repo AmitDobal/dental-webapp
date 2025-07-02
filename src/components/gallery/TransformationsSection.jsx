@@ -95,11 +95,11 @@ const TransformationsSection = ({ transformations }) => {
           <motion.h2
             variants={headerVariants}
             className="text-3xl sm:text-4xl font-bold text-center text-white mb-3">
-            Smile <span className="text-primary-100">Transformations</span>
+            Smile <span className="text-white">Transformations</span>
           </motion.h2>
           <motion.p
             variants={headerVariants}
-            className="text-primary-200 text-center max-w-3xl mx-auto mb-12">
+            className="text-white text-center max-w-3xl mx-auto mb-12">
             See the amazing results we've achieved for our patients
           </motion.p>
 

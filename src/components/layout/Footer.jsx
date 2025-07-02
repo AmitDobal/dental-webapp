@@ -63,7 +63,7 @@ const Footer = () => {
                 {clinicInfo.name}
               </h3>
             </div>
-            <p className="text-primary-100 leading-relaxed mb-6 max-w-md">
+            <p className="text-white leading-relaxed mb-6 max-w-md">
               Providing exceptional dental care with advanced technology and
               compassionate service. Your smile is our priority.
             </p>
@@ -74,7 +74,7 @@ const Footer = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white hover:text-primary-200 transition-colors p-2 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20"
+                  className="text-white hover:text-white transition-colors p-2 rounded-lg bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20"
                   aria-label={`Follow us on ${social.platform}`}
                   whileHover={{
                     scale: 1.1,
@@ -121,10 +121,10 @@ const Footer = () => {
                   viewport={{ once: true }}>
                   <motion.a
                     href={link.href}
-                    className="text-primary-100 hover:text-white transition-colors font-medium flex items-center group"
+                    className="text-white hover:text-white transition-colors font-medium flex items-center group"
                     whileHover={{ x: 5 }}
                     transition={{ type: "spring", stiffness: 300 }}>
-                    <span className="w-1.5 h-1.5 bg-primary-300 rounded-full mr-3 group-hover:bg-white transition-colors"></span>
+                    <span className="w-1.5 h-1.5 bg-white rounded-full mr-3 group-hover:bg-white transition-colors"></span>
                     {link.label}
                   </motion.a>
                 </motion.li>
@@ -140,12 +140,12 @@ const Footer = () => {
                 className="flex items-start group gap-2"
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}>
-                <div className="flex-shrink-0 text-primary-300 mt-1 group-hover:text-primary-200 transition-colors">
+                <div className="flex-shrink-0 text-white mt-1 group-hover:text-white transition-colors">
                   <div className="bg-gradient-to-br from-blue-400 to-blue-600 rounded-full p-1 shadow-lg">
                     <MapPin className="w-4 h-4 text-white" />
                   </div>
                 </div>
-                <p className="text-primary-100 text-sm leading-relaxed">
+                <p className="text-white text-sm leading-relaxed">
                   {clinicInfo.address}
                 </p>
               </motion.div>
@@ -154,14 +154,14 @@ const Footer = () => {
                 className="flex items-center group gap-2"
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}>
-                <div className="flex-shrink-0 text-primary-300 group-hover:text-primary-200 transition-colors">
+                <div className="flex-shrink-0 text-white group-hover:text-white transition-colors">
                   <div className="bg-gradient-to-br from-green-400 to-green-600 rounded-full p-1 shadow-lg">
                     <Phone className="w-4 h-4 text-white" />
                   </div>
                 </div>
                 <a
                   href={`tel:${clinicInfo.phone}`}
-                  className="text-primary-100 hover:text-white transition-colors font-medium text-sm">
+                  className="text-white hover:text-white transition-colors font-medium text-sm">
                   {clinicInfo.phone}
                 </a>
               </motion.div>
@@ -170,14 +170,14 @@ const Footer = () => {
                 className="flex items-center group gap-2"
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}>
-                <div className="flex-shrink-0 text-primary-300 group-hover:text-primary-200 transition-colors">
+                <div className="flex-shrink-0 text-white group-hover:text-white transition-colors">
                   <div className="bg-gradient-to-br from-purple-400 to-purple-600 rounded-full p-1 shadow-lg ">
                     <Mail className="w-4 h-4 text-white" />
                   </div>
                 </div>
                 <a
                   href={`mailto:${clinicInfo.email}`}
-                  className="text-primary-100 hover:text-white transition-colors font-medium text-sm">
+                  className="text-white hover:text-white transition-colors font-medium text-sm">
                   {clinicInfo.email}
                 </a>
               </motion.div>
@@ -194,7 +194,7 @@ const Footer = () => {
           className="mt-8 pt-6 border-t border-white/20">
           <div className="text-center mb-4">
             <h4 className="text-lg font-bold text-white mb-3">Office Hours</h4>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-4 max-w-2xl mx-auto">
               {clinicInfo.hours.map((day, index) => (
                 <motion.div
                   key={index}
@@ -203,7 +203,7 @@ const Footer = () => {
                   transition={{ delay: index * 0.1 }}
                   viewport={{ once: true }}
                   className="text-center p-3 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
-                  <div className="text-primary-200 font-medium text-sm">
+                  <div className="text-white font-medium text-sm">
                     {day.days}
                   </div>
                   <div className="text-white font-semibold text-sm">
@@ -223,7 +223,7 @@ const Footer = () => {
           viewport={{ once: true }}
           className="mt-8 text-center">
           <div className="inline-flex items-center justify-center px-6 py-3 bg-white/5 backdrop-blur-sm rounded-full border border-white/10">
-            <p className="text-primary-200 text-sm font-medium">
+            <p className="text-white text-sm font-medium">
               &copy; {currentYear} {clinicInfo.name}. All rights reserved.
             </p>
           </div>
@@ -232,7 +232,7 @@ const Footer = () => {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
-            className="mt-3 text-primary-300 text-xs">
+            className="mt-3 text-white text-xs">
             Crafted with ❤️ for beautiful smiles
           </motion.p>
         </motion.div>

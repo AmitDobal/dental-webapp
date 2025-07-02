@@ -106,11 +106,11 @@ const VisitSection = () => {
         <motion.h2
           variants={headerVariants}
           className="text-3xl sm:text-4xl font-bold text-center text-white mb-3">
-          Visit <span className="text-primary-100">Our Dental Studio</span>
+          Visit <span className="text-white">Our Dental Studio</span>
         </motion.h2>
         <motion.p
           variants={headerVariants}
-          className="text-primary-200 text-center max-w-3xl mx-auto mb-12">
+          className="text-white text-center max-w-3xl mx-auto mb-12">
           We're conveniently located to serve your dental needs. Find us easily
           using the map below.
         </motion.p>

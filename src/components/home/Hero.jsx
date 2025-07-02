@@ -107,7 +107,7 @@ const LeftSection = ({ isMobile }) => {
         whileInView="visible"
         viewport={{ once: true, amount: isMobile ? 0.1 : 0.3 }}
         className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 min-h-[3rem] sm:min-h-[4rem] lg:min-h-[4.5rem]">
-        <span className="text-primary-100 block">
+        <span className="text-white block">
           <Typewriter
             words={HERO_PHRASES}
             loop={0}
@@ -126,7 +126,7 @@ const LeftSection = ({ isMobile }) => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: isMobile ? 0.1 : 0.3 }}
-        className="text-lg sm:text-xl md:text-2xl text-primary-100 mb-6 sm:mb-8">
+        className="text-lg sm:text-xl md:text-2xl text-white mb-6 sm:mb-8">
         Creating healthy, beautiful smiles for life
       </motion.p>
 
@@ -142,7 +142,7 @@ const LeftSection = ({ isMobile }) => {
             handleBookAppointment({ focusForm: true, focusDelay: 1000 })
           }
           size="lg"
-          className="bg-white !text-primary-800 hover:bg-primary-100 hover:!text-white font-semibold cursor-pointer"
+          className="bg-white !text-primary-800 hover:bg-white hover:!text-white font-semibold cursor-pointer"
           aria-label="Book an appointment - scroll to contact form">
           Book an Appointment Now
         </Button>
@@ -403,36 +403,6 @@ const Hero = () => {
           <RightSection isMobile={isMobile} onImageClick={handleImageClick} />
         </div>
       </div>
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: isMobile ? 0.5 : 1 }}
-        className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2">
-        <motion.div
-          animate={{
-            y: [0, 10, 0],
-          }}
-          transition={{
-            duration: isMobile ? 1 : 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-white rounded-full flex justify-center">
-          <motion.div
-            animate={{
-              y: [0, 12, 0],
-            }}
-            transition={{
-              duration: isMobile ? 1 : 1.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="w-1 h-2 sm:h-3 bg-white rounded-full mt-1 sm:mt-2"
-          />
-        </motion.div>
-      </motion.div>
-
       {/* Image Modal */}
       {isModalOpen && (
         <ImageModal
