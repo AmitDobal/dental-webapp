@@ -66,17 +66,6 @@ const Testimonials = ({ testimonials }) => {
     return () => clearInterval(interval);
   }, [emblaApi, autoplay]);
 
-  // Pause autoplay on hover
-  const handleMouseEnter = useCallback(() => {
-    if (!emblaApi) return;
-    emblaApi.stop();
-  }, [emblaApi]);
-
-  const handleMouseLeave = useCallback(() => {
-    if (!emblaApi) return;
-    emblaApi.start();
-  }, [emblaApi]);
-
   const handleTestimonialClick = (testimonial) => {
     setSelectedTestimonial(testimonial);
   };
@@ -128,11 +117,7 @@ const Testimonials = ({ testimonials }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative max-w-6xl mx-auto">
-            <div
-              className="overflow-hidden"
-              ref={emblaRef}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}>
+            <div className="overflow-hidden" ref={emblaRef}>
               <div className="flex">
                 {testimonials.map((testimonial, index) => (
                   <motion.div
