@@ -73,7 +73,7 @@ const ServiceCard = ({
           <img
             src={image}
             alt={altText}
-            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105 bg-black"
             onError={() => setImgError(true)}
             draggable={false}
           />
@@ -92,7 +92,7 @@ const ServiceCard = ({
         {/* Pricing Information - More compact */}
         {pricing && (
           <div className="mb-2 text-center">
-            <div className="text-primary-200 font-bold text-sm">
+            <div className="text-white font-bold text-sm">
               From {pricing.startingPrice}
             </div>
             {pricing.priceRange && (

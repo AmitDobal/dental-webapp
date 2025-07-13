@@ -63,7 +63,7 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
                       <img
                         src={img}
                         alt={service.title}
-                        className="w-full h-full object-cover rounded-t-2xl z-10 border-4 border-white"
+                        className="w-full h-full object-contain rounded-t-2xl z-10 border-2 border-white bg-black"
                         onError={(e) => {
                           e.target.style.display = "none";
                         }}

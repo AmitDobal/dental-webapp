@@ -70,9 +70,9 @@ const ServicesPage = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto">
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-              Our <span className="text-primary-200">Dental Services</span>
+              Our <span className="text-white">Dental Services</span>
             </h1>
-            <p className="text-primary-100 text-lg sm:text-xl mb-8 leading-relaxed">
+            <p className="text-white text-lg sm:text-xl mb-8 leading-relaxed">
               Comprehensive dental care with transparent pricing and exceptional
               quality. From routine cleanings to advanced cosmetic procedures,
               we provide personalized treatment plans tailored to your unique
@@ -113,14 +113,14 @@ const ServicesPage = () => {
             className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Complete{" "}
-              <span className="text-primary-200">Treatment Options</span>
+              <span className="text-white">Treatment Options</span>
             </h2>
-            <p className="text-primary-100 max-w-3xl mx-auto mb-6">
+            <p className="text-white max-w-3xl mx-auto mb-6">
               Dr. Manasi's Manifest Dental Studio offers a comprehensive range
               of dental services with transparent pricing and the highest
               quality standards.
             </p>
-            <div className="w-20 h-1 bg-primary-200 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-white mx-auto rounded-full"></div>
           </motion.div>
 
           {/* All Services Grid */}
@@ -174,7 +174,7 @@ const ServicesPage = () => {
                   <CheckCircle className="w-8 h-8 text-white drop-shadow-sm" />
                 </div>
                 <h4 className="font-semibold text-white mb-2">Expert Care</h4>
-                <p className="text-primary-100 text-sm">
+                <p className="text-white text-sm">
                   Dr. Manasi brings years of expertise in cosmetic dentistry and
                   root canal treatment.
                 </p>
@@ -192,7 +192,7 @@ const ServicesPage = () => {
                 <h4 className="font-semibold text-white mb-2">
                   Transparent Pricing
                 </h4>
-                <p className="text-primary-100 text-sm">
+                <p className="text-white text-sm">
                   Clear, upfront pricing with no hidden costs. Quality care at
                   affordable rates.
                 </p>
@@ -210,7 +210,7 @@ const ServicesPage = () => {
                 <h4 className="font-semibold text-white mb-2">
                   Patient Comfort
                 </h4>
-                <p className="text-primary-100 text-sm">
+                <p className="text-white text-sm">
                   Modern techniques and a comfortable environment for
                   stress-free dental care.
                 </p>
@@ -229,7 +229,7 @@ const ServicesPage = () => {
               <h3 className="text-2xl font-bold mb-4">
                 Ready to Start Your Dental Journey?
               </h3>
-              <p className="text-primary-100 mb-6 text-lg">
+              <p className="text-white mb-6 text-lg">
                 Schedule a consultation with Dr. Manasi and take the first step
                 towards a healthier, more beautiful smile.
               </p>

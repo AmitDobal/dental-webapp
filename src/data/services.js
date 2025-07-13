@@ -6,8 +6,8 @@ export const services = [
       "Expert root canal therapy to save your natural teeth with advanced techniques and pain-free procedures.",
     longDescription:
       "A root canal is done to save a badly decayed or infected tooth. We clean the infected nerves inside the tooth, disinfect it, and seal it to relieve pain and prevent further damage — all while preserving your natural tooth. Starts from ₹3000 onwards without cement.",
-      image: "/images/services/root-canal.png",
-    
+    image: "/images/services/root-canal.png",
+
     pricing: {
       startingPrice: "₹3,000",
       priceRange: "₹3,000 - ₹4,000",
@@ -46,10 +46,13 @@ export const services = [
       "Transform your smile with our advanced cosmetic dental procedures including veneers and aesthetic treatments.",
     longDescription:
       "This is a high-end, digitally planned smile transformation. Using Emax ceramic veneers, we design your ideal smile on a computer and bring it to life — with ultra-thin, durable, and natural-looking ceramic shells. One tooth starts from ₹8000 onwards",
-    image: "/images/services/cosmetic-dentistry.jpg",
+    image: "/images/services/emax.png",
     images: [
-      "/images/services/root-canal.png",
-      "/images/services/root-canal.png",
+      "/images/services/emax.png",
+      "/images/services/emax1.png",
+      "/images/services/emax2.png",
+      "/images/services/emax3.png",
+      "/images/services/emax4.png",
     ],
     pricing: {
       startingPrice: "₹2,000",
@@ -76,17 +79,17 @@ export const services = [
       // "Same-day treatments available",
     ],
   },
-   {
+  {
     id: 3,
     title: "Smile Makeover (Composite Veneers)",
     shortDescription:
       "Transform your smile with our advanced cosmetic dental procedures including veneers and aesthetic treatments.",
     longDescription:
       "If you want a quick and beautiful change in your smile, composite veneers are ideal. They are tooth-coloured layers sculpted directly on your teeth to fix shape, size, or colour issues — all in a single visit. Starts from ₹2000 onwards",
-    image: "/images/services/cosmetic-dentistry.jpg",
+    image: "/images/services/composite.png",
     images: [
-      "/images/services/root-canal.png",
-      "/images/services/root-canal.png",
+      "/images/services/composite.png",
+      "/images/services/composite1.png",
     ],
     pricing: {
       startingPrice: "₹2,000",
@@ -120,9 +123,10 @@ export const services = [
       "Permanent solution for missing teeth with high-quality dental implants and premium crown options.",
     longDescription:
       "Dental implants are the best replacement for missing teeth. A small titanium post is fixed in your jawbone, acting like a tooth root. A crown is then placed on top, giving you a natural-looking and long-lasting smile. Starts from ₹20000 onwards without crown.",
-    image: "/images/services/dental-implants.jpg",
+    image: "/images/services/DentalImplants.jpeg",
     images: [
-      "/images/services/root-canal.png",
+      "/images/services/DentalImplants.jpeg",
+      "/images/services/DentalImplants1.jpeg",
     ],
     pricing: {
       startingPrice: "₹20,000",
@@ -171,7 +175,10 @@ export const services = [
       "High-quality tooth-colored fillings to restore your teeth's natural appearance and function.",
     longDescription:
       "These are white fillings that match your natural tooth shade. They are used to repair decayed or chipped teeth and restore their function and appearance — discreetly and effectively. Starts from ₹1200 onwards",
-    image: "/images/services/tooth-fillings.jpg",
+    image: "/images/services/toothFilling.png",
+    images: [
+      "/images/services/toothFilling.png",
+    ],
     pricing: {
       startingPrice: "₹800",
       priceRange: "₹1200 - ₹1,500",
@@ -190,7 +197,7 @@ export const services = [
     },
     features: [
       "Tooth-colored materials",
-      "Mercury-free fillings",  
+      "Mercury-free fillings",
       "Natural appearance",
       "Durable restoration",
       "Single-visit treatment",
@@ -204,7 +211,12 @@ export const services = [
       "Protective crowns and caps to restore damaged teeth with metal and porcelain options.",
     longDescription:
       "Our crown and cap services provide excellent protection for damaged or weakened teeth. We offer both metal and porcelain-fused-to-metal, zirconia options for optimal strength and aesthetics.",
-    image: "/images/services/crowns-caps.jpg",
+    image: "/images/services/crown.jpeg",
+    images: [
+      "/images/services/crown.jpeg",
+      "/images/services/crown1.jpeg",
+      "/images/services/crown2.jpeg",
+    ],
     pricing: {
       startingPrice: "₹2,000",
       priceRange: "₹2,000 - ₹4,500",
@@ -244,14 +256,17 @@ export const services = [
       "Color-matched options",
     ],
   },
-   {
+  {
     id: 7,
     title: "Orthodontic Treatments",
     shortDescription:
       "Professional dental cleaning and preventive treatments to maintain optimal oral health.",
     longDescription:
       "Correcting malaligned teeth to beautiful smiles.",
-    image: "/images/services/cleaning-preventive.jpg",
+    image: "/images/services/ortho.jpeg",
+    images: ["/images/services/ortho.jpeg",
+      "/images/services/ortho1.png"
+    ],
     pricing: {
       startingPrice: "₹30,000",
       priceRange: "₹30,000 - ₹3,00,000",
@@ -283,14 +298,17 @@ export const services = [
       "Damon system available",
     ],
   },
-   {
+  {
     id: 8,
     title: "Tooth Bleaching / Whitening",
     shortDescription:
       "Professional dental cleaning and preventive treatments to maintain optimal oral health.",
     longDescription:
       "Tooth whitening is a safe and effective way to brighten dull or stained teeth. Using professional-grade bleaching agents, we lighten the shade of your teeth in just one session — giving you a visibly whiter and more confident smile. Starts from ₹6000 onwards.",
-    image: "/images/services/cleaning-preventive.jpg",
+    image: "/images/services/bleaching.jpeg",
+    images: ["/images/services/bleaching.jpeg",
+      "/images/services/bleaching1.jpeg",
+    ],
     pricing: {
       startingPrice: "₹6,000",
       priceRange: "₹6,000 - ₹12,000",
@@ -319,7 +337,11 @@ export const services = [
       "Professional dental cleaning and preventive treatments to maintain optimal oral health.",
     longDescription:
       "Regular professional cleaning is essential for maintaining good oral health. Our scaling and polishing services remove plaque, tartar, and stains while preventing gum disease and tooth decay.",
-    image: "/images/services/cleaning-preventive.jpg",
+    image: "/images/services/preventive.jpeg",
+    images: ["/images/services/preventive.jpeg",
+      "/images/services/preventive1.jpeg",
+      "/images/services/preventive2.jpeg",
+    ],
     pricing: {
       startingPrice: "₹1,000",
       priceRange: "₹1,000 - ₹1,500",
