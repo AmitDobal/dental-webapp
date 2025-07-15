@@ -5,8 +5,7 @@ import {
   Mail,
   Facebook,
   Instagram,
-  Twitter,
-  Youtube,
+  MessageCircle,
 } from "lucide-react";
 import { clinicInfo } from "../../data";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
@@ -88,6 +87,20 @@ const infoItemVariants = {
 };
 
 const VisitSection = () => {
+  // Function to get the appropriate Lucide icon based on platform
+  const getSocialIcon = (platform) => {
+    switch (platform.toLowerCase()) {
+      case "facebook":
+        return Facebook;
+      case "instagram":
+        return Instagram;
+      case "whatsapp":
+        return MessageCircle;
+      default:
+        return MessageCircle;
+    }
+  };
+
   return (
     <motion.div
       initial="initial"
@@ -237,30 +250,47 @@ const VisitSection = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.4 }}>
-                  {clinicInfo.socialMedia.map((social, index) => (
-                    <motion.a
-                      key={index}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-white/80 hover:text-white transition-colors"
-                      aria-label={`Follow us on ${social.platform}`}
-                      whileHover={{ scale: 1.2, rotate: 5 }}
-                      whileTap={{ scale: 0.9 }}
-                      transition={{ duration: 0.2 }}>
-                      <svg
-                        className="w-6 h-6"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                        aria-hidden="true">
-                        <path
-                          fillRule="evenodd"
-                          d={social.icon}
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </motion.a>
-                  ))}
+                  {clinicInfo.socialMedia.map((social, index) => {
+                    const IconComponent = getSocialIcon(social.platform);
+
+                    return (
+                      <motion.a
+                        key={index}
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative"
+                        aria-label={`Follow us on ${social.platform}`}
+                        whileHover={{ scale: 1.3, rotate: 10 }}
+                        whileTap={{ scale: 0.9 }}
+                        transition={{ duration: 0.2 }}>
+                        <div
+                          className={`
+                          w-12 h-12 rounded-full 
+                          flex items-center justify-center
+                          transition-all duration-300
+                          ${
+                            social.platform.toLowerCase() === "facebook"
+                              ? "bg-gradient-to-br from-blue-400 to-blue-600 shadow-lg shadow-blue-500/50 hover:shadow-xl hover:shadow-blue-400/70"
+                              : ""
+                          }
+                          ${
+                            social.platform.toLowerCase() === "instagram"
+                              ? "bg-gradient-to-br from-pink-400 via-purple-500 to-orange-400 shadow-lg shadow-pink-500/50 hover:shadow-xl hover:shadow-pink-400/70"
+                              : ""
+                          }
+                          ${
+                            social.platform.toLowerCase() === "whatsapp"
+                              ? "bg-gradient-to-br from-green-400 to-green-600 shadow-lg shadow-green-500/50 hover:shadow-xl hover:shadow-green-400/70"
+                              : ""
+                          }
+                        `}>
+                          <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 to-transparent opacity-60"></div>
+                          <IconComponent className="w-6 h-6 text-white relative z-10 drop-shadow-lg" />
+                        </div>
+                      </motion.a>
+                    );
+                  })}
                 </motion.div>
               </motion.div>
             </motion.div>
