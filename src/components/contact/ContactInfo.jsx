@@ -130,20 +130,6 @@ const ContactInfo = ({ clinicInfo }) => {
     }
   };
 
-  // Function to get icon color based on platform
-  const getIconColor = (platform) => {
-    switch (platform.toLowerCase()) {
-      case "facebook":
-        return "text-blue-500 hover:text-blue-400";
-      case "instagram":
-        return "text-pink-500 hover:text-pink-400";
-      case "whatsapp":
-        return "text-green-500 hover:text-green-400";
-      default:
-        return "text-gray-400 hover:text-gray-300";
-    }
-  };
-
   return (
     <motion.div
       initial="hidden"
@@ -316,7 +302,6 @@ const ContactInfo = ({ clinicInfo }) => {
             {clinicInfo.socialMedia && clinicInfo.socialMedia.length > 0 ? (
               clinicInfo.socialMedia.map((social, index) => {
                 const IconComponent = getSocialIcon(social.platform);
-                const iconColor = getIconColor(social.platform);
 
                 return (
                   <motion.a
@@ -324,12 +309,35 @@ const ContactInfo = ({ clinicInfo }) => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${iconColor} transition-colors`}
+                    className="group relative"
                     aria-label={`Follow us on ${social.platform}`}
                     whileHover={{ scale: 1.3, rotate: 10 }}
                     whileTap={{ scale: 0.9 }}
                     transition={{ duration: 0.2 }}>
-                    <IconComponent className="w-8 h-8" />
+                    <div
+                      className={`
+                      w-12 h-12 rounded-full 
+                      flex items-center justify-center
+                      transition-all duration-300
+                      ${
+                        social.platform.toLowerCase() === "facebook"
+                          ? "bg-gradient-to-br from-blue-400 to-blue-600 shadow-lg shadow-blue-500/50 hover:shadow-xl hover:shadow-blue-400/70"
+                          : ""
+                      }
+                      ${
+                        social.platform.toLowerCase() === "instagram"
+                          ? "bg-gradient-to-br from-pink-400 via-purple-500 to-orange-400 shadow-lg shadow-pink-500/50 hover:shadow-xl hover:shadow-pink-400/70"
+                          : ""
+                      }
+                      ${
+                        social.platform.toLowerCase() === "whatsapp"
+                          ? "bg-gradient-to-br from-green-400 to-green-600 shadow-lg shadow-green-500/50 hover:shadow-xl hover:shadow-green-400/70"
+                          : ""
+                      }
+                    `}>
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 to-transparent opacity-60"></div>
+                      <IconComponent className="w-6 h-6 text-white relative z-10 drop-shadow-lg" />
+                    </div>
                   </motion.a>
                 );
               })
