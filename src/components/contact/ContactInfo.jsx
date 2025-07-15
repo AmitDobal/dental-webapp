@@ -7,31 +7,8 @@ import {
   Clock,
   Facebook,
   Instagram,
-  Twitter,
-  Youtube,
+  MessageCircle,
 } from "lucide-react";
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.97 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      delay: i * 0.12,
-      duration: 0.6,
-      type: "spring",
-      stiffness: 120,
-      damping: 16,
-    },
-  }),
-  hover: {
-    scale: 1.02,
-    y: -5,
-    boxShadow: "0 8px 32px 0 rgba(16, 185, 129, 0.12)",
-    transition: { type: "spring", stiffness: 180, damping: 18 },
-  },
-};
 
 const containerVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -138,6 +115,34 @@ const ContactInfo = ({ clinicInfo }) => {
       </motion.div>
     );
   }
+
+  // Function to get the appropriate Lucide icon based on platform
+  const getSocialIcon = (platform) => {
+    switch (platform.toLowerCase()) {
+      case "facebook":
+        return Facebook;
+      case "instagram":
+        return Instagram;
+      case "whatsapp":
+        return MessageCircle;
+      default:
+        return MessageCircle;
+    }
+  };
+
+  // Function to get icon color based on platform
+  const getIconColor = (platform) => {
+    switch (platform.toLowerCase()) {
+      case "facebook":
+        return "text-blue-500 hover:text-blue-400";
+      case "instagram":
+        return "text-pink-500 hover:text-pink-400";
+      case "whatsapp":
+        return "text-green-500 hover:text-green-400";
+      default:
+        return "text-gray-400 hover:text-gray-300";
+    }
+  };
 
   return (
     <motion.div
@@ -309,26 +314,25 @@ const ContactInfo = ({ clinicInfo }) => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.6 }}>
             {clinicInfo.socialMedia && clinicInfo.socialMedia.length > 0 ? (
-              clinicInfo.socialMedia.map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary-200 hover:text-primary-400 transition-colors"
-                  aria-label={`Follow us on ${social.platform}`}
-                  whileHover={{ scale: 1.3, rotate: 10 }}
-                  whileTap={{ scale: 0.9 }}
-                  transition={{ duration: 0.2 }}>
-                  <svg
-                    className="w-6 h-6"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true">
-                    <path fillRule="evenodd" d={social.icon} />
-                  </svg>
-                </motion.a>
-              ))
+              clinicInfo.socialMedia.map((social, index) => {
+                const IconComponent = getSocialIcon(social.platform);
+                const iconColor = getIconColor(social.platform);
+
+                return (
+                  <motion.a
+                    key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${iconColor} transition-colors`}
+                    aria-label={`Follow us on ${social.platform}`}
+                    whileHover={{ scale: 1.3, rotate: 10 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ duration: 0.2 }}>
+                    <IconComponent className="w-8 h-8" />
+                  </motion.a>
+                );
+              })
             ) : (
               <p className="text-primary-200">
                 Social media information unavailable
