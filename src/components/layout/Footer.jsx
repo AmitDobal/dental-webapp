@@ -233,7 +233,14 @@ const Footer = () => {
             transition={{ delay: 0.3 }}
             viewport={{ once: true }}
             className="mt-3 text-white text-xs">
-            Crafted with ❤️ for beautiful smiles
+            Crafted with ❤️ by{" "}
+            <a
+              href="https://www.buildmvpwithus.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-white transition-colors font-medium text-sm underline">
+              Build MVP with Us
+            </a>
           </motion.p>
         </motion.div>
       </div>
