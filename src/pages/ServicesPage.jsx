@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { CheckCircle, DollarSign, Heart } from "lucide-react";
 import ServiceCard from "../components/common/ServiceCard";
 import ServiceModal from "../components/common/ServiceModal";
 import Button from "../components/common/Button";
@@ -33,7 +34,7 @@ const cardVariants = {
   },
   hover: {
     scale: 1.02,
-    boxShadow: "0 4px 20px 0 rgba(16, 185, 129, 0.08)",
+    boxShadow: "0 4px 20px 0 rgba(16, 185, 129, 0.15)",
     transition: { type: "spring", stiffness: 200, damping: 20 },
   },
 };
@@ -54,12 +55,12 @@ const ServicesPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-primary-50">
+    <div className="min-h-screen bg-gradient-to-b from-primary-900 to-primary-800">
       {/* Hero Section */}
-      <div className="relative w-full bg-gradient-to-b from-primary-600 to-primary-700 overflow-hidden py-20">
+      <div className="relative w-full bg-gradient-to-b from-primary-900 to-primary-800 overflow-hidden py-20">
         {/* Background Image */}
         <div
-          className="absolute inset-0 w-full h-full bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center opacity-20 z-0"
+          className="absolute inset-0 w-full h-full bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center opacity-10 z-0"
           aria-hidden="true"></div>
 
         <div className="relative z-10 container mx-auto px-4 text-center">
@@ -69,9 +70,9 @@ const ServicesPage = () => {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto">
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-              Our <span className="text-primary-200">Dental Services</span>
+              Our <span className="text-white">Dental Services</span>
             </h1>
-            <p className="text-primary-100 text-lg sm:text-xl mb-8 leading-relaxed">
+            <p className="text-white text-lg sm:text-xl mb-8 leading-relaxed">
               Comprehensive dental care with transparent pricing and exceptional
               quality. From routine cleanings to advanced cosmetic procedures,
               we provide personalized treatment plans tailored to your unique
@@ -110,16 +111,16 @@ const ServicesPage = () => {
             whileInView="visible"
             viewport={{ once: true }}
             className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
               Complete{" "}
-              <span className="text-primary-600">Treatment Options</span>
+              <span className="text-white">Treatment Options</span>
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto mb-6">
+            <p className="text-white max-w-3xl mx-auto mb-6">
               Dr. Manasi's Manifest Dental Studio offers a comprehensive range
               of dental services with transparent pricing and the highest
               quality standards.
             </p>
-            <div className="w-20 h-1 bg-primary-600 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-white mx-auto rounded-full"></div>
           </motion.div>
 
           {/* All Services Grid */}
@@ -157,83 +158,63 @@ const ServicesPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
             viewport={{ once: true }}
-            className="mt-20 bg-white rounded-2xl shadow-lg border border-primary-100 p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+            className="mt-20 bg-white/10 backdrop-blur-md rounded-2xl shadow-lg border border-white/20 p-8 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold text-white mb-6 text-center">
               Why Choose Dr. Manasi's Manifest Dental Studio?
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <div className="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-8 h-8 text-primary-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="text-center">
+                <div className="bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border-2 border-emerald-300/50 shadow-lg">
+                  <CheckCircle className="w-8 h-8 text-white drop-shadow-sm" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">
-                  Expert Care
-                </h4>
-                <p className="text-gray-600 text-sm">
+                <h4 className="font-semibold text-white mb-2">Expert Care</h4>
+                <p className="text-white text-sm">
                   Dr. Manasi brings years of expertise in cosmetic dentistry and
                   root canal treatment.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="text-center">
-                <div className="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-8 h-8 text-primary-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
-                    />
-                  </svg>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="text-center">
+                <div className="bg-gradient-to-br from-amber-400 to-amber-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border-2 border-amber-300/50 shadow-lg">
+                  <DollarSign className="w-8 h-8 text-white drop-shadow-sm" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">
+                <h4 className="font-semibold text-white mb-2">
                   Transparent Pricing
                 </h4>
-                <p className="text-gray-600 text-sm">
+                <p className="text-white text-sm">
                   Clear, upfront pricing with no hidden costs. Quality care at
                   affordable rates.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="text-center">
-                <div className="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-8 h-8 text-primary-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    />
-                  </svg>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="text-center">
+                <div className="bg-gradient-to-br from-rose-400 to-rose-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 border-2 border-rose-300/50 shadow-lg">
+                  <Heart className="w-8 h-8 text-white drop-shadow-sm" />
                 </div>
-                <h4 className="font-semibold text-gray-900 mb-2">
+                <h4 className="font-semibold text-white mb-2">
                   Patient Comfort
                 </h4>
-                <p className="text-gray-600 text-sm">
+                <p className="text-white text-sm">
                   Modern techniques and a comfortable environment for
                   stress-free dental care.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
 
@@ -244,11 +225,11 @@ const ServicesPage = () => {
             transition={{ delay: 0.4, duration: 0.6 }}
             viewport={{ once: true }}
             className="mt-16 text-center">
-            <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-8 max-w-3xl mx-auto text-white">
+            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 max-w-3xl mx-auto text-white border border-white/20">
               <h3 className="text-2xl font-bold mb-4">
                 Ready to Start Your Dental Journey?
               </h3>
-              <p className="text-primary-100 mb-6 text-lg">
+              <p className="text-white mb-6 text-lg">
                 Schedule a consultation with Dr. Manasi and take the first step
                 towards a healthier, more beautiful smile.
               </p>

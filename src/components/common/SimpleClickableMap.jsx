@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { MapPin, ExternalLink } from "lucide-react";
 
 const SimpleClickableMap = ({
   embedUrl,
@@ -86,39 +87,11 @@ const SimpleClickableMap = ({
               }}
               transition={{ duration: 0.2, type: "spring", stiffness: 200 }}>
               <div className="flex items-center space-x-2 text-primary-700">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
+                <MapPin className="w-5 h-5" />
                 <span className="font-medium text-sm">
                   {preferDirections ? "Get Directions" : "View on Google Maps"}
                 </span>
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
+                <ExternalLink className="w-4 h-4" />
               </div>
             </motion.div>
           )}
@@ -127,6 +100,28 @@ const SimpleClickableMap = ({
         {/* Focus Ring */}
         <div className="absolute inset-0 rounded-lg ring-2 ring-primary-500 ring-opacity-0 group-focus:ring-opacity-50 transition-all duration-200 pointer-events-none"></div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-center mb-8">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mb-4">
+          <div className="bg-gradient-to-br from-blue-400 to-blue-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-lg border-2 border-blue-300/50">
+            <MapPin className="w-8 h-8 text-white" />
+          </div>
+        </motion.div>
+        <h3 className="text-2xl font-bold text-white mb-2">Visit Our Clinic</h3>
+        <p className="text-primary-100">
+          Click on the map below to get directions to our dental clinic
+        </p>
+      </motion.div>
     </div>
   );
 };

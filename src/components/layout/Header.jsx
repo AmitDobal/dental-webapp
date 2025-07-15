@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, Phone, Mail } from "lucide-react";
 import Button from "../common/Button";
 import NavLink from "../common/NavLink";
 import { clinicInfo } from "../../data";
@@ -109,7 +110,7 @@ const Header = () => {
               loading="eager"
               decoding="async"
             />
-            <span className="hidden sm:inline">Manifest Dental</span>
+            <span className="hidden sm:inline">Dr. Manasi's Manifest Dental Studio</span>
             <span className="sm:hidden">Manifest</span>
           </a>
 
@@ -159,21 +160,44 @@ const Header = () => {
             onKeyDown={handleKeyDown}
             aria-label="Toggle mobile menu"
             aria-expanded={isMobileMenuOpen}>
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor">
-              {isMobileMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
+
+          {/* <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex items-center space-x-4">
+            <motion.a
+              href={`tel:${clinicInfo.phone}`}
+              className="flex items-center space-x-2 text-white hover:text-primary-200 transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}>
+              <div className="bg-gradient-to-br from-green-400 to-green-600 rounded-full p-1 shadow-lg">
+                <Phone className="w-4 h-4 text-white" />
+              </div>
+              <span className="text-sm font-medium hidden sm:inline">
+                {clinicInfo.phone}
+              </span>
+            </motion.a>
+
+            <motion.a
+              href={`mailto:${clinicInfo.email}`}
+              className="flex items-center space-x-2 text-white hover:text-primary-200 transition-colors"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}>
+              <div className="bg-gradient-to-br from-purple-400 to-purple-600 rounded-full p-1 shadow-lg">
+                <Mail className="w-4 h-4 text-white" />
+              </div>
+              <span className="text-sm font-medium hidden lg:inline">
+                {clinicInfo.email}
+              </span>
+            </motion.a>
+          </motion.div> */}
         </div>
 
         {/* Mobile Navigation */}

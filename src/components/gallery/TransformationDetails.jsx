@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { X, Sparkles } from "lucide-react";
 import Button from "../common/Button";
 
 const TransformationDetails = ({ transformation, onClose }) => {
@@ -12,20 +13,27 @@ const TransformationDetails = ({ transformation, onClose }) => {
         className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md hover:bg-gray-100"
         aria-label="Close modal"
         tabIndex={0}>
-        <svg
-          className="w-5 h-5 text-gray-700"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
+        <X className="w-5 h-5 text-gray-700" />
       </motion.button>
+
+      {/* <motion.div variants={headerVariants} className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-6">
+          <div className="bg-gradient-to-br from-pink-400 to-pink-600 rounded-full w-20 h-20 flex items-center justify-center mx-auto shadow-lg border-2 border-pink-300/50">
+            <Sparkles className="w-10 h-10 text-white" />
+          </div>
+        </motion.div>
+        <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          Smile Transformations
+        </h2>
+        <p className="text-primary-100 text-lg max-w-2xl mx-auto">
+          Real before and after results from our cosmetic dentistry procedures.
+        </p>
+      </motion.div> */}
 
       <h2 className="text-2xl font-bold text-gray-900 mb-4">
         {transformation.title}

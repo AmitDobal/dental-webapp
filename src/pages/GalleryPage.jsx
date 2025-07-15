@@ -17,10 +17,10 @@ const containerVariants = {
 const GalleryPage = () => {
   const location = useLocation();
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-primary-50">
-      <div className="relative w-full bg-gradient-to-b from-primary-600 to-primary-700 overflow-hidden py-20">
+    <div className="min-h-screen bg-gradient-to-b from-primary-900 to-primary-800">
+      <div className="relative w-full bg-gradient-to-b from-primary-900 to-primary-800 overflow-hidden py-20">
         <div
-          className="absolute inset-0 w-full h-full bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center opacity-20 z-0"
+          className="absolute inset-0 w-full h-full bg-[url('/images/hero/hero-bg.jpg')] bg-cover bg-center opacity-10 z-0"
           aria-hidden="true"></div>
         <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.div

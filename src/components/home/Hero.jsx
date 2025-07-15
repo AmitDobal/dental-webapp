@@ -4,8 +4,10 @@ import Button from "../common/Button";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
 import { handleBookAppointment } from "../../utils/scrollUtils";
 import FloatingImage from "../common/FloatingImage";
+import ImageModal from "../common/ImageModal";
 import { Typewriter } from "react-simple-typewriter";
 import Icon from "../common/Icon";
+import useImageModal from "../../hooks/useImageModal";
 import { clinicInfo } from "../../data";
 
 const HERO_PHRASES = [
@@ -105,7 +107,7 @@ const LeftSection = ({ isMobile }) => {
         whileInView="visible"
         viewport={{ once: true, amount: isMobile ? 0.1 : 0.3 }}
         className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 min-h-[3rem] sm:min-h-[4rem] lg:min-h-[4.5rem]">
-        <span className="text-primary-100 block">
+        <span className="text-white block">
           <Typewriter
             words={HERO_PHRASES}
             loop={0}
@@ -124,7 +126,7 @@ const LeftSection = ({ isMobile }) => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: isMobile ? 0.1 : 0.3 }}
-        className="text-lg sm:text-xl md:text-2xl text-primary-100 mb-6 sm:mb-8">
+        className="text-lg sm:text-xl md:text-2xl text-white mb-6 sm:mb-8">
         Creating healthy, beautiful smiles for life
       </motion.p>
 
@@ -140,7 +142,7 @@ const LeftSection = ({ isMobile }) => {
             handleBookAppointment({ focusForm: true, focusDelay: 1000 })
           }
           size="lg"
-          className="bg-white !text-primary-800 hover:bg-primary-100 hover:!text-white font-semibold cursor-pointer"
+          className="bg-white !text-primary-800 hover:bg-white hover:!text-white font-semibold cursor-pointer"
           aria-label="Book an appointment - scroll to contact form">
           Book an Appointment Now
         </Button>
@@ -212,7 +214,7 @@ const LeftSection = ({ isMobile }) => {
   );
 };
 
-const RightSection = ({ isMobile }) => (
+const RightSection = ({ isMobile, onImageClick }) => (
   <motion.div
     initial={{ opacity: 0, scale: isMobile ? 1 : 0.8 }}
     animate={{ opacity: 1, scale: 1 }}
@@ -220,7 +222,14 @@ const RightSection = ({ isMobile }) => (
     className="relative w-full flex justify-center items-center mt-6 sm:mt-8 lg:mt-0 min-h-[280px] sm:min-h-[320px] md:min-h-[400px]">
     <div className="relative w-full h-[280px] sm:h-[320px] md:h-[400px] lg:h-[500px] flex items-center justify-center">
       {/* Central Big Image */}
-      <div className="relative z-10 w-48 h-56 sm:w-56 sm:h-72 md:w-72 md:h-80 lg:w-96 lg:h-[30rem] bg-gradient-to-br from-primary-700 to-primary-600 rounded-2xl shadow-2xl border-4 border-white overflow-hidden flex items-center justify-center mx-auto">
+      <div
+        className="relative z-10 w-48 h-56 sm:w-56 sm:h-72 md:w-72 md:h-80 lg:w-96 lg:h-[30rem] bg-gradient-to-br from-primary-700 to-primary-600 rounded-2xl shadow-2xl border-4 border-white overflow-hidden flex items-center justify-center mx-auto cursor-pointer hover:scale-105 transition-transform duration-300"
+        onClick={() =>
+          onImageClick(
+            "/images/hero/dental-image1.jpeg",
+            "Main dental procedure"
+          )
+        }>
         <img
           src="/images/hero/dental-image1.jpeg"
           alt="Main dental procedure"
@@ -233,7 +242,7 @@ const RightSection = ({ isMobile }) => (
       <FloatingImage
         src="/images/hero/dental-image2.jpeg"
         alt="Floating dental 1"
-        className="absolute left-1 top-1 sm:left-2 sm:top-2 w-20 h-28 sm:w-24 sm:h-32 md:w-28 md:h-36 from-primary-600 to-primary-400"
+        className="absolute left-1 top-1 sm:left-2 sm:top-2 w-20 h-28 sm:w-24 sm:h-32 md:w-28 md:h-36 from-primary-600 to-primary-400 cursor-pointer hover:scale-110 transition-transform duration-300"
         animate={
           isMobile
             ? { y: [0, -10, 0], x: [0, -8, 0] }
@@ -242,25 +251,31 @@ const RightSection = ({ isMobile }) => (
         transition={
           isMobile
             ? {
-                duration: 3,
+                duration: 1.2,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 0,
               }
             : {
-                duration: 5,
+                duration: 1.8,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 0,
               }
         }
         zIndex="z-10"
+        onClick={() =>
+          onImageClick(
+            "/images/hero/dental-image2.jpeg",
+            "Dental care procedure"
+          )
+        }
       />
       {/* Floating Card 2 - Top Right */}
       <FloatingImage
         src="/images/hero/dental-image3.jpeg"
         alt="Floating dental 2"
-        className="absolute right-1 top-4 sm:right-2 sm:top-6 w-16 h-20 sm:w-20 sm:h-24 md:w-24 md:h-28 from-primary-500 to-primary-300"
+        className="absolute right-1 top-4 sm:right-2 sm:top-6 w-16 h-20 sm:w-20 sm:h-24 md:w-24 md:h-28 from-primary-500 to-primary-300 cursor-pointer hover:scale-110 transition-transform duration-300"
         animate={
           isMobile
             ? { y: [0, -10, 0], x: [0, 10, 0] }
@@ -269,25 +284,28 @@ const RightSection = ({ isMobile }) => (
         transition={
           isMobile
             ? {
-                duration: 4,
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.3,
+              }
+            : {
+                duration: 2.2,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 0.5,
               }
-            : {
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1,
-              }
         }
         zIndex="z-10"
+        onClick={() =>
+          onImageClick("/images/hero/dental-image3.jpeg", "Dental treatment")
+        }
       />
       {/* Floating Card 3 - Bottom Left */}
       <FloatingImage
         src="/images/hero/dental-image4.jpeg"
         alt="Floating dental 3"
-        className="absolute left-4 sm:left-6 md:left-8 bottom-1 sm:bottom-2 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 from-primary-800 to-primary-500"
+        className="absolute left-4 sm:left-6 md:left-8 bottom-1 sm:bottom-2 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 from-primary-800 to-primary-500 cursor-pointer hover:scale-110 transition-transform duration-300"
         animate={
           isMobile
             ? { y: [0, 12, 0], x: [0, -5, 0] }
@@ -296,25 +314,28 @@ const RightSection = ({ isMobile }) => (
         transition={
           isMobile
             ? {
-                duration: 3.5,
+                duration: 1.3,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.6,
+              }
+            : {
+                duration: 2.5,
                 repeat: Infinity,
                 ease: "easeInOut",
                 delay: 1,
               }
-            : {
-                duration: 7,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 2,
-              }
         }
         zIndex="z-10"
+        onClick={() =>
+          onImageClick("/images/hero/dental-image4.jpeg", "Dental consultation")
+        }
       />
       {/* Floating Card 4 - Bottom Right */}
       <FloatingImage
         src="/images/hero/dental-image5.jpeg"
         alt="Floating dental 4"
-        className="absolute right-4 sm:right-6 md:right-0 bottom-2 sm:bottom-4 w-24 h-16 sm:w-20 sm:h-20 md:w-36 md:h-30 from-primary-400 to-primary-200"
+        className="absolute right-4 sm:right-6 md:right-0 bottom-2 sm:bottom-4 w-24 h-16 sm:w-20 sm:h-20 md:w-36 md:h-30 from-primary-400 to-primary-200 cursor-pointer hover:scale-110 transition-transform duration-300"
         animate={
           isMobile
             ? { y: [0, 10, 0], x: [0, 8, 0] }
@@ -323,53 +344,31 @@ const RightSection = ({ isMobile }) => (
         transition={
           isMobile
             ? {
-                duration: 3.5,
+                duration: 1.4,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: 0.7,
+                delay: 0.4,
               }
             : {
-                duration: 6,
+                duration: 2.8,
                 repeat: Infinity,
                 ease: "easeInOut",
-                delay: 1.5,
+                delay: 0.8,
               }
         }
         zIndex="z-10"
+        onClick={() =>
+          onImageClick("/images/hero/dental-image5.jpeg", "Dental examination")
+        }
       />
-      {/* Floating Card 5 - Center Left */}
-      {/* <FloatingImage
-        src="/images/hero/dental-image6.jpeg"
-        alt="Floating dental 5"
-        className="absolute left-2 sm:left-4 md:left-10 top-1/2 -translate-y-1/2 w-12 h-16 sm:w-14 sm:h-20 md:w-16 md:h-24 from-primary-700 to-primary-400"
-        animate={
-          isMobile
-            ? { y: [0, -8, 0], x: [0, 6, 0] }
-            : { y: [0, -16, 0], x: [0, 12, 0] }
-        }
-        transition={
-          isMobile
-            ? {
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1.2,
-              }
-            : {
-                duration: 7,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 2.5,
-              }
-        }
-        zIndex="z-10"
-      /> */}
     </div>
   </motion.div>
 );
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const { imageModal, isModalOpen, openImageModal, closeImageModal } =
+    useImageModal();
 
   useEffect(() => {
     const checkMobile = () => {
@@ -381,6 +380,10 @@ const Hero = () => {
 
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  const handleImageClick = (image, alt) => {
+    openImageModal(image, alt);
+  };
 
   return (
     <div className="relative min-h-screen bg-gradient-to-b from-primary-900 to-primary-800 overflow-hidden">
@@ -397,38 +400,18 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 pt-20 sm:pt-24 md:pt-28 lg:pt-16 pb-8 sm:pb-12 lg:pb-16 min-h-screen flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center w-full">
           <LeftSection isMobile={isMobile} />
-          <RightSection isMobile={isMobile} />
+          <RightSection isMobile={isMobile} onImageClick={handleImageClick} />
         </div>
       </div>
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: isMobile ? 0.5 : 1 }}
-        className="absolute bottom-4 sm:bottom-6 lg:bottom-8 left-1/2 transform -translate-x-1/2">
-        <motion.div
-          animate={{
-            y: [0, 10, 0],
-          }}
-          transition={{
-            duration: isMobile ? 1 : 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-white rounded-full flex justify-center">
-          <motion.div
-            animate={{
-              y: [0, 12, 0],
-            }}
-            transition={{
-              duration: isMobile ? 1 : 1.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="w-1 h-2 sm:h-3 bg-white rounded-full mt-1 sm:mt-2"
-          />
-        </motion.div>
-      </motion.div>
+      {/* Image Modal */}
+      {isModalOpen && (
+        <ImageModal
+          isOpen={isModalOpen}
+          onClose={closeImageModal}
+          image={imageModal?.image}
+          alt={imageModal?.alt}
+        />
+      )}
     </div>
   );
 };

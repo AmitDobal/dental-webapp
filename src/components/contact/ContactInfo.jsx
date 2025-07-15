@@ -1,5 +1,15 @@
 import { motion } from "framer-motion";
 import { fadeIn, slideUp, staggerContainer } from "../../utils/animations";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Facebook,
+  Instagram,
+  Twitter,
+  Youtube,
+} from "lucide-react";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 40, scale: 0.97 },
@@ -9,7 +19,7 @@ const cardVariants = {
     scale: 1,
     transition: {
       delay: i * 0.12,
-      duration: 0.5,
+      duration: 0.6,
       type: "spring",
       stiffness: 120,
       damping: 16,
@@ -17,8 +27,86 @@ const cardVariants = {
   }),
   hover: {
     scale: 1.02,
+    y: -5,
     boxShadow: "0 8px 32px 0 rgba(16, 185, 129, 0.12)",
     transition: { type: "spring", stiffness: 180, damping: 18 },
+  },
+};
+
+const containerVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+  hover: {
+    y: -5,
+    boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+};
+
+const headerVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const contactItemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: (i) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  }),
+  hover: {
+    x: 5,
+    transition: {
+      duration: 0.2,
+      ease: "easeOut",
+    },
+  },
+};
+
+const iconVariants = {
+  hidden: { opacity: 0, scale: 0, rotate: -180 },
+  visible: (i) => ({
+    opacity: 1,
+    scale: 1,
+    rotate: 0,
+    transition: {
+      delay: i * 0.1 + 0.2,
+      duration: 0.6,
+      type: "spring",
+      stiffness: 200,
+      damping: 20,
+    },
+  }),
+  hover: {
+    scale: 1.2,
+    rotate: 5,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
   },
 };
 
@@ -27,212 +115,228 @@ const ContactInfo = ({ clinicInfo }) => {
   if (!clinicInfo) {
     return (
       <motion.div
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-        variants={staggerContainer}
-        className="bg-white rounded-lg shadow-md p-6">
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariants}
+        className="bg-white/20 backdrop-blur-sm rounded-lg shadow-md p-6 border border-white/30">
         <motion.h3
-          variants={slideUp}
-          className="text-2xl font-semibold text-gray-900 mb-6">
+          variants={headerVariants}
+          className="text-2xl font-semibold text-white mb-6">
           Contact Information Loading...
         </motion.h3>
-        <div className="animate-pulse space-y-6">
-          <div className="h-6 bg-gray-200 rounded w-3/4"></div>
-          <div className="h-6 bg-gray-200 rounded w-1/2"></div>
-          <div className="h-6 bg-gray-200 rounded w-2/3"></div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="animate-pulse space-y-6">
+          <div className="h-6 bg-white/30 rounded w-3/4"></div>
+          <div className="h-6 bg-white/30 rounded w-1/2"></div>
+          <div className="h-6 bg-white/30 rounded w-2/3"></div>
+        </motion.div>
       </motion.div>
     );
   }
 
   return (
     <motion.div
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true }}
-      variants={staggerContainer}
-      className="bg-white rounded-lg shadow-md p-6">
+      initial="hidden"
+      whileInView="visible"
+      whileHover="hover"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={containerVariants}
+      className="bg-white/20 backdrop-blur-sm rounded-lg shadow-md p-6 border border-white/30">
       <motion.h3
-        variants={slideUp}
-        className="text-2xl font-semibold text-gray-900 mb-6">
+        variants={headerVariants}
+        className="text-2xl font-semibold text-white mb-6">
         Contact Information
       </motion.h3>
 
       <div className="space-y-6">
         <motion.div
-          variants={cardVariants}
+          variants={contactItemVariants}
           custom={0}
           className="flex items-start">
-          <div className="flex-shrink-0 text-primary-600 mt-1">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-              />
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-              />
-            </svg>
-          </div>
-          <div className="ml-4">
-            <h4 className="text-lg font-medium text-gray-900">Address</h4>
-            <p className="mt-1 text-gray-600">
+          <motion.div
+            custom={0}
+            variants={iconVariants}
+            whileHover="hover"
+            className="flex-shrink-0 text-primary-300 mt-1">
+            <div className="bg-gradient-to-br from-blue-400 to-blue-600 rounded-full p-2 shadow-lg">
+              <MapPin className="w-6 h-6 text-white" />
+            </div>
+          </motion.div>
+          <motion.div
+            className="ml-4"
+            whileHover={{ x: 5 }}
+            transition={{ duration: 0.2 }}>
+            <h4 className="text-lg font-medium text-white">Address</h4>
+            <p className="mt-1 text-white/90">
               {clinicInfo.address || "Address information unavailable"}
             </p>
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
-          variants={cardVariants}
+          variants={contactItemVariants}
           custom={1}
           className="flex items-start">
-          <div className="flex-shrink-0 text-primary-600 mt-1">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-              />
-            </svg>
-          </div>
-          <div className="ml-4">
-            <h4 className="text-lg font-medium text-gray-900">Phone</h4>
+          <motion.div
+            custom={1}
+            variants={iconVariants}
+            whileHover="hover"
+            className="flex-shrink-0 text-primary-300 mt-1">
+            <div className="bg-gradient-to-br from-green-400 to-green-600 rounded-full p-2 shadow-lg">
+              <Phone className="w-6 h-6 text-white" />
+            </div>
+          </motion.div>
+          <motion.div
+            className="ml-4"
+            whileHover={{ x: 5 }}
+            transition={{ duration: 0.2 }}>
+            <h4 className="text-lg font-medium text-white">Phone</h4>
             {clinicInfo.phone ? (
-              <a
+              <motion.a
                 href={`tel:${clinicInfo.phone}`}
-                className="mt-1 text-primary-600 hover:text-primary-800 transition-colors"
-                aria-label="Call us">
+                className="mt-1 text-white hover:text-primary-200 transition-colors"
+                aria-label="Call us"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}>
                 {clinicInfo.phone}
-              </a>
+              </motion.a>
             ) : (
-              <p className="mt-1 text-gray-600">
+              <p className="mt-1 text-white/90">
                 Phone information unavailable
               </p>
             )}
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
-          variants={cardVariants}
+          variants={contactItemVariants}
           custom={2}
           className="flex items-start">
-          <div className="flex-shrink-0 text-primary-600 mt-1">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-              />
-            </svg>
-          </div>
-          <div className="ml-4">
-            <h4 className="text-lg font-medium text-gray-900">Email</h4>
+          <motion.div
+            custom={2}
+            variants={iconVariants}
+            whileHover="hover"
+            className="flex-shrink-0 text-primary-300 mt-1">
+            <div className="bg-gradient-to-br from-purple-400 to-purple-600 rounded-full p-2 shadow-lg">
+              <Mail className="w-6 h-6 text-white" />
+            </div>
+          </motion.div>
+          <motion.div
+            className="ml-4"
+            whileHover={{ x: 5 }}
+            transition={{ duration: 0.2 }}>
+            <h4 className="text-lg font-medium text-white">Email</h4>
             {clinicInfo.email ? (
-              <a
+              <motion.a
                 href={`mailto:${clinicInfo.email}`}
-                className="mt-1 text-primary-600 hover:text-primary-800 transition-colors"
-                aria-label="Email us">
+                className="mt-1 text-white hover:text-primary-200 transition-colors"
+                aria-label="Email us"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}>
                 {clinicInfo.email}
-              </a>
+              </motion.a>
             ) : (
-              <p className="mt-1 text-gray-600">
+              <p className="mt-1 text-white/90">
                 Email information unavailable
               </p>
             )}
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
-          variants={cardVariants}
+          variants={contactItemVariants}
           custom={3}
           className="flex items-start">
-          <div className="flex-shrink-0 text-primary-600 mt-1">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-          </div>
-          <div className="ml-4">
-            <h4 className="text-lg font-medium text-gray-900">Hours</h4>
-            <div className="mt-1 text-gray-600">
+          <motion.div
+            custom={3}
+            variants={iconVariants}
+            whileHover="hover"
+            className="flex-shrink-0 text-primary-300 mt-1">
+            <div className="bg-gradient-to-br from-orange-400 to-orange-600 rounded-full p-2 shadow-lg">
+              <Clock className="w-6 h-6 text-white" />
+            </div>
+          </motion.div>
+          <motion.div
+            className="ml-4"
+            whileHover={{ x: 5 }}
+            transition={{ duration: 0.2 }}>
+            <h4 className="text-lg font-medium text-white">Hours</h4>
+            <motion.div
+              className="mt-1 text-white/90"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}>
               {clinicInfo.hours && clinicInfo.hours.length > 0 ? (
                 clinicInfo.hours.map((day, index) => (
-                  <p key={index} className="mb-1">
+                  <motion.p
+                    key={index}
+                    className="mb-1"
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                    whileHover={{ x: 3 }}>
                     <span>{day.days}: </span>
                     <span>{day.hours}</span>
-                  </p>
+                  </motion.p>
                 ))
               ) : (
                 <p>Hours information unavailable</p>
               )}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          variants={contactItemVariants}
+          custom={4}
+          className="mt-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.5 }}>
+          <h4 className="text-lg font-medium text-white mb-4">Follow Us</h4>
+          <motion.div
+            className="flex space-x-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}>
+            {clinicInfo.socialMedia && clinicInfo.socialMedia.length > 0 ? (
+              clinicInfo.socialMedia.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary-200 hover:text-primary-400 transition-colors"
+                  aria-label={`Follow us on ${social.platform}`}
+                  whileHover={{ scale: 1.3, rotate: 10 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ duration: 0.2 }}>
+                  <svg
+                    className="w-6 h-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true">
+                    <path fillRule="evenodd" d={social.icon} />
+                  </svg>
+                </motion.a>
+              ))
+            ) : (
+              <p className="text-primary-200">
+                Social media information unavailable
+              </p>
+            )}
+          </motion.div>
         </motion.div>
       </div>
-
-      <motion.div variants={cardVariants} custom={4} className="mt-8">
-        <h4 className="text-lg font-medium text-gray-900 mb-4">Follow Us</h4>
-        <div className="flex space-x-4">
-          {clinicInfo.socialMedia && clinicInfo.socialMedia.length > 0 ? (
-            clinicInfo.socialMedia.map((social, index) => (
-              <motion.a
-                key={index}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 hover:text-primary-600 transition-colors"
-                aria-label={`Follow us on ${social.platform}`}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}>
-                <span className="sr-only">{social.platform}</span>
-                <svg
-                  className="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true">
-                  <path d={social.icon} />
-                </svg>
-              </motion.a>
-            ))
-          ) : (
-            <p className="text-gray-600">
-              Social media information unavailable
-            </p>
-          )}
-        </div>
-      </motion.div>
     </motion.div>
   );
 };
