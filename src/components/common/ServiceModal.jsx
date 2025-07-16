@@ -59,7 +59,7 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
                   {images.map((img, idx) => (
                     <div
                       key={idx}
-                      className="flex-[0_0_100%] md:flex-[0_0_33.33%] w-full h-64 relative flex items-center justify-center px-2">
+                      className="flex-[0_0_33.33%] w-full h-64 relative flex items-center justify-center px-2">
                       <img
                         src={img}
                         alt={service.title}
