@@ -9,7 +9,7 @@ import ContactInfo from "../components/contact/ContactInfo";
 import VisitSection from "../components/contact/VisitSection";
 import ServiceModal from "../components/common/ServiceModal";
 import { enableSmoothScrollForAnchors } from "../utils/scrollUtils";
-import { services, testimonials, transformations, clinicInfo } from "../data";
+import { services, testimonials, clinicInfo } from "../data";
 
 const MainPage = () => {
   const [selectedService, setSelectedService] = useState(null);

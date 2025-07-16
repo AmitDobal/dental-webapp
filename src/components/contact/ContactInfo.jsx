@@ -5,7 +5,7 @@ import {
   Phone,
   Mail,
   Clock,
-  Facebook,
+  Linkedin,
   Instagram,
   MessageCircle,
 } from "lucide-react";
@@ -119,8 +119,8 @@ const ContactInfo = ({ clinicInfo }) => {
   // Function to get the appropriate Lucide icon based on platform
   const getSocialIcon = (platform) => {
     switch (platform.toLowerCase()) {
-      case "facebook":
-        return Facebook;
+      case "linkedin":
+        return Linkedin;
       case "instagram":
         return Instagram;
       case "whatsapp":
@@ -320,7 +320,7 @@ const ContactInfo = ({ clinicInfo }) => {
                       flex items-center justify-center
                       transition-all duration-300
                       ${
-                        social.platform.toLowerCase() === "facebook"
+                        social.platform.toLowerCase() === "linkedin"
                           ? "bg-gradient-to-br from-blue-400 to-blue-600 shadow-lg shadow-blue-500/50 hover:shadow-xl hover:shadow-blue-400/70"
                           : ""
                       }

@@ -3,7 +3,7 @@ import {
   MapPin,
   Phone,
   Mail,
-  Facebook,
+  Linkedin,
   Instagram,
   Twitter,
   Youtube,
