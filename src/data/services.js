@@ -46,7 +46,7 @@ export const services = [
       "Transform your smile with our advanced cosmetic dental procedures including veneers and aesthetic treatments.",
     longDescription:
       "This is a high-end, digitally planned smile transformation. Using Emax ceramic veneers, we design your ideal smile on a computer and bring it to life — with ultra-thin, durable, and natural-looking ceramic shells. One tooth starts from ₹8000 onwards",
-    image: "/images/services/emax.png",
+    image: "/images/services/emax1.png",
     images: [
       "/images/services/emax.png",
       "/images/services/emax1.png",
@@ -55,8 +55,8 @@ export const services = [
       "/images/services/emax4.png",
     ],
     pricing: {
-      startingPrice: "₹2,000",
-      priceRange: "₹2,000 - ₹8,000",
+      startingPrice: "₹8,000",
+      priceRange: "₹8,000(Per Tooth)",
       treatments: [
         // {
         //   name: "Composite Veneers (Per Tooth)",
