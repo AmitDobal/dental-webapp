@@ -56,9 +56,9 @@ const MainPage = () => {
       </section>
 
       {/* Smile Transformations Section */}
-      <section id="transformations" className="relative">
+      {/* <section id="transformations" className="relative">
         <TransformationsSection transformations={transformations} />
-      </section>
+      </section> */}
 
       {/* Testimonials Section */}
       <section id="testimonials" className="relative">

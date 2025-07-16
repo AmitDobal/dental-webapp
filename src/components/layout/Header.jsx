@@ -111,7 +111,7 @@ const Header = () => {
               decoding="async"
             />
             <span className="hidden sm:inline">Dr. Manasi's Manifest Dental Studio</span>
-            <span className="sm:hidden">Manifest</span>
+            <span className="sm:hidden text-sm">Dr. Manasi's Manifest Dental Studio</span>
           </a>
 
           {/* Desktop Navigation */}
