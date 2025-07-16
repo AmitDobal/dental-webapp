@@ -3,6 +3,7 @@ import Modal from "./Modal";
 import { handleBookAppointment } from "../../utils/scrollUtils";
 import { useNavigate, useLocation } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
+import { useState, useCallback, useEffect } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -15,6 +16,8 @@ import {
 const ServiceModal = ({ service, isOpen, onClose }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(false);
 
   // Carousel setup
   const images =
@@ -28,7 +31,34 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
     loop: false,
     skipSnaps: false,
     dragFree: false,
+    containScroll: "trimSnaps",
   });
+
+  // Update scroll buttons state
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  // Initialize scroll buttons state
+  const onInit = useCallback(() => {
+    if (!emblaApi) return;
+    setCanScrollPrev(emblaApi.canScrollPrev());
+    setCanScrollNext(emblaApi.canScrollNext());
+  }, [emblaApi]);
+
+  // Add event listeners
+  useEffect(() => {
+    if (!emblaApi) return;
+    onInit();
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onInit);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onInit);
+    };
+  }, [emblaApi, onInit, onSelect]);
 
   if (!isOpen || !service) return null;
 
@@ -55,11 +85,11 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
           {images?.length > 0 ? (
             <div className="relative w-full h-full max-w-3xl mx-auto">
               <div ref={emblaRef} className="overflow-hidden w-full h-full">
-                <div className="flex h-full justify-center">
+                <div className="flex h-full">
                   {images.map((img, idx) => (
                     <div
                       key={idx}
-                      className="flex-[0_0_33.33%] w-full h-64 relative flex items-center justify-center px-2">
+                      className="flex-[0_0_100%] w-full h-64 relative flex items-center justify-center px-2">
                       <img
                         src={img}
                         alt={service.title}
@@ -75,20 +105,24 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
               {/* Navigation Buttons */}
               {images.length > 1 && (
                 <>
-                  <button
-                    onClick={() => emblaApi?.scrollPrev()}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300 z-20"
-                    aria-label="Previous image"
-                    tabIndex={0}>
-                    <ChevronLeft className="w-6 h-6 text-primary-600" />
-                  </button>
-                  <button
-                    onClick={() => emblaApi?.scrollNext()}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300 z-20"
-                    aria-label="Next image"
-                    tabIndex={0}>
-                    <ChevronRight className="w-6 h-6 text-primary-600" />
-                  </button>
+                  {canScrollPrev && (
+                    <button
+                      onClick={() => emblaApi?.scrollPrev()}
+                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300 z-20"
+                      aria-label="Previous image"
+                      tabIndex={0}>
+                      <ChevronLeft className="w-6 h-6 text-primary-600" />
+                    </button>
+                  )}
+                  {canScrollNext && (
+                    <button
+                      onClick={() => emblaApi?.scrollNext()}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-2 rounded-full shadow-lg transition-all duration-300 z-20"
+                      aria-label="Next image"
+                      tabIndex={0}>
+                      <ChevronRight className="w-6 h-6 text-primary-600" />
+                    </button>
+                  )}
                 </>
               )}
             </div>
