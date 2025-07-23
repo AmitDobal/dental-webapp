@@ -85,7 +85,7 @@ export const services = [
     shortDescription:
       "Transform your smile with our advanced cosmetic dental procedures including veneers and aesthetic treatments.",
     longDescription:
-      "If you want a quick and beautiful change in your smile, composite veneers are ideal. They are tooth-coloured layers sculpted directly on your teeth to fix shape, size, or colour issues — all in a single visit. Starts from ₹2000 onwards",
+      "If you want a quick and beautiful change in your smile, composite veneers are ideal. They are tooth-coloured layers sculpted directly on your teeth to fix shape, size, or colour issues — all in a single visit. Per tooth ₹2000",
     image: "/images/services/composite.png",
     images: [
       "/images/services/composite.png",
@@ -93,7 +93,7 @@ export const services = [
     ],
     pricing: {
       startingPrice: "₹2,000",
-      priceRange: "₹2,000 - ₹8,000",
+      priceRange: "₹2,000 (Per Tooth)",
       treatments: [
         {
           name: "Composite Veneers (Per Tooth)",
