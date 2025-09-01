@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 import { clinicInfo } from "../../data";
 
 const SEO = ({
@@ -21,214 +21,220 @@ const SEO = ({
     keywords ||
     `dental clinic, cosmetic dentist, root canal specialist, dental implants, teeth whitening, Kharghar, Navi Mumbai, Dr. Manasi Surwade, Manifest Dental Studio, dental care, oral health, smile design, preventive dentistry`;
 
-  // Structured data for local business
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    name: clinicInfo.name,
-    description: clinicInfo.about.description,
-    url: clinicInfo.website,
-    telephone: clinicInfo.phone,
-    email: clinicInfo.email,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress:
-        "Shop No 5, Shree Raj Ratnadeep, Neelkanth Sweets Road, near LIC Office, Sector 20",
-      addressLocality: "Kharghar",
-      addressRegion: "Navi Mumbai",
-      addressCountry: "IN",
-      postalCode: "410210",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: clinicInfo.map.coordinates.lat,
-      longitude: clinicInfo.map.coordinates.lng,
-    },
-    openingHours: clinicInfo.hours.map((hour) => `${hour.days} ${hour.hours}`),
-    priceRange: "$$",
-    currenciesAccepted: "INR",
-    paymentAccepted: "Cash, Credit Card, Debit Card, Insurance",
-    medicalSpecialty: clinicInfo.services,
-    availableService: clinicInfo.services.map((service) => ({
-      "@type": "MedicalProcedure",
-      name: service,
-    })),
-    founder: {
-      "@type": "Person",
-      name: clinicInfo.doctor.name,
-      jobTitle: clinicInfo.doctor.specialization,
-      qualifications: clinicInfo.doctor.qualifications,
-      medicalSpecialty: clinicInfo.doctor.specialization,
-    },
-    image: [clinicInfo.about.image, "/images/dental-logo.png"],
-    sameAs: clinicInfo.socialMedia.map((social) => social.url),
-    areaServed: [
-      {
-        "@type": "City",
-        name: "Kharghar",
-      },
-      {
-        "@type": "City",
-        name: "Navi Mumbai",
-      },
-      {
-        "@type": "City",
-        name: "Mumbai",
-      },
-    ],
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "Dental Services",
-      itemListElement: clinicInfo.services.map((service, index) => ({
-        "@type": "Offer",
-        itemOffered: {
+  useEffect(() => {
+    // Update document title
+    document.title = defaultTitle;
+
+    // Create or update meta tags
+    const updateMetaTag = (name, content, property = false) => {
+      let meta = document.querySelector(
+        property ? `meta[property="${name}"]` : `meta[name="${name}"]`
+      );
+
+      if (!meta) {
+        meta = document.createElement("meta");
+        if (property) {
+          meta.setAttribute("property", name);
+        } else {
+          meta.setAttribute("name", name);
+        }
+        document.head.appendChild(meta);
+      }
+
+      meta.setAttribute("content", content);
+    };
+
+    // Basic Meta Tags
+    updateMetaTag("description", defaultDescription);
+    updateMetaTag("keywords", defaultKeywords);
+    updateMetaTag("author", clinicInfo.doctor.name);
+    updateMetaTag("robots", "index, follow");
+    updateMetaTag("language", "en");
+    updateMetaTag("revisit-after", "7 days");
+
+    // Canonical URL
+    if (url) {
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (!canonical) {
+        canonical = document.createElement("link");
+        canonical.setAttribute("rel", "canonical");
+        document.head.appendChild(canonical);
+      }
+      canonical.setAttribute("href", url);
+    }
+
+    // Open Graph Meta Tags
+    updateMetaTag("og:title", defaultTitle, true);
+    updateMetaTag("og:description", defaultDescription, true);
+    updateMetaTag("og:type", type, true);
+    updateMetaTag("og:url", url || `https://${clinicInfo.website}`, true);
+    updateMetaTag("og:image", image, true);
+    updateMetaTag("og:image:width", "1200", true);
+    updateMetaTag("og:image:height", "630", true);
+    updateMetaTag("og:site_name", clinicInfo.name, true);
+    updateMetaTag("og:locale", "en_US", true);
+
+    // Twitter Card Meta Tags
+    updateMetaTag("twitter:card", "summary_large_image");
+    updateMetaTag("twitter:title", defaultTitle);
+    updateMetaTag("twitter:description", defaultDescription);
+    updateMetaTag("twitter:image", image);
+    updateMetaTag("twitter:site", "@manifestdental");
+
+    // Additional Meta Tags for Dental Clinic
+    updateMetaTag("geo.region", "IN-MH");
+    updateMetaTag("geo.placename", "Kharghar, Navi Mumbai, Maharashtra");
+    updateMetaTag(
+      "geo.position",
+      `${clinicInfo.map.coordinates.lat};${clinicInfo.map.coordinates.lng}`
+    );
+    updateMetaTag(
+      "ICBM",
+      `${clinicInfo.map.coordinates.lat}, ${clinicInfo.map.coordinates.lng}`
+    );
+
+    // Business Hours
+    updateMetaTag(
+      "business:hours",
+      clinicInfo.hours.map((hour) => `${hour.days} ${hour.hours}`).join(", ")
+    );
+
+    // Contact Information
+    updateMetaTag("contact:phone", clinicInfo.phone);
+    updateMetaTag("contact:email", clinicInfo.email);
+
+    // Additional Meta for Dental Services
+    updateMetaTag("dental:services", clinicInfo.services.join(", "));
+    updateMetaTag("dental:specialist", clinicInfo.doctor.name);
+    updateMetaTag("dental:location", "Kharghar, Navi Mumbai, Maharashtra");
+    updateMetaTag("dental:established", clinicInfo.established);
+
+    // Add structured data
+    const addStructuredData = () => {
+      // Remove existing structured data
+      const existingScripts = document.querySelectorAll(
+        'script[type="application/ld+json"]'
+      );
+      existingScripts.forEach((script) => script.remove());
+
+      // Structured data for local business
+      const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        name: clinicInfo.name,
+        description: clinicInfo.about.description,
+        url: clinicInfo.website,
+        telephone: clinicInfo.phone,
+        email: clinicInfo.email,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress:
+            "Shop No 5, Shree Raj Ratnadeep, Neelkanth Sweets Road, near LIC Office, Sector 20",
+          addressLocality: "Kharghar",
+          addressRegion: "Navi Mumbai",
+          addressCountry: "IN",
+          postalCode: "410210",
+        },
+        geo: {
+          "@type": "GeoCoordinates",
+          latitude: clinicInfo.map.coordinates.lat,
+          longitude: clinicInfo.map.coordinates.lng,
+        },
+        openingHours: clinicInfo.hours.map(
+          (hour) => `${hour.days} ${hour.hours}`
+        ),
+        priceRange: "$$",
+        currenciesAccepted: "INR",
+        paymentAccepted: "Cash, Credit Card, Debit Card, Insurance",
+        medicalSpecialty: clinicInfo.services,
+        availableService: clinicInfo.services.map((service) => ({
           "@type": "MedicalProcedure",
           name: service,
+        })),
+        founder: {
+          "@type": "Person",
+          name: clinicInfo.doctor.name,
+          jobTitle: clinicInfo.doctor.specialization,
+          qualifications: clinicInfo.doctor.qualifications,
+          medicalSpecialty: clinicInfo.doctor.specialization,
         },
-      })),
-    },
-  };
+        image: [clinicInfo.about.image, "/images/dental-logo.png"],
+        sameAs: clinicInfo.socialMedia.map((social) => social.url),
+        areaServed: [
+          {
+            "@type": "City",
+            name: "Kharghar",
+          },
+          {
+            "@type": "City",
+            name: "Navi Mumbai",
+          },
+          {
+            "@type": "City",
+            name: "Mumbai",
+          },
+        ],
+        hasOfferCatalog: {
+          "@type": "OfferCatalog",
+          name: "Dental Services",
+          itemListElement: clinicInfo.services.map((service, index) => ({
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "MedicalProcedure",
+              name: service,
+            },
+          })),
+        },
+      };
 
-  // Additional structured data for doctor
-  const doctorStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: clinicInfo.doctor.name,
-    jobTitle: clinicInfo.doctor.specialization,
-    worksFor: {
-      "@type": "MedicalBusiness",
-      name: clinicInfo.name,
-    },
-    qualifications: clinicInfo.doctor.qualifications,
-    medicalSpecialty: clinicInfo.doctor.specialization,
-    image: clinicInfo.about.image,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress:
-        "Shop No 5, Shree Raj Ratnadeep, Neelkanth Sweets Road, near LIC Office, Sector 20",
-      addressLocality: "Kharghar",
-      addressRegion: "Navi Mumbai",
-      addressCountry: "IN",
-      postalCode: "410210",
-    },
-  };
+      // Additional structured data for doctor
+      const doctorStructuredData = {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: clinicInfo.doctor.name,
+        jobTitle: clinicInfo.doctor.specialization,
+        worksFor: {
+          "@type": "MedicalBusiness",
+          name: clinicInfo.name,
+        },
+        qualifications: clinicInfo.doctor.qualifications,
+        medicalSpecialty: clinicInfo.doctor.specialization,
+        image: clinicInfo.about.image,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress:
+            "Shop No 5, Shree Raj Ratnadeep, Neelkanth Sweets Road, near LIC Office, Sector 20",
+          addressLocality: "Kharghar",
+          addressRegion: "Navi Mumbai",
+          addressCountry: "IN",
+          postalCode: "410210",
+        },
+      };
 
-  return (
-    <Helmet>
-      {/* Basic Meta Tags */}
-      <title>{defaultTitle}</title>
-      <meta name="description" content={defaultDescription} />
-      <meta name="keywords" content={defaultKeywords} />
-      <meta name="author" content={clinicInfo.doctor.name} />
-      <meta name="robots" content="index, follow" />
-      <meta name="language" content="en" />
-      <meta name="revisit-after" content="7 days" />
+      // Add structured data scripts
+      const addScript = (data) => {
+        const script = document.createElement("script");
+        script.type = "application/ld+json";
+        script.textContent = JSON.stringify(data);
+        document.head.appendChild(script);
+      };
 
-      {/* Canonical URL */}
-      {url && <link rel="canonical" href={url} />}
+      addScript(structuredData);
+      addScript(doctorStructuredData);
+    };
 
-      {/* Open Graph Meta Tags */}
-      <meta property="og:title" content={defaultTitle} />
-      <meta property="og:description" content={defaultDescription} />
-      <meta property="og:type" content={type} />
-      <meta
-        property="og:url"
-        content={url || `https://${clinicInfo.website}`}
-      />
-      <meta property="og:image" content={image} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta property="og:site_name" content={clinicInfo.name} />
-      <meta property="og:locale" content="en_US" />
+    addStructuredData();
 
-      {/* Twitter Card Meta Tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={defaultTitle} />
-      <meta name="twitter:description" content={defaultDescription} />
-      <meta name="twitter:image" content={image} />
-      <meta name="twitter:site" content="@manifestdental" />
+    // Cleanup function
+    return () => {
+      // Reset title to default
+      document.title =
+        "Dr. Manasi's Manifest Dental Studio - Cosmetic Dentist & Root Canal Specialist";
+    };
+  }, [title, description, keywords, image, url, type, pageType]);
 
-      {/* Additional Meta Tags for Dental Clinic */}
-      <meta name="geo.region" content="IN-MH" />
-      <meta name="geo.placename" content="Kharghar, Navi Mumbai, Maharashtra" />
-      <meta
-        name="geo.position"
-        content={`${clinicInfo.map.coordinates.lat};${clinicInfo.map.coordinates.lng}`}
-      />
-      <meta
-        name="ICBM"
-        content={`${clinicInfo.map.coordinates.lat}, ${clinicInfo.map.coordinates.lng}`}
-      />
-
-      {/* Business Hours */}
-      <meta
-        name="business:hours"
-        content={clinicInfo.hours
-          .map((hour) => `${hour.days} ${hour.hours}`)
-          .join(", ")}
-      />
-
-      {/* Contact Information */}
-      <meta name="contact:phone" content={clinicInfo.phone} />
-      <meta name="contact:email" content={clinicInfo.email} />
-
-      {/* Structured Data */}
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(doctorStructuredData)}
-      </script>
-
-      {/* Additional Meta for Dental Services */}
-      <meta name="dental:services" content={clinicInfo.services.join(", ")} />
-      <meta name="dental:specialist" content={clinicInfo.doctor.name} />
-      <meta
-        name="dental:location"
-        content="Kharghar, Navi Mumbai, Maharashtra"
-      />
-      <meta name="dental:established" content={clinicInfo.established} />
-
-      {/* Mobile and Performance Meta */}
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
-      />
-      <meta name="format-detection" content="telephone=no" />
-
-      {/* Preconnect for Performance */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin="anonymous"
-      />
-      <link rel="preconnect" href="https://maps.google.com" />
-
-      {/* Favicon and App Icons */}
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/images/dental-logo.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/images/dental-logo.png"
-      />
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/images/dental-logo.png"
-      />
-
-      {/* Theme Color */}
-      <meta name="theme-color" content="#1e40af" />
-      <meta name="msapplication-TileColor" content="#1e40af" />
-    </Helmet>
-  );
+  // This component doesn't render anything visible
+  return null;
 };
 
 export default SEO;
