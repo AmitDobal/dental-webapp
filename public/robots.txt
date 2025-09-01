@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://manifestdental.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
+
+# Allow all important directories
+Allow: /images/
+Allow: /assets/
+
+# Disallow admin or private areas (if any exist in future)
+# Disallow: /admin/
+# Disallow: /private/
